@@ -159,6 +159,7 @@ const isLinkActive = (href: string) => {
   }
 
   .nav-links a {
+    position: relative;
     font-size: var(--text-sm);
     font-weight: 500;
     color: var(--text-secondary);
@@ -171,7 +172,19 @@ const isLinkActive = (href: string) => {
 
   .nav-links a.active {
     color: var(--cyan);
-    font-weight: 500;
+    font-weight: 600;
+    position: relative;
+  }
+
+  .nav-links a.active::after {
+    content: '';
+    position: absolute;
+    bottom: -4px;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: var(--cyan);
+    border-radius: 1px;
   }
 
   .nav-links li {
@@ -193,6 +206,10 @@ const isLinkActive = (href: string) => {
   .nav-link--featured:hover,
   .nav-link--featured.active {
     color: var(--amber) !important;
+  }
+
+  .nav-link--featured.active::after {
+    background: var(--amber);
   }
 
   /* Mobile hamburger */
@@ -230,9 +247,35 @@ const isLinkActive = (href: string) => {
       justify-content: flex-start;
       padding-top: var(--space-2xl);
       gap: var(--space-xl);
-      background: var(--bg-deep); /* Fully solid color to prevent transparency issues */
+      background: #060c1a;
+      background: var(--bg-deep);
+      z-index: 999;
       transform: translateX(100%);
       transition: transform 0.4s var(--ease-out);
+    }
+
+    .nav-links a.active::after {
+      bottom: auto;
+      left: -12px;
+      right: auto;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 3px;
+      height: 1.2em;
+    }
+
+    .nav-links a.active {
+      text-shadow: 0 0 12px var(--cyan-glow);
+    }
+
+    .nav-link--featured.active {
+      text-shadow: 0 0 12px var(--amber-glow) !important;
+    }
+
+    .nav-item--featured {
+      padding-left: 0;
+      border-left: none;
+      margin-left: 0;
     }
 
     .nav-links.open {
