@@ -3,6 +3,8 @@ title: "Speaking into Existence: 0"
 date: 2026-03-12
 description: "I'm dictating a story about my dictation tool — into the dictation tool I built — so that I can publish it to get more people using my dictation tool."
 tags: [vociferous, dev-diary]
+series: "Speaking into Existence"
+seriesOrder: 0
 canonicalUrl: "https://medium.com/@WanderingAstronomer/speaking-into-existence-b9b75effcfe3"
 ---
 
@@ -11,7 +13,9 @@ canonicalUrl: "https://medium.com/@WanderingAstronomer/speaking-into-existence-b
 ### Speaking into Existence: 0
 
 #### Chapter 0: Dictating About a Dictation Tool
-Nothing quite like getting roasted by your program’s built-in SLM first thing in the morning! (look up top)
+![Nothing quite like getting roasted by your program’s built-in SLM first thing in the morning! (look up top)](https://cdn-images-1.medium.com/max/800/1*UsJgq3Xx5mwuROFt3mFOXg.png)
+> *Nothing quite like getting roasted by your program’s built-in SLM first thing in the morning! (look up top)*
+
 There’s a deep irony in what I’m doing right now.
 
 I’m dictating a story about my dictation tool — into the dictation tool I built — so that I can publish it to get more people using my dictation tool. I’m talking at my screen, Vociferous is transcribing it, and the Small Language Model (SLM) is cleaning up the edges of my spoken rambling into something resembling prose. The subject of the book is writing the book. I find that funny. It’s the kind of irony that only makes sense if you built the thing yourself and then kept using it long enough to notice.
@@ -35,7 +39,9 @@ I want to be honest about the goals here, because it wasn’t purely “I need a
 I was setting out to kill as many birds as possible with as few stones as possible, and I ended up aiming a blunderbuss at a flock. The number of problems I was actually trying to solve:
 
 I needed a tool. That’s the obvious one. I think faster than I type. 60–65 words per minute is a cognitive bottleneck when your brain is running at a hundred miles an hour. Or, as Vociferous’ analytics show, my 133 WPM average across nearly 80,000 spoken words so far.
-You, too can have a pretty analytics page! Download my app! >:D
+![You, too can have a pretty analytics page! Download my app! >:D](https://cdn-images-1.medium.com/max/800/1*j3-Pw3NWViohdjNEfgscng.png)
+> *You, too can have a pretty analytics page! Download my app! >:D*
+
 ***I needed something to close that gap.***
 
 I *needed* to become a developer. Not a hobbyist who can wire up a script. An actual developer. Someone who could look at a system architecture and have instincts about what would go wrong, where the edges were, what patterns applied. I had none of that. Zero. I had enthusiasm and a laptop. And now I don’t even have a laptop! Just me and my trusty gaming PC.
@@ -47,7 +53,9 @@ I *needed* a portfolio. You go out and do some quick Googling on how to break in
 So yes — tool, career, AI experience, portfolio. One project. That’s why 600 hours. That’s the math.
 
 ### Flying a Plane While Already in the Air
-Me in November — Colorized
+![Me in November — Colorized](https://cdn-images-1.medium.com/max/800/0*OBlSc8Qg49sA2bWX.jpg)
+> *Me in November — Colorized*
+
 The early days of this project were genuinely chaotic. Not productively chaotic — just chaotic. I was learning what architectural instinct even means while simultaneously trying to practice it. I had no appreciation for scope creep identification, trade-off analysis, technical debt patterns, data access design, security considerations. None of the invisible scaffolding that experienced engineers carry around in their heads as intuition.
 
 And AI-assisted development without that intuition is particularly treacherous. If you don’t know enough to steer, the AI picks the direction. And the AI will steer you somewhere reasonable-sounding and structurally unsound without ever flagging that anything is wrong. It solves the prompt you gave it. It doesn’t tell you the prompt was the wrong question.
@@ -87,8 +95,9 @@ This series is how I documented that process while it was happening: the decisio
 Recorded, of course, using the tool I built!
 
 This will be a *very* active series, published once or twice a day until all of my gained experience is out of my head and generating clicks (ya boy needs a job). This is of course, made possible by Vociferous. In fact… this took me 30 minutes to put together. What’s that? Proof? Okay, bet:
-Vociferous: Proudly defeating AI-slop allegations since 2025™
-> Vociferous is an open-source, offline speech-to-text application. It runs entirely on your hardware, no cloud required. Both CPU and GPU are supported.
+![Vociferous: Proudly defeating AI-slop allegations since 2025™](https://cdn-images-1.medium.com/max/800/1*zZP0dvYW6cWBCIKzoGHQkA.png)
+> *Vociferous: Proudly defeating AI-slop allegations since 2025™*
 
-[**GitHub: WanderingAstronomer/Vociferous**](https://github.com/WanderingAstronomer/Vociferous)[**
-**Chapter 1: I Think Faster Than I Type](https://medium.com/@WanderingAstronomer/speaking-into-existence-b9b75effcfe3)
+Vociferous is an open-source, offline speech-to-text application. It runs entirely on your hardware, no cloud required. Both CPU and GPU are supported.
+
+[**GitHub: WanderingAstronomer/Vociferous**](https://github.com/WanderingAstronomer/Vociferous)

@@ -3,6 +3,8 @@ title: "Speaking into Existence: 1"
 date: 2026-03-14
 description: "It started with a frustration so banal I almost didn’t act on it."
 tags: [vociferous, dev-diary]
+series: "Speaking into Existence"
+seriesOrder: 1
 canonicalUrl: "https://medium.com/@WanderingAstronomer/speaking-into-existence-6f542deb9070"
 ---
 
@@ -11,6 +13,8 @@ canonicalUrl: "https://medium.com/@WanderingAstronomer/speaking-into-existence-6
 ### Speaking into Existence: 1
 
 #### Chapter 1: I Think Faster Than I Type
+
+![](https://cdn-images-1.medium.com/max/800/0*ZJ2an5tMDoBUPiXW)
 
 It started with a frustration so banal I almost didn’t act on it.
 
@@ -21,7 +25,9 @@ This is not an uncommon problem. Unless you type at a blazing hundred words per 
 I did not accept it! (*Shenanigans ensue~)*
 
 So in September 2025, I did what any developer does when confronted with a mundane problem: I dramatically over-engineered a solution.
-by [Brady Bonus](https://www.linkedin.com/in/bradybonus/)
+![by Brady Bonus](https://cdn-images-1.medium.com/max/800/0*3ZjRwHm6jQU072NV.png)
+
+*by [Brady Bonus](https://www.linkedin.com/in/bradybonus/)*
 ### The ChatterBug Era
 
 The first commit landed on September 17, 2025. I called it ChatterBug. A cute name for a dictation tool — talk to your computer, get text out. Simple concept, right?
@@ -35,7 +41,10 @@ Sixty files. For a dictation tool. A tool whose entire job is: listen to microph
 I had 50 test files, 376 tests, separate engine backends with a registry pattern so you could swap transcription models at runtime — something I’ve actually kept to this day, for the record — Pydantic schemas and configuration presets and hardware detection logic. It looked really nice on paper.
 
 It was a painted trash can.
-via [@flaviocopes](https://twitter.com/flaviocopes/status/1417007331930423298)
+![via @flaviocopes](https://cdn-images-1.medium.com/max/800/0*acur1IjcTihgWrpL.jpeg)
+
+*via [@flaviocopes](https://twitter.com/flaviocopes/status/1417007331930423298)*
+
 I had built a cathedral when I needed a shed. Long before I understood anything about masonry or what skills you actually needed to build a cathedral back when people were building them.
 
 As for ChatterBug — the name had to go. There’s already a company in Europe using it in the speech software domain. RIP.
@@ -52,10 +61,12 @@ I was competing in the National Cyber League in the fall. My team placed 20th in
 
 But underneath all of that, something else was happening. I was figuring out — with a lot more clarity than I’d had in September — that what I wanted to do with my life was build software. Not as a hobby, not as a side project, but as a career, as a craft. And I was acutely aware of the gap between where I was and where I needed to be to actually prove that to anyone, including myself. Also around this time, my identity as an engineer began to take shape.
 
-> ***Why*** do I want to build? And for ***who***? Do they ***need*** it, or do they ***want**** *it? Should ***they*** even have it? ***Should*** it be built? And should ***I ***be the one to build it? Each a critical question every self-identifying “builder” must answer.
+> ***Why*** do I want to build? And for ***who***? Do they ***need*** it, or do they ***want*** it? Should ***they*** even have it? ***Should*** it be built? And should ***I*** be the one to build it? Each a critical question every self-identifying “builder” must answer.
 
 So when I returned to Vociferous on November 21st, I didn’t just pick up where I left off. In the week before I came back, I did a lot of research. Human speech patterns, ASR anatomy, software architectural design principles, UI and frontend stack comparisons, how different technologies played together, what I actually needed to understand to do this right. I thought I got it on the first try! Spoiler alert:
-He did not get it right on the first (or third) try.
+![He did not get it right on the first (or third) try.](https://cdn-images-1.medium.com/max/800/0*XJp97-nsnf2bdtab.gif)
+
+*He did not get it right on the first (or third) try.*
 I learned a tremendous amount. And I was more confident than I should have been — which, if you’ve ever been new at something, is exactly where the next expensive lesson comes from.
 
 ### The Kivy Detour
@@ -73,6 +84,8 @@ In the world of finance, there’s a phrase for this: *paying tuition*. When a b
 Regardless, I paid tuition on Kivy. I don’t regret it, and I’m not saying that there is something wrong with using it. It just wasn’t right for me. Every wrong turn teaches you what the right turn looks like. At the very least, you will never make that particular mistake again.
 
 Yet I wasn’t done paying tuition. Not even *close*.
+
+![](https://cdn-images-1.medium.com/max/800/0*CkixY6-4nueyHn0F.gif)
 
 ### December 11: The Day Everything Happened
 
@@ -93,6 +106,8 @@ Version 0.9.0 was titled “Complete Architectural Rewrite.” The CHANGELOG ent
 What gave me the gall to do that? Well… I was my only user. Hahaha!
 
 I deleted 136 files. The entire Vociferous package with its eight subdirectories — gone. The 50 test files — gone. The Kivy GUI, the daemon server, the engine registry, the CLI commands — gone, gone, gone. Everything must go!
+
+![](https://cdn-images-1.medium.com/max/800/0*Hng0uQT_7NLU197a.gif)
 
 What replaced it? Eight files. Eight. Sitting in a `src/` directory:
 ```
@@ -119,6 +134,8 @@ I’ve heard the conventional wisdom a thousand times: “Never rewrite from scr
 But *this* wasn’t *that*. This was a solo developer, three months in, with zero users, looking at a codebase that had accumulated complexity without accumulating value. The 60-file architecture wasn’t protecting me from anything. It was protecting architectural abstractions from the reality that I was building a dictation tool, not a transcription platform.
 
 The rewrite took days, not months, because I wasn’t really rewriting — I was *subtracting*. The core logic (record audio, transcribe with Whisper, output text) was maybe 200 lines of meaningful code buried under 10,000 lines of UI slop + architecture. I just had to find those 200 lines and let them breathe. I needed to know where the heartbeat of my program was.
+
+![](https://cdn-images-1.medium.com/max/800/0*YUXBv1laKAk1Am5v.gif)
 
 There’s something else I learned here, something that didn’t fully click until after the rewrite was done: up to this point I had been relying heavily on AI to direct my understanding of where the codebase should go. And here’s what the people who are more experienced with AI-driven development will tell you, and what I had to discover the hard way — the AI will not lead you astray if you know what you’re talking about. But you don’t know for sure if you can walk the walk and talk the talk until you’ve struggled through hell and back and discovered that you weren’t quite as clever as you thought you were.
 
@@ -147,8 +164,10 @@ I’m not saying v0.1 through v0.8 was wasted time. It wasn’t. The exploration
 The real project — the one that would eventually grow into 130+ releases, 355 commits, a genuinely useful production-grade tool on multiple operating systems — started the day I set fire to everything and wrote eight files.
 
 *One last thing: the chapter you just read was originally dictated. Into Vociferous. It took 21 minutes to speak 2,500 words at an average of 141 words per minute. I was actively speaking 81% of the time. I used 41 filler words. All of that analytical data comes straight out of the app. I find it hard to imagine a better advertisement. As is tradition; proof:*
-Refinement took about 156 seconds with a custom prompt Qwen 14B via my RTX 3090.
+![Refinement took about 156 seconds with a custom prompt Qwen 14B via my RTX 3090.](https://cdn-images-1.medium.com/max/800/1*hFkDZ70vy4eRjkLlPFSYRg.png)
+
+*Refinement took about 156 seconds with a custom prompt Qwen 14B via my RTX 3090.*
 > Vociferous is an open-source, offline speech-to-text application. It runs entirely on your hardware, no cloud required. Both CPU and GPU are supported.
 
-[GitHub: WanderingAstronomer/Vociferous](https://github.com/WanderingAstronomer/Vociferous)
-[Chapter 0: Dictating About a Dictation Tool](https://medium.com/@WanderingAstronomer/speaking-into-existence-6f542deb9070)
+- [GitHub: WanderingAstronomer/Vociferous](https://github.com/WanderingAstronomer/Vociferous)
+- [Chapter 0: Dictating About a Dictation Tool](https://medium.com/@WanderingAstronomer/speaking-into-existence-6f542deb9070)

@@ -6,6 +6,20 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ---
 
+## [Unreleased] — 2026-03-15
+
+### Added
+- **Blog series support** — `series` and `seriesOrder` fields added to blog content schema; posts in a named series are grouped into horizontal scroll carousels on the blog index, sorted ascending by `seriesOrder`, with an amber accent and amber-themed card styling distinct from standalone posts
+- **Series carousels** — Each series block shows a `Series` badge, the series name, a part count, and a `scroll →` hint; cards snap-scroll left-to-right with a thin scrollbar
+- **Articles divider** — A centered `——— Articles ———` rule visually separates series carousels from independent posts below
+- **Series frontmatter** — "Speaking into Existence: 0" (`seriesOrder: 0`) and "Speaking into Existence: 1" (`seriesOrder: 1`) grouped under the "Speaking into Existence" series; "Examining Artificial Intelligence and Memory Architecture — Part 1" (`seriesOrder: 1`) starts the "Examining AI & Memory Architecture" series
+- **Blog post images restored** — 19 images stripped during the Medium → Markdown conversion have been reinserted across 6 posts: `examining-ai-memory-architecture-part-1` (1), `a-bit-of-a-journey` (1), `vociferous-v3-a-personal-milestone` (1), `shadows-at-the-summit` (4), `speaking-into-existence-0` (4), `speaking-into-existence-1` (8); orphaned figcaption text converted to italic Markdown below each image
+
+### Fixed
+- Part labels on series cards now reflect 0-based `seriesOrder` directly (removed erroneous +1 offset)
+
+---
+
 ## [1.0.0] — 2026-03-15
 
 Full portfolio site launch. Built from scratch with Astro 6, Svelte 5, and TypeScript.

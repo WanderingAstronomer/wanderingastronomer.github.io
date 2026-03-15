@@ -9,14 +9,18 @@ canonicalUrl: "https://medium.com/@WanderingAstronomer/vociferous-v3-a-personal-
 *Originally published on [Medium](https://medium.com/@WanderingAstronomer/vociferous-v3-a-personal-milestone-in-learning-how-to-build-carefully-f0c7dbd6fe94).*
 
 ### Vociferous v3: A Personal Milestone in Learning How to Build Carefully
-Transcribe: The main view for Vociferous.
+
+![Transcribe: The main view for Vociferous.](https://cdn-images-1.medium.com/max/800/1*8n5ot0DigwQMTFCvoKkvTw.png)
+
+*Transcribe: The main view for Vociferous.*
+
 Vociferous v3 is the first release that feels like I’m putting a real piece of software into people’s hands rather than sharing a clever contraption I built for myself. I’m excited about it in a way that’s hard to compress into a tidy “release notes” kind of excitement, because the program means more to me than the sum of its features. Vociferous started as a small pile of scripts with one job: listen to my voice, convert it into text, dump the result into my clipboard, and let me paste it wherever I was working. It was practical, blunt, and selfish in the best way. It existed to reduce friction in my own life. It didn’t need polish because it wasn’t trying to be anything other than a personal lever that moved my day forward.
 
 What changed, slowly and then all at once, is that I kept coming back to it. The moment you experience the cognitive relief of speaking your thoughts and watching them become usable text, the tool stops being a novelty. It becomes infrastructure for your attention. I didn’t want something that “helped me write” in the generic, content-factory sense. I wanted something that helped me think out loud in private, capture exactly what I meant, keep the rawness that matters, and then optionally refine it in a controlled way without turning it into something that sounds like a marketing team. Vociferous grew because that need is real, and because I’m stubborn enough to keep pressing on a tool until it becomes what I actually intended.
 
 I also need to say, plainly, that I did not start this project from a position of deep architectural competence. I started it like a lot of people start things that matter to them: with a vision, a lot of impatience, and an incomplete understanding of what makes software stable over time. In the beginning, every change felt like brute force. When I brought AI agents into the workflow, that brute force got amplified. I’d describe what I wanted, get back a huge blast of code, and then spend an exhausting amount of time trying to undo the parts that missed the point. It felt like I was trying to corral greased pigs, except the pigs were abstractions, and the grease was my own inability to specify constraints at a systems level. I could feel that something was wrong in my approach, because I was moving quickly while also becoming more fragile. To aptly quote the most arrogant person I’ve ever heard speak:
 
-> “[That’s like] the *w*orst trade deal in the *history* of trade deals, maybe *ever*.”
+> “[That’s like] the *worst* trade deal in the *history* of trade deals, maybe *ever*.”
 
 Somewhere along the way I learned the difference between “making changes” and “making controlled changes.” That sounds obvious, but it’s not a small shift. Controlled change requires that you understand what a system is allowed to do, not just what you want it to do. It requires that you can see boundaries, identify lifecycles, respect concurrency, and recognize when you’re about to patch a symptom instead of healing a design. The biggest improvement in my workflow wasn’t discovering some magical prompt. It was learning enough about systems design and architecture that I could start using AI like a scalpel instead of a demolition charge. I still make mistakes, and I still have plenty of gaps, but I’m no longer building purely by thrashing. I started this as a bumbling idiot. I’m still a bumbling idiot, just slightly less so, with a better grasp on why things break.
 

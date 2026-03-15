@@ -8,7 +8,10 @@ canonicalUrl: "https://medium.com/@WanderingAstronomer/a-bit-of-a-journey-de0638
 
 *Originally published on [Medium](https://medium.com/@WanderingAstronomer/a-bit-of-a-journey-de0638ec5777).*
 
-Cabin on a snowy lake. Reminds me of home. Source: Freepik.
+![Cabin on a snowy lake. Reminds me of home.](https://cdn-images-1.medium.com/max/800/1*s01N1n84uktpU1xSY48Hbw.jpeg)
+
+*Cabin on a snowy lake. Reminds me of home. Source: Freepik.*
+
 ### A Bit of a Journey
 
 Over the past four months I’ve experienced the strangest combinations of freedom and pressure I’ve ever felt.
@@ -17,23 +20,23 @@ In early spring, just after my birthday, I was fired. Happy birthday to me.
 
 Really, though, it was an appalling first for me. The shock lasted about five days—either an instant or an eternity, depending on your perspective.
 
-After *that *short bout, I realized nobody was coming to rescue me (surprise, surprise) and decided to treat the empty calendar as the rarest resource an adult can have: time. Freedom? Yes. The mental pressure of a singularity? ***Check***.
+After *that* short bout, I realized nobody was coming to rescue me (surprise, surprise) and decided to treat the empty calendar as the rarest resource an adult can have: time. Freedom? Yes. The mental pressure of a singularity? ***Check***.
 
 I’m a full-time Cybersecurity student with a minor in AI. Up until this point, I’d never had the chance to chase something I was so passionate about.
 
-Every time I thought that I found something that I could do for a while, I grew a little bored with it. Not to the extent of jumping ship, mind you, but rather that work always wound up becoming mundane. I might not have mastered every aspect of the position, but I’d grown to understand what I was doing to the degree that it wasn’t challenging anymore. Nothing was *hard *enough.
+Every time I thought that I found something that I could do for a while, I grew a little bored with it. Not to the extent of jumping ship, mind you, but rather that work always wound up becoming mundane. I might not have mastered every aspect of the position, but I’d grown to understand what I was doing to the degree that it wasn’t challenging anymore. Nothing was *hard* enough.
 
-Now, you might be thinking, “Wow, Andrew, that’s *very *humble of you!”
+Now, you might be thinking, “Wow, Andrew, that’s *very* humble of you!”
 
 Yes, I understand how that might sound a bit arrogant or egotistical.
 
-**But I will *never *mean it that way.**
+**But I will *never* mean it that way.**
 
 I’ve been subjected to variations of, “MaYbe iF yOu sTucK aRoUnd FoR lonGeR tHan a YEar yOuD fInD oUT tHat yOu dIdn’T knOw eVeRytHinG!”
 
 Between the financial collapses of two of my past employers, needing to leave for greener pastures at another, and the most recent rug-pull, I haven’t had much choice in the matter. I’d like to build a solid career spanning a tiny entourage of companies just like anyone else.
 
-That said, I will never claim to have *complete *understanding of any given field or subject. Thankfully, there’s just too much to learn. When I say nothing was challenging enough, I do not refer to achieving mastery. No, it was not that I absorbed all there was to learn, it was the sedentary pace of learning. Not just slow; it was damn ***torpid****!* Lacking a fire hose to drink from, I got bored.
+That said, I will never claim to have *complete* understanding of any given field or subject. Thankfully, there’s just too much to learn. When I say nothing was challenging enough, I do not refer to achieving mastery. No, it was not that I absorbed all there was to learn, it was the sedentary pace of learning. Not just slow; it was damn ***torpid***! Lacking a fire hose to drink from, I got bored.
 
 So, what did I do about it?
 
@@ -41,11 +44,11 @@ So, what did I do about it?
 
 > If things look like shit, you’re probably standin’ too close. If ya back up, and they still look like shit, go ‘head and walk ‘round it ‘till you’ve got a better angle.
 
-Turns out, I *really *needed a better angle. Oddly enough, the very *best* angle didn’t come about from anything *I *did. It came from some new friends.
+Turns out, I *really* needed a better angle. Oddly enough, the very *best* angle didn’t come about from anything *I* did. It came from some new friends.
 
-A few weeks into figuring my Tilt-A-Whirl life out, one of my Professors, **Kemal Aydin (*big ***shout out to him), asked all members of the class I was in if they had any interest in joining a student club.
+A few weeks into figuring my Tilt-A-Whirl life out, one of my Professors, **Kemal Aydin** (*big shout out to him*), asked all members of the class I was in if they had any interest in joining a student club.
 
-*Imagine my surprise, finding out we even ****had ****student clubs!*
+*Imagine my surprise, finding out we even **had** student clubs!*
 
 So, I said, “Sure! I’ll join the Cybersecurity Club.”
 
@@ -53,7 +56,7 @@ When I look back on life decades from now, that will be one of those moments whe
 
 And, rather than Murphy’s Law taking over, I ran face-first into some of the best moments of my life.
 
-Inside my first hour with the club, I met **Adonnis Alexander, Jacob Oglesbee, **and **Corey Farley**. People like me, passionate about Cybersecurity and hungry for knowledge. If *any *of you are reading this, thank you. It’s hard to explain what your support has meant to me.
+Inside my first hour with the club, I met **Adonnis Alexander, Jacob Oglesbee,and Corey Farley**. People like me, passionate about Cybersecurity and hungry for knowledge. If *any* of you are reading this, thank you. It’s hard to explain what your support has meant to me.
 
 I was invited to join them in representing Franklin University at the Spring National Cyber League competition, a renowned and demanding series of challenges for collegiate cybersecurity students nationwide.
 
@@ -61,7 +64,7 @@ I’d never competed before, but the idea of pitting my fledgling skills against
 
 Then, in a first-timer run of absurdity, with all technical grace of a greased pig in a bounce house, I finished in the top three percent of all NCL Solo competitors.
 
-A week later, my very own Franklin Red Team ranked **seventieth **out of nearly **five thousand**. The scoreboard didn’t fix my bank account, but it did something quieter and more valuable: it confirmed I was on the **right **path.
+A week later, my very own Franklin Red Team ranked **seventieth** out of nearly **five thousand**. The scoreboard didn’t fix my bank account, but it did something quieter and more valuable: it confirmed I was on the **right** path.
 
 A new semester started up, and I decided I wanted *more*. More knowledge. More challenges. More responsibilities. I wanted to find a *limit.*
 
@@ -77,7 +80,7 @@ I started hosting weekly meetings going over everyone’s Python projects. Publi
 
 Then, one day…
 
-**I WOKE UP AND I COULDN’T FEEL MY RIGHT* *ARM.**
+**I WOKE UP AND I COULDN'T FEEL MY RIGHT ARM.**
 
 Ah, cervical radiculopathy… to be done in by a mere pinched nerve. As of right now, it’s been seven weeks with little to no exercise, because even stomping my damn *feet* still hurts.
 
@@ -93,11 +96,11 @@ I also owe so much to my girlfriend, Priya, who has been my rock throughout our 
 
 While working full time, I had **originally estimated graduating in the fall of 2027.**
 
-However, after a lot of calculation and intense planning, I’ve managed to **shorten this timeline to the fall of 2026 at the latest**, with the **best-case scenario being the summer of next year **— just a year away.
+However, after a lot of calculation and intense planning, I’ve managed to **shorten this timeline to the fall of 2026 at the latest**, with the **best-case scenario being the summer of next year**— just a year away.
 
-To do so, **I’ll need to conquer 7 different certifications**, earning credits that allow me to prove my proficiencies and skip *entire *classes. I’ll need to study full-time, and wring *every *drop of ingenuity out of my brain. But I’ve never been *so ready for it.*
+To do so, **I’ll need to conquer 7 different certifications**, earning credits that allow me to prove my proficiencies and skip *entire* classes. I’ll need to study full-time, and wring *every* drop of ingenuity out of my brain. But I’ve never been *so ready for it.*
 
-I won’t pretend every day has been heroic. There are moments when the job market feels like a glacier and I question whether I’m sprinting in place. But each time that doubt shows up, I stack the evidence. If you’re out there doubting your own momentum, stack up *your *evidence too. You’re liable to be pleasantly surprised:
+I won’t pretend every day has been heroic. There are moments when the job market feels like a glacier and I question whether I’m sprinting in place. But each time that doubt shows up, I stack the evidence. If you’re out there doubting your own momentum, stack up *your* evidence too. You’re liable to be pleasantly surprised:
 
 **In the last five years, I’ve read over 400 books. *Whew.***
 
@@ -115,7 +118,7 @@ I won’t pretend every day has been heroic. There are moments when the job mark
 
 **I’m writing blog posts, articles, code, and an entire freaking *book*.**
 
-**I *just *got my Security+ certificate.**
+**I just got my Security+ certificate.**
 
 And the best part?
 
