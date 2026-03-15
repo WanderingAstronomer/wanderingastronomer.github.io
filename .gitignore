@@ -1,0 +1,8 @@
+# Astro
+dist/
+node_modules/
+.astro/
+
+# Ignore all personal files
+.docs/
+/.docs/

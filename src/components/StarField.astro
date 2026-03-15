@@ -1,0 +1,182 @@
+---
+// All star positions computed at BUILD TIME — zero runtime JS, zero animation CPU cost
+// Only 10 feature stars get a slow opacity pulse (GPU-composited, near-zero cost)
+
+function rand(min: number, max: number) {
+  return Math.random() * (max - min) + min;
+}
+
+// Dense star field — 400 stars, completely static
+const stars = Array.from({ length: 400 }, () => ({
+  x: rand(0, 100),
+  y: rand(0, 100),
+  size: rand(0.4, 2.0),
+  opacity: rand(0.15, 0.75),
+}));
+
+// 10 brighter feature stars with slow twinkle (the ONLY animations on the page)
+const featureStars = Array.from({ length: 10 }, () => ({
+  x: rand(5, 95),
+  y: rand(5, 95),
+  size: rand(2, 3.5),
+  duration: rand(4, 8),
+  delay: rand(0, 6),
+  hue: Math.random() > 0.7 ? 'warm' : 'cool',
+}));
+---
+
+<div class="starfield" aria-hidden="true">
+  <!-- Nebula layers — static CSS gradients -->
+  <div class="nebula nebula--cyan"></div>
+  <div class="nebula nebula--amber"></div>
+  <div class="nebula nebula--purple"></div>
+
+  <!-- Dense static star field -->
+  {stars.map(s => (
+    <div
+      class="star"
+      style={`left:${s.x}%;top:${s.y}%;width:${s.size}px;height:${s.size}px;opacity:${s.opacity}`}
+    />
+  ))}
+
+  <!-- Bright feature stars — only these animate (10 total, GPU-composited) -->
+  {featureStars.map(s => (
+    <div
+      class:list={['star-feature', `star-feature--${s.hue}`]}
+      style={`left:${s.x}%;top:${s.y}%;width:${s.size}px;height:${s.size}px;animation-duration:${s.duration}s;animation-delay:${s.delay}s`}
+    />
+  ))}
+
+  <!-- Distant planets — static -->
+  <div class="planet planet--small"></div>
+  <div class="planet planet--large"></div>
+  <div class="planet planet--ring"></div>
+</div>
+
+<style>
+  .starfield {
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+    z-index: 0;
+  }
+
+  /* ─── Nebula clouds — static, no animation ─── */
+  .nebula {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(80px);
+    pointer-events: none;
+  }
+
+  .nebula--cyan {
+    width: 60vw;
+    height: 60vw;
+    max-width: 800px;
+    max-height: 800px;
+    top: -10%;
+    right: -5%;
+    background: radial-gradient(circle, rgba(0, 217, 255, 0.07) 0%, rgba(0, 120, 200, 0.03) 40%, transparent 70%);
+  }
+
+  .nebula--amber {
+    width: 50vw;
+    height: 50vw;
+    max-width: 650px;
+    max-height: 650px;
+    bottom: -5%;
+    left: -10%;
+    background: radial-gradient(circle, rgba(255, 157, 61, 0.05) 0%, rgba(200, 100, 30, 0.02) 40%, transparent 70%);
+  }
+
+  .nebula--purple {
+    width: 40vw;
+    height: 40vw;
+    max-width: 500px;
+    max-height: 500px;
+    top: 30%;
+    left: 25%;
+    background: radial-gradient(circle, rgba(120, 80, 220, 0.04) 0%, rgba(80, 40, 160, 0.02) 40%, transparent 70%);
+  }
+
+  /* ─── Stars — completely static, zero CPU ─── */
+  .star {
+    position: absolute;
+    border-radius: 50%;
+    background: rgba(220, 235, 255, 1);
+  }
+
+  /* ─── Feature stars — only 10 of these, slow GPU-composited opacity pulse ─── */
+  .star-feature {
+    position: absolute;
+    border-radius: 50%;
+    will-change: opacity;
+    animation-name: twinkle;
+    animation-timing-function: ease-in-out;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+  }
+
+  .star-feature--cool {
+    background: rgba(200, 225, 255, 0.9);
+    box-shadow: 0 0 6px 2px rgba(100, 180, 255, 0.3),
+                0 0 14px 4px rgba(0, 217, 255, 0.1);
+  }
+
+  .star-feature--warm {
+    background: rgba(255, 230, 200, 0.9);
+    box-shadow: 0 0 6px 2px rgba(255, 180, 100, 0.3),
+                0 0 14px 4px rgba(255, 157, 61, 0.1);
+  }
+
+  @keyframes twinkle {
+    0% { opacity: 1; }
+    100% { opacity: 0.3; }
+  }
+
+  /* ─── Planets — static ─── */
+  .planet {
+    position: absolute;
+    border-radius: 50%;
+    pointer-events: none;
+  }
+
+  .planet--small {
+    width: 8px;
+    height: 8px;
+    top: 12%;
+    right: 15%;
+    background: radial-gradient(circle at 35% 35%, rgba(180, 140, 100, 0.6), rgba(120, 80, 50, 0.3) 60%, transparent 80%);
+    box-shadow: 0 0 4px 1px rgba(180, 140, 100, 0.2);
+  }
+
+  .planet--large {
+    width: 18px;
+    height: 18px;
+    bottom: 20%;
+    right: 8%;
+    background: radial-gradient(circle at 30% 30%, rgba(100, 150, 200, 0.5), rgba(60, 100, 160, 0.2) 60%, transparent 85%);
+    box-shadow: 0 0 8px 2px rgba(100, 150, 200, 0.15);
+  }
+
+  .planet--ring {
+    width: 14px;
+    height: 14px;
+    top: 55%;
+    left: 8%;
+    background: radial-gradient(circle at 35% 35%, rgba(200, 170, 130, 0.5), rgba(160, 120, 80, 0.2) 60%, transparent 80%);
+    box-shadow: 0 0 6px 1px rgba(200, 170, 130, 0.15);
+  }
+
+  .planet--ring::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 26px;
+    height: 8px;
+    border: 1px solid rgba(200, 170, 130, 0.25);
+    border-radius: 50%;
+    transform: translate(-50%, -50%) rotate(-20deg);
+  }
+</style>

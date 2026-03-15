@@ -1,0 +1,654 @@
+---
+const cyberStats = [
+  {
+    value: '20th',
+    context: '/ 4,674',
+    label: 'NCL Team Season — Fall 2025',
+    description: 'The National Cyber League is a bi-annual cybersecurity competition run by Cyber Skyline, covering OSINT, network traffic analysis, cryptography, log analysis, password cracking, web application exploitation, and forensics. Top 0.5% of 4,674 competing teams nationally.',
+    url: '/proofs/ncl/ncl-cyber-skyline-report-fall-team-2025.pdf',
+  },
+  {
+    value: '121st',
+    context: '',
+    label: 'NCL Individual Season — Fall 2025',
+    description: "Solo division of the same competition — placed 121st individually across thousands of competitors. Categories reward hands-on execution: you either crack the hash, capture the flag, or you don't.",
+    url: '/proofs/ncl/ncl-cyber-skyline-report-fall-solo-2025.pdf',
+  },
+];
+
+const progStats = [
+  {
+    value: '355+',
+    context: '',
+    label: 'Commits on Vociferous',
+    description: '600+ hours of solo development from first prototype to production-ready application. 130+ versioned releases spanning offline speech-to-text capture, a five-stage local SLM refinement pipeline, session management, and a real-time activity dashboard.',
+    url: 'https://github.com/WanderingAstronomer/Vociferous',
+  },
+  {
+    value: '30+',
+    context: '',
+    label: 'Presentations Delivered',
+    description: 'Original talks and workshops as President of the Programming SIG (PSIG) and Senior Officer of the Cybersecurity SIG (CySec) at Franklin University — covering software engineering, AI architecture, professional Git workflows, cryptographic fundamentals, and security operations.',
+    url: '/presentations',
+  },
+];
+
+const ncl_reports = [
+  { slug: 'ncl-cyber-skyline-report-fall-team-2025',   label: 'Fall 2025 — Team',         pages: 9 },
+  { slug: 'ncl-cyber-skyline-report-fall-solo-2025',   label: 'Fall 2025 — Individual',   pages: 8 },
+  { slug: 'ncl-cyber-skyline-report-spring-team-2025', label: 'Spring 2025 — Team',       pages: 9 },
+  { slug: 'ncl-cyber-skyline-report-spring-solo-2025', label: 'Spring 2025 — Individual', pages: 8 },
+];
+
+const certs = [
+  { name: 'CompTIA Security+', date: 'Jul 2025', image: '/images/certs/comptia-security-plus.png' },
+  { name: 'CompTIA IT Fundamentals+', date: 'Apr 2024' },
+  { name: 'DMP Master Technician', date: 'Nov 2023' },
+];
+---
+
+<section class="section achievements" id="achievements">
+  <div class="container">
+
+    <!-- ── Cybersecurity ── -->
+    <div class="reveal">
+      <span class="section-label">Achievements</span>
+      <h2 class="section-title">Cybersecurity</h2>
+    </div>
+
+    <div class="stats-grid reveal-stagger">
+      {cyberStats.map(stat => {
+        const inner = (
+          <>
+            <div class="stat-number">
+              <span class="stat-value gradient-text">{stat.value}</span>
+              {stat.context && <span class="stat-context">{stat.context}</span>}
+            </div>
+            <div class="stat-body">
+              <span class="stat-label">{stat.label}</span>
+              <p class="stat-desc">{stat.description}</p>
+            </div>
+          </>
+        );
+        return stat.url ? (
+          <a href={stat.url} target="_blank" rel="noopener noreferrer" class="stat-card stat-card--linked">
+            {inner}
+          </a>
+        ) : (
+          <div class="stat-card">{inner}</div>
+        );
+      })}
+    </div>
+
+    <!-- NCL Report Viewer -->
+    <div class="ncl-viewer reveal" id="ncl-viewer">
+      <h3 class="viewer-heading">Cyber Skyline Reports</h3>
+      <nav class="ncl-tabs">
+        {ncl_reports.map((r, i) => (
+          <button
+            class={`ncl-tab${i === 0 ? ' ncl-tab--active' : ''}`}
+            data-slug={r.slug}
+            data-pages={r.pages}
+            data-index={i}
+          >
+            {r.label}
+          </button>
+        ))}
+      </nav>
+      <div class="ncl-stage">
+        <div class="ncl-page-wrap">
+          <img id="ncl-slide-img" src={`/proofs/ncl/${ncl_reports[0].slug}/page-1.png`} alt="NCL Report page" class="ncl-page-img" loading="lazy" />
+          <button class="ncl-arrow ncl-arrow--prev" id="ncl-prev" aria-label="Previous page" disabled>
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+          </button>
+          <button class="ncl-arrow ncl-arrow--next" id="ncl-next" aria-label="Next page">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+          </button>
+        </div>
+        <div class="ncl-controls">
+          <span class="ncl-counter" id="ncl-counter">1 / {ncl_reports[0].pages}</span>
+          <div class="ncl-controls-right">
+            <button class="ncl-ctrl-btn" id="ncl-fullscreen" aria-label="Toggle fullscreen">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 3 21 3 21 9"/><polyline points="9 21 3 21 3 15"/><line x1="21" y1="3" x2="14" y2="10"/><line x1="3" y1="21" x2="10" y2="14"/></svg>
+            </button>
+            <a class="ncl-ctrl-btn ncl-ctrl-btn--download" id="ncl-download" href={`/proofs/ncl/${ncl_reports[0].slug}.pdf`} download aria-label="Download PDF">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <hr class="glow-line" />
+
+    <!-- ── Programming ── -->
+    <div class="reveal">
+      <h2 class="section-title">Programming</h2>
+    </div>
+
+    <div class="stats-grid reveal-stagger">
+      {progStats.map(stat => {
+        const inner = (
+          <>
+            <div class="stat-number">
+              <span class="stat-value gradient-text">{stat.value}</span>
+              {stat.context && <span class="stat-context">{stat.context}</span>}
+            </div>
+            <div class="stat-body">
+              <span class="stat-label">{stat.label}</span>
+              <p class="stat-desc">{stat.description}</p>
+            </div>
+          </>
+        );
+        const isExternal = stat.url?.startsWith('http');
+        return stat.url ? (
+          <a href={stat.url} target={isExternal ? '_blank' : '_self'} rel={isExternal ? 'noopener noreferrer' : ''} class="stat-card stat-card--linked">
+            {inner}
+          </a>
+        ) : (
+          <div class="stat-card">{inner}</div>
+        );
+      })}
+    </div>
+
+    <!-- GitHub heatmap -->
+    <div class="heatmap-wrap reveal">
+      <h3 class="viewer-heading">Contribution Activity</h3>
+      <p class="heatmap-sub">
+        <a href="https://github.com/WanderingAstronomer/Vociferous" target="_blank" rel="noopener noreferrer">Vociferous</a>
+        &mdash; solo-developed speech capture &amp; refinement platform
+      </p>
+      <div class="heatmap-img-wrap">
+        <img
+          src="https://ghchart.rshah.org/00d9ff/WanderingAstronomer"
+          alt="GitHub contribution chart for WanderingAstronomer"
+          class="heatmap-img"
+          loading="lazy"
+        />
+      </div>
+    </div>
+
+    <hr class="glow-line" />
+
+    <!-- ── Certifications ── -->
+    <div class="certs-section reveal">
+      <h3 class="certs-heading">Certifications</h3>
+      <div class="certs-list">
+        {certs.map(cert => (
+          <div class="cert-item">
+            <span class="cert-dot"></span>
+            <span class="cert-name">{cert.name}</span>
+            <span class="cert-date">{cert.date}</span>
+          </div>
+        ))}
+      </div>
+      <p class="cert-progress">
+        <span class="pill pill--amber">In Progress</span>
+        CompTIA Network+ &mdash; Target: Summer 2026
+      </p>
+      <div class="cert-images">
+        {certs.filter(c => c.image).map(cert => (
+          <div class="cert-image-wrap">
+            <img src={cert.image} alt={cert.name + ' certificate'} class="cert-image" loading="lazy" />
+            <span class="cert-image-label">{cert.name}</span>
+          </div>
+        ))}
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<script>
+  const img = document.getElementById('ncl-slide-img') as HTMLImageElement;
+  const counter = document.getElementById('ncl-counter')!;
+  const prevBtn = document.getElementById('ncl-prev') as HTMLButtonElement;
+  const nextBtn = document.getElementById('ncl-next') as HTMLButtonElement;
+  const downloadBtn = document.getElementById('ncl-download') as HTMLAnchorElement;
+  const fullscreenBtn = document.getElementById('ncl-fullscreen')!;
+  const stage = document.querySelector('.ncl-page-wrap') as HTMLElement;
+  const tabs = document.querySelectorAll<HTMLButtonElement>('.ncl-tab');
+
+  let currentSlug = tabs[0].dataset.slug!;
+  let currentPage = 1;
+  let totalPages = parseInt(tabs[0].dataset.pages!);
+
+  function updateView() {
+    img.src = `/proofs/ncl/${currentSlug}/page-${currentPage}.png`;
+    img.alt = `NCL Report page ${currentPage}`;
+    counter.textContent = `${currentPage} / ${totalPages}`;
+    (prevBtn as HTMLButtonElement).disabled = currentPage === 1;
+    (nextBtn as HTMLButtonElement).disabled = currentPage === totalPages;
+    downloadBtn.href = `/proofs/ncl/${currentSlug}.pdf`;
+    downloadBtn.download = `${currentSlug}.pdf`;
+  }
+
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      tabs.forEach(t => t.classList.remove('ncl-tab--active'));
+      tab.classList.add('ncl-tab--active');
+      currentSlug = tab.dataset.slug!;
+      totalPages = parseInt(tab.dataset.pages!);
+      currentPage = 1;
+      updateView();
+    });
+  });
+
+  prevBtn.addEventListener('click', () => { if (currentPage > 1) { currentPage--; updateView(); } });
+  nextBtn.addEventListener('click', () => { if (currentPage < totalPages) { currentPage++; updateView(); } });
+
+  fullscreenBtn.addEventListener('click', () => {
+    if (!document.fullscreenElement) stage.requestFullscreen();
+    else document.exitFullscreen();
+  });
+
+  document.addEventListener('keydown', e => {
+    if (!document.getElementById('ncl-viewer')?.matches(':hover')) return;
+    if (e.key === 'ArrowUp' || e.key === 'ArrowLeft') { if (currentPage > 1) { currentPage--; updateView(); } }
+    if (e.key === 'ArrowDown' || e.key === 'ArrowRight') { if (currentPage < totalPages) { currentPage++; updateView(); } }
+  });
+</script>
+
+<style>
+  .section-title {
+    margin-bottom: var(--space-xl);
+  }
+
+  /* ─── Stat cards ─── */
+  .stats-grid {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-md);
+    margin-bottom: var(--space-2xl);
+  }
+
+  .stat-card {
+    display: flex;
+    align-items: flex-start;
+    gap: var(--space-xl);
+    padding: var(--space-xl);
+    border-radius: var(--radius-lg);
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+  }
+
+  .stat-card--linked {
+    text-decoration: none;
+    color: inherit;
+    transition: border-color 0.2s var(--ease-out);
+    cursor: pointer;
+  }
+
+  .stat-card--linked:hover {
+    border-color: rgba(0, 217, 255, 0.3);
+  }
+
+  .stat-number {
+    flex-shrink: 0;
+    min-width: 110px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    padding-right: var(--space-xl);
+    border-right: 1px solid var(--border);
+  }
+
+  .stat-value {
+    font-family: var(--font-display);
+    font-size: var(--text-4xl);
+    font-weight: 800;
+    line-height: 1;
+  }
+
+  .stat-context {
+    font-family: var(--font-display);
+    font-size: var(--text-sm);
+    font-weight: 600;
+    color: var(--text-muted);
+    margin-top: 4px;
+  }
+
+  .stat-body {
+    flex: 1;
+    padding-top: 4px;
+  }
+
+  .stat-label {
+    display: block;
+    font-family: var(--font-display);
+    font-size: var(--text-base);
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: var(--space-xs);
+  }
+
+  .stat-desc {
+    color: var(--text-secondary);
+    font-size: var(--text-sm);
+    line-height: 1.65;
+  }
+
+  /* ─── Section headings ─── */
+  .viewer-heading {
+    font-family: var(--font-display);
+    font-size: var(--text-xl);
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: var(--space-lg);
+  }
+
+  /* ─── NCL Viewer ─── */
+  .ncl-viewer {
+    margin-bottom: var(--space-2xl);
+  }
+
+  .ncl-tabs {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2px;
+    background: var(--bg-surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg) var(--radius-lg) 0 0;
+    padding: 4px;
+    margin-bottom: 0;
+  }
+
+  .ncl-tab {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    background: transparent;
+    border: none;
+    padding: var(--space-sm) var(--space-md);
+    border-radius: var(--radius-md);
+    color: var(--text-muted);
+    font-family: var(--font-display);
+    font-size: var(--text-sm);
+    font-weight: 500;
+    cursor: pointer;
+    transition: background 0.15s, color 0.15s;
+    line-height: 1.3;
+  }
+
+  .ncl-tab:hover {
+    background: var(--bg-card);
+    color: var(--text-primary);
+  }
+
+  .ncl-tab--active {
+    background: var(--bg-card);
+    color: var(--cyan);
+    box-shadow: 0 0 12px var(--cyan-glow);
+  }
+
+  .ncl-stage {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .ncl-page-wrap {
+    position: relative;
+    background: var(--bg-deep);
+    border-left: 1px solid var(--border);
+    border-right: 1px solid var(--border);
+    overflow: hidden;
+    max-height: 70vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .ncl-page-img {
+    width: 100%;
+    max-height: 70vh;
+    object-fit: contain;
+    display: block;
+  }
+
+  /* Navigation arrows */
+  .ncl-arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(13, 21, 37, 0.85);
+    backdrop-filter: blur(8px);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-md);
+    color: var(--text-secondary);
+    cursor: pointer;
+    transition: background 0.15s, color 0.15s, border-color 0.15s;
+    z-index: 2;
+  }
+
+  .ncl-arrow:hover:not(:disabled) {
+    background: var(--bg-card);
+    color: var(--text-primary);
+    border-color: var(--border-hover);
+  }
+
+  .ncl-arrow:disabled {
+    opacity: 0.2;
+    cursor: default;
+  }
+
+  .ncl-arrow--prev { left: var(--space-md); }
+  .ncl-arrow--next { right: var(--space-md); }
+
+  .ncl-controls {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: var(--space-sm) var(--space-md);
+    border: 1px solid var(--border);
+    border-top: none;
+    border-radius: 0 0 var(--radius-lg) var(--radius-lg);
+    background: var(--bg-surface);
+  }
+
+  .ncl-counter {
+    font-family: var(--font-mono);
+    font-size: var(--text-sm);
+    color: var(--text-muted);
+  }
+
+  .ncl-controls-right {
+    display: flex;
+    gap: var(--space-xs);
+  }
+
+  .ncl-ctrl-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-md);
+    color: var(--text-muted);
+    cursor: pointer;
+    transition: border-color 0.15s, color 0.15s;
+    text-decoration: none;
+  }
+
+  .ncl-ctrl-btn:hover {
+    border-color: var(--border-hover);
+    color: var(--text-primary);
+  }
+
+  .ncl-ctrl-btn--download {
+    color: var(--amber-dim);
+  }
+
+  .ncl-ctrl-btn--download:hover {
+    color: var(--amber);
+  }
+
+  /* ─── GitHub heatmap ─── */
+  .heatmap-wrap {
+    margin-bottom: var(--space-2xl);
+  }
+
+  .heatmap-sub {
+    font-size: var(--text-sm);
+    color: var(--text-muted);
+    margin-bottom: var(--space-md);
+  }
+
+  .heatmap-sub a {
+    color: var(--cyan);
+    text-decoration: none;
+    font-weight: 500;
+  }
+
+  .heatmap-sub a:hover {
+    text-decoration: underline;
+  }
+
+  .heatmap-img-wrap {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    padding: var(--space-lg) var(--space-xl);
+    overflow-x: auto;
+  }
+
+  .heatmap-img {
+    width: 100%;
+    min-width: 720px;
+    display: block;
+    filter: invert(1) hue-rotate(180deg) saturate(1.4) brightness(1.1);
+  }
+
+  /* ─── Certifications ─── */
+  .certs-section {
+    max-width: 36rem;
+    margin-inline: auto;
+  }
+
+  .certs-heading {
+    font-family: var(--font-display);
+    font-size: var(--text-xl);
+    font-weight: 600;
+    margin-bottom: var(--space-lg);
+    text-align: center;
+  }
+
+  .certs-list {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-md);
+    margin-bottom: var(--space-xl);
+    max-width: 32rem;
+  }
+
+  .cert-item {
+    display: flex;
+    align-items: center;
+    gap: var(--space-md);
+  }
+
+  .cert-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--cyan);
+    flex-shrink: 0;
+    box-shadow: 0 0 8px var(--cyan-glow);
+  }
+
+  .cert-name {
+    font-weight: 500;
+    color: var(--text-primary);
+    flex: 1;
+  }
+
+  .cert-date {
+    font-family: var(--font-mono);
+    font-size: var(--text-xs);
+    color: var(--text-muted);
+  }
+
+  .cert-progress {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--space-md);
+    color: var(--text-secondary);
+    font-size: var(--text-sm);
+    margin-bottom: 0;
+  }
+
+  .cert-images {
+    margin-top: var(--space-xl);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-md);
+    align-items: center;
+  }
+
+  .cert-image-wrap {
+    width: 100%;
+    max-width: 600px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--space-sm);
+  }
+
+  .cert-image {
+    width: 100%;
+    border-radius: var(--radius-md);
+    border: 1px solid var(--border);
+    box-shadow: 0 4px 24px rgba(0,0,0,0.4);
+  }
+
+  .cert-image-label {
+    font-family: var(--font-mono);
+    font-size: var(--text-xs);
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+  }
+
+  /* ─── Responsive ─── */
+  @media (max-width: 768px) {
+    .stat-card {
+      flex-direction: column;
+      gap: var(--space-md);
+    }
+
+    .stat-number {
+      flex-direction: row;
+      align-items: baseline;
+      gap: var(--space-xs);
+      border-right: none;
+      border-bottom: 1px solid var(--border);
+      padding-right: 0;
+      padding-bottom: var(--space-md);
+      min-width: unset;
+    }
+
+    .stat-value { font-size: var(--text-3xl); }
+
+    .ncl-tabs {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    .ncl-tab {
+      font-size: var(--text-xs);
+      padding: var(--space-xs) var(--space-sm);
+    }
+
+    .ncl-page-wrap,
+    .ncl-page-img {
+      max-height: 50vh;
+    }
+  }
+</style>

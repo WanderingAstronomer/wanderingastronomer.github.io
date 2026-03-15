@@ -1,0 +1,28 @@
+{
+  "name": "wanderingastronomer.github.io",
+  "version": "1.0.0",
+  "description": "",
+  "type": "commonjs",
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/WanderingAstronomer/wanderingastronomer.github.io.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/WanderingAstronomer/wanderingastronomer.github.io/issues"
+  },
+  "homepage": "https://github.com/WanderingAstronomer/wanderingastronomer.github.io#readme",
+  "dependencies": {
+    "@astrojs/svelte": "^8.0.0",
+    "astro": "^6.0.4",
+    "simple-icons": "^16.12.0",
+    "svelte": "^5.53.12"
+  }
+}

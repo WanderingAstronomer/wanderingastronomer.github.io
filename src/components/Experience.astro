@@ -1,0 +1,216 @@
+---
+const roles = [
+  {
+    title: 'Financial Security Systems Specialist',
+    company: 'Wittenbach Business Systems',
+    period: 'May 2024 — Mar 2025',
+    description: 'Physical security contractor whose primary client was Huntington Bank. Maintained all electronic security infrastructure across bank branches — DMP panels, vault doors, KABA locks, IP cameras, NVR systems.',
+    bullets: [
+      'Upgrades and preventative maintenance on networked security systems across financial institution branches.',
+      'Troubleshot alarm systems, access control, and surveillance to restore service and reduce repeat failures.',
+      'Serviced vault door hardware, electronic lock mechanisms, and DMP alarm panels across Huntington Bank branches.',
+      'Coordinated service windows directly with branch operations managers to minimize disruption during business hours.',
+      'Managed IP camera and NVR infrastructure — firmware maintenance, remote diagnostics, and component replacement.',
+    ],
+  },
+  {
+    title: 'Security Systems Specialist',
+    company: 'Cennox, Inc.',
+    period: 'Jun 2023 — May 2024',
+    description: 'Installed and serviced networked electronic security systems — DMP Remote Link, Wireshark, Wisenet Device Manager.',
+    bullets: [
+      '30+ DMP burglary system takeovers and CCTV deployments.',
+      'Wrote technical guides and trained 12+ field technicians on integration troubleshooting.',
+      'Programmed DMP Remote Link and central station communication paths for alarm system takeovers.',
+      'Diagnosed communication faults between DMP panels and monitoring centers, restoring supervision within SLA windows.',
+      'Maintained Wisenet IP camera systems — configuration, component replacement, and NVR programming.',
+    ],
+  },
+  {
+    title: 'Field Services Engineer',
+    company: 'ICS Technology Group',
+    period: 'Nov 2022 — Apr 2023',
+    description: 'Network installations and rehabilitations for SMBs — Ubiquiti and MikroTik deployments.',
+    bullets: [
+      '50+ Ubiquiti and MikroTik devices deployed across routing, switching, and wireless.',
+      'Delivered a deployment two weeks early. Improved client network performance ~30%.',
+      'Planned and deployed point-to-point radio internet supporting ~74 households.',
+      'Configured VLANs, firewall rules, and DHCP scoping across UniFi and MikroTik RouterOS environments.',
+      'Conducted site surveys and cable plant assessments prior to each deployment.',
+    ],
+  },
+  {
+    title: 'Reliability Engineer (Remote NOC)',
+    company: 'Starry, Inc.',
+    period: 'Nov 2021 — Oct 2022',
+    description: 'Network operations center — monitoring, triage, and escalation for ISP infrastructure.',
+    bullets: [
+      'Monitored network performance with PRTG and Grafana across ISP infrastructure.',
+      'Resolved 100+ PagerDuty equipment alerts during critical periods.',
+      'Produced site reports and coordinated restoration during high-alert periods.',
+      'Triaged alerts by severity — assessing, escalating, or resolving per runbooks with appropriate priority.',
+      'Maintained shift logs and incident documentation to support handoffs and root-cause investigation.',
+    ],
+  },
+  {
+    title: 'Subscriber / Installer',
+    company: 'Starry, Inc.',
+    period: 'Jun 2021 — Nov 2021',
+    description: 'Residential wireless internet installation and on-site diagnostics.',
+    bullets: [
+      'Installed and maintained fixed wireless CPE equipment for residential broadband subscribers.',
+      'Performed on-site diagnostics for connectivity, signal quality, and performance issues.',
+      'Walked subscribers through equipment operation, signal indicators, and self-service troubleshooting at point of install.',
+    ],
+  },
+];
+---
+
+<section class="section experience" id="experience">
+  <div class="container">
+    <div class="reveal">
+      <span class="section-label">Experience</span>
+      <h2 class="section-title">Where I've worked</h2>
+    </div>
+
+    <div class="timeline reveal-stagger">
+      {roles.map((role, i) => (
+        <div class="timeline-item">
+          <div class="timeline-marker">
+            <div class="timeline-dot"></div>
+            {i < roles.length - 1 && <div class="timeline-line"></div>}
+          </div>
+          <div class="timeline-content card">
+            <div class="timeline-header">
+              <div>
+                <h3 class="timeline-title">{role.title}</h3>
+                <p class="timeline-company">{role.company}</p>
+              </div>
+              <span class="timeline-period pill pill--neutral">{role.period}</span>
+            </div>
+            <p class="timeline-desc">{role.description}</p>
+            <ul class="timeline-bullets">
+              {role.bullets.map(bullet => (
+                <li>{bullet}</li>
+              ))}
+            </ul>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .timeline {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-lg);
+    max-width: 52rem;
+    margin-inline: auto;
+  }
+
+  .timeline-item {
+    display: grid;
+    grid-template-columns: 24px 1fr;
+    gap: var(--space-lg);
+  }
+
+  .timeline-marker {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: var(--space-xl);
+  }
+
+  .timeline-dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: var(--cyan);
+    box-shadow: 0 0 12px var(--cyan-glow);
+    flex-shrink: 0;
+    z-index: 1;
+  }
+
+  .timeline-line {
+    width: 1px;
+    flex: 1;
+    background: linear-gradient(to bottom, var(--cyan-dim), var(--border));
+    margin-top: var(--space-sm);
+  }
+
+  .timeline-content {
+    padding: var(--space-xl);
+  }
+
+  .timeline-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: var(--space-md);
+    margin-bottom: var(--space-md);
+    flex-wrap: wrap;
+  }
+
+  .timeline-title {
+    font-family: var(--font-display);
+    font-size: var(--text-lg);
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: 2px;
+  }
+
+  .timeline-company {
+    color: var(--cyan-dim);
+    font-size: var(--text-sm);
+    font-weight: 500;
+  }
+
+  .timeline-period {
+    flex-shrink: 0;
+    font-size: 0.7rem;
+  }
+
+  .timeline-desc {
+    color: var(--text-secondary);
+    font-size: var(--text-sm);
+    line-height: 1.6;
+    margin-bottom: var(--space-md);
+  }
+
+  .timeline-bullets {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-sm);
+  }
+
+  .timeline-bullets li {
+    color: var(--text-secondary);
+    font-size: var(--text-sm);
+    line-height: 1.5;
+    padding-left: var(--space-lg);
+    position: relative;
+  }
+
+  .timeline-bullets li::before {
+    content: '▹';
+    position: absolute;
+    left: 0;
+    color: var(--cyan);
+  }
+
+  @media (max-width: 768px) {
+    .timeline-item {
+      grid-template-columns: 16px 1fr;
+      gap: var(--space-md);
+    }
+
+    .timeline-header {
+      flex-direction: column;
+    }
+  }
+</style>

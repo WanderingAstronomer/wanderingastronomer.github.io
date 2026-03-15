@@ -1,0 +1,27 @@
+---
+import Layout from '../layouts/Base.astro';
+import PresentationViewer from '../components/PresentationViewer.svelte';
+---
+
+<Layout title="Presentations — Andrew Brown">
+  <section class="section" id="presentations">
+    <div class="container">
+      <div class="reveal">
+        <span class="section-label">Presentations</span>
+        <h1 class="section-title">Talks &amp; Workshops</h1>
+        <p class="pres-intro">A collection of original presentations I've written and delivered across Franklin University's ACM student chapter and its Special Interest Groups. Select a presentation to view the slide deck.</p>
+      </div>
+      <PresentationViewer client:load />
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .pres-intro {
+    color: var(--text-secondary);
+    font-size: var(--text-lg);
+    max-width: 48rem;
+    line-height: 1.7;
+    margin-bottom: var(--space-2xl);
+  }
+</style>

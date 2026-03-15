@@ -1,0 +1,233 @@
+---
+
+---
+
+<section class="section about" id="about">
+  <div class="container">
+    <div class="about-grid reveal">
+      <div class="about-left">
+        <div class="about-image-wrap">
+          <div class="about-image-glow"></div>
+          <img src="/images/headshot.png" alt="Andrew Brown" class="about-image" loading="lazy" />
+        </div>
+        <div class="about-meta">
+          <div class="about-meta-item">
+            <span class="about-meta-label">Location</span>
+            <span class="about-meta-value">Youngstown, Ohio</span>
+          </div>
+          <div class="about-meta-item">
+            <span class="about-meta-label">Education</span>
+            <div class="about-edu-group">
+              <span class="about-meta-value">Franklin University</span>
+              <span class="about-meta-sub">B.S. Cybersecurity &middot; Minor: AI</span>
+            </div>
+            <div class="about-edu-group">
+              <span class="about-meta-value">SUNY Adirondack</span>
+              <span class="about-meta-sub">A.S. Business Administration &amp; Management</span>
+            </div>
+          </div>
+          <div class="about-meta-item">
+            <span class="about-meta-label">Focus</span>
+            <span class="about-meta-value">Software Engineering &amp; Security</span>
+            <span class="about-meta-value about-meta-sub">Human-First AI</span>
+          </div>
+        </div>
+      </div>
+      <div class="about-content">
+        <span class="section-label">About</span>
+        <h2 class="section-title">From the field to the full stack.</h2>
+        <p class="about-text">
+          I've been in the field — literally. ISP installations for Starry, NOC monitoring with PRTG 
+          and Grafana, 50+ network deployments at ICS, and 3.5 years servicing electronic security systems 
+          inside bank branches. Vault doors, alarm panels, IP cameras, the works.
+        </p>
+        <p class="about-text">
+          Then I built <a href="https://github.com/WanderingAstronomer/Vociferous" target="_blank" rel="noopener noreferrer" class="about-link">Vociferous</a> — 
+          an offline speech-to-text desktop app, from scratch. 600 hours. 355 commits. 130 releases. 
+          I led a team to <a href="/proofs/ncl/ncl-cyber-skyline-report-fall-team-2025.pdf" target="_blank" rel="noopener noreferrer" class="about-link">20th out of 4,674 teams</a> 
+          in the National Cyber League. I'm president of Franklin University's Programming SIG, 
+          senior officer in the Cybersecurity SIG, and I've delivered 30+ presentations across both clubs.
+        </p>
+        <p class="about-text">
+          I care about what happens to people when they use software. Vociferous exists because it 
+          shouldn't take an internet connection to transcribe your own voice. Every system I design 
+          starts with the same question: what does the person on the other side of this actually need?
+        </p>
+        <p class="about-maxim">The right amount of complexity is the minimum needed for the current task.</p>
+        <blockquote class="about-quote">
+          <p>"...[Airplanes] are beautiful dreams. Engineers turn dreams into reality."</p>
+          <footer class="about-quote-credit">— Hayao Miyazaki, <cite>The Wind Rises</cite></footer>
+        </blockquote>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .about-grid {
+    display: grid;
+    grid-template-columns: 280px 1fr;
+    gap: var(--space-3xl);
+    align-items: start;
+  }
+
+  .about-left {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-xl);
+  }
+
+  .about-image-wrap {
+    position: relative;
+    aspect-ratio: 1;
+    border-radius: var(--radius-xl);
+    overflow: hidden;
+  }
+
+  .about-image-glow {
+    position: absolute;
+    inset: -2px;
+    border-radius: var(--radius-xl);
+    background: linear-gradient(135deg, var(--cyan), var(--amber));
+    opacity: 0.3;
+    z-index: 0;
+    filter: blur(1px);
+  }
+
+  .about-image {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: var(--radius-xl);
+    border: 2px solid var(--bg-deep);
+  }
+
+  .about-meta {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-md);
+  }
+
+  .about-meta-item {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+
+  .about-meta-label {
+    font-family: var(--font-mono);
+    font-size: var(--text-xs);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--text-muted);
+  }
+
+  .about-meta-value {
+    display: block;
+    font-size: var(--text-sm);
+    font-weight: 500;
+    color: var(--text-alternate);
+  }
+
+  .about-meta-sub {
+    display: block;
+    font-size: var(--text-xs);
+    color: var(--text-secondary);
+    font-weight: 400;
+  }
+
+  .about-edu-group {
+    display: flex;
+    flex-direction: column;
+    gap: 1px;
+  }
+
+  .about-edu-group + .about-edu-group {
+    margin-top: var(--space-sm);
+  }
+
+  .about-content {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-md);
+  }
+
+  .about-text {
+    color: var(--text-secondary);
+    font-size: var(--text-base);
+    line-height: 1.7;
+  }
+
+  .about-link {
+    color: var(--cyan);
+    font-weight: 600;
+    text-decoration: none;
+    border-bottom: 1px solid rgba(0, 217, 255, 0.3);
+    transition: border-color 0.2s var(--ease-out);
+  }
+
+  .about-link:hover {
+    border-color: var(--cyan);
+    color: var(--amber);
+  }
+
+  .about-maxim {
+    font-style: italic;
+    color: var(--text-secondary);
+    font-size: var(--text-sm);
+    line-height: 1.7;
+    border-left: 3px solid var(--amber);
+    padding-left: var(--space-lg);
+    margin-block: var(--space-md);
+  }
+
+  .about-quote {
+    border-left: 3px solid var(--cyan);
+    padding-left: var(--space-lg);
+    margin-top: 0;
+    margin-bottom: var(--space-md);
+  }
+
+  .about-quote p {
+    font-style: italic;
+    color: var(--text-secondary);
+    font-size: var(--text-sm);
+    line-height: 1.7;
+  }
+
+  .about-quote-credit {
+    font-style: normal;
+    color: var(--text-muted);
+    font-size: var(--text-xs);
+    margin-top: var(--space-xs);
+  }
+
+  .about-quote-credit cite {
+    font-style: italic;
+  }
+
+  @media (max-width: 768px) {
+    .about-grid {
+      grid-template-columns: 1fr;
+      gap: var(--space-2xl);
+    }
+
+    .about-left {
+      align-items: center;
+    }
+
+    .about-image-wrap {
+      max-width: 200px;
+    }
+
+    .about-meta {
+      text-align: center;
+    }
+
+    .about-meta-item {
+      align-items: center;
+    }
+  }
+</style>

@@ -1,0 +1,131 @@
+---
+const roles = [
+  {
+    title: 'President of Programming',
+    org: 'Franklin University ACM — Programming SIG',
+    period: '2024 — Present',
+    highlights: [
+      'Delivered weekly presentations and workshops covering Python, Git workflows, AI architecture, and software engineering fundamentals.',
+      '5-episode "Introduction to Artificial Intelligence" series covering ML paradigms, neural network architecture, backpropagation, RAG, AI ethics, and frontier models.',
+      '3-part "Fundamentals of GitHub" series teaching professional Git workflows to student developers.',
+      'Built the organizational structure of the club from scratch — roles, decision-making, communication.',
+    ],
+  },
+  {
+    title: 'Senior Officer',
+    org: 'Cybersecurity Special Interest Group — Franklin University',
+    period: '2024 — Present',
+    highlights: [
+      'Designed and delivered defensive-security presentations including "Physical Security for SOC Analysts" — bridging 3.5 years of field experience into cybersecurity context.',
+      '"Hashing Made Simple" — made cryptographic concepts approachable for non-technical audiences.',
+      'Built the cybersecurity lab infrastructure: honeypot VMs, VLAN isolation, WireGuard VPN access.',
+      'Created a comprehensive NCL prep briefing from Fall 2025 experience (20th/4,674 teams).',
+    ],
+  },
+  {
+    title: 'NCL Team Leader',
+    org: 'Team Terminalators',
+    period: '2025',
+    highlights: [
+      'Led a team to 20th place out of 4,674 teams nationally in Fall 2025.',
+      'Individual placement: 121st nationally.',
+      'Coordinated divide-and-conquer task assignment by team member skillset.',
+      'Documented full category walkthroughs for Spring 2026 preparation.',
+    ],
+  },
+];
+---
+
+<section class="section leadership" id="leadership">
+  <div class="container">
+    <div class="reveal">
+      <span class="section-label">Leadership & Teaching</span>
+      <h2 class="section-title">How I lead</h2>
+    </div>
+
+    <div class="leadership-grid reveal-stagger">
+      {roles.map(role => (
+        <div class="card leadership-card">
+          <div class="leadership-header">
+            <h3 class="leadership-title">{role.title}</h3>
+            <p class="leadership-org">{role.org}</p>
+            <span class="leadership-period">{role.period}</span>
+          </div>
+          <ul class="leadership-highlights">
+            {role.highlights.map(h => (
+              <li>{h}</li>
+            ))}
+          </ul>
+        </div>
+      ))}
+    </div>
+
+  </div>
+</section>
+
+<style>
+  .leadership-grid {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-lg);
+  }
+
+  .leadership-card {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .leadership-header {
+    margin-bottom: var(--space-lg);
+  }
+
+  .leadership-title {
+    font-family: var(--font-display);
+    font-size: var(--text-xl);
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: 2px;
+  }
+
+  .leadership-org {
+    color: var(--cyan-dim);
+    font-size: var(--text-sm);
+    margin-bottom: var(--space-xs);
+  }
+
+  .leadership-period {
+    font-family: var(--font-mono);
+    font-size: var(--text-xs);
+    color: var(--text-muted);
+  }
+
+  .leadership-highlights {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-sm);
+  }
+
+  .leadership-highlights li {
+    color: var(--text-secondary);
+    font-size: var(--text-sm);
+    line-height: 1.6;
+    padding-left: var(--space-lg);
+    position: relative;
+  }
+
+  .leadership-highlights li::before {
+    content: '▹';
+    position: absolute;
+    left: 0;
+    color: var(--cyan);
+  }
+
+
+  @media (max-width: 768px) {
+    .leadership-highlights li {
+      font-size: var(--text-xs);
+    }
+  }
+</style>

@@ -1,0 +1,203 @@
+---
+import {
+  siPython, siHtml5, siJavascript, siSvelte, siDocker, siDebian,
+  siGit, siWireguard, siGrafana, siPihole, siQuarkus, siTailwindcss,
+  siVite, siUptimekuma, siPagerduty, siNvidia, siWireshark, siGraylog,
+  siUbiquiti, siLinux,
+} from 'simple-icons';
+
+// Brand icon paths + official hex colors for pill labels
+const iconMap: Record<string, { path: string; hex: string }> = {
+  'Python':          { path: siPython.path,      hex: siPython.hex },
+  'HTML/CSS':        { path: siHtml5.path,       hex: siHtml5.hex },
+  'JavaScript':      { path: siJavascript.path,  hex: siJavascript.hex },
+  'Svelte 5':        { path: siSvelte.path,      hex: siSvelte.hex },
+  'Docker':          { path: siDocker.path,      hex: siDocker.hex },
+  'Linux (Debian)':  { path: siDebian.path,      hex: siDebian.hex },
+  'Git/GitHub':      { path: siGit.path,         hex: siGit.hex },
+  'WireGuard VPN':   { path: siWireguard.path,   hex: siWireguard.hex },
+  'Grafana':         { path: siGrafana.path,     hex: siGrafana.hex },
+  'Pi-hole':         { path: siPihole.path,      hex: siPihole.hex },
+  'Quarkus':         { path: siQuarkus.path,     hex: siQuarkus.hex },
+  'Tailwind CSS':    { path: siTailwindcss.path, hex: siTailwindcss.hex },
+  'Svelte 5 + Vite': { path: siVite.path,        hex: siVite.hex },
+  'Uptime Kuma':     { path: siUptimekuma.path,  hex: siUptimekuma.hex },
+  'PagerDuty':       { path: siPagerduty.path,   hex: siPagerduty.hex },
+  'CUDA / RTX 3090': { path: siNvidia.path,      hex: siNvidia.hex },
+  'Wireshark':       { path: siWireshark.path,   hex: siWireshark.hex },
+  'Graylog':         { path: siGraylog.path,     hex: siGraylog.hex },
+  'UniFi':           { path: siUbiquiti.path,    hex: siUbiquiti.hex },
+};
+
+// Feather-style stroke SVG inner markup per category
+const categoryIcons: Record<string, string> = {
+  'Languages':
+    `<polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline>`,
+  'Frameworks & Tools':
+    `<path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path>`,
+  'Infrastructure':
+    `<rect x="2" y="2" width="20" height="8" rx="2" ry="2"></rect><rect x="2" y="14" width="20" height="8" rx="2" ry="2"></rect><line x1="6" y1="6" x2="6.01" y2="6"></line><line x1="6" y1="18" x2="6.01" y2="18"></line>`,
+  'Security':
+    `<path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>`,
+  'AI / ML':
+    `<rect x="4" y="4" width="16" height="16" rx="2" ry="2"></rect><rect x="9" y="9" width="6" height="6"></rect><line x1="9" y1="1" x2="9" y2="4"></line><line x1="15" y1="1" x2="15" y2="4"></line><line x1="9" y1="20" x2="9" y2="23"></line><line x1="15" y1="20" x2="15" y2="23"></line><line x1="20" y1="9" x2="23" y2="9"></line><line x1="20" y1="14" x2="23" y2="14"></line><line x1="1" y1="9" x2="4" y2="9"></line><line x1="1" y1="14" x2="4" y2="14"></line>`,
+  'Monitoring':
+    `<polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline>`,
+};
+
+const categories = [
+  {
+    name: 'Languages',
+    items: ['Python', 'Java 21', 'SQL', 'HTML/CSS', 'JavaScript', 'Svelte 5'],
+  },
+  {
+    name: 'Frameworks & Tools',
+    items: ['Litestar', 'Quarkus', 'Svelte 5 + Vite', 'Tailwind CSS', 'SQLAlchemy', 'Pydantic', 'JDA', 'PyQt6'],
+  },
+  {
+    name: 'Infrastructure',
+    items: ['Docker', 'Linux (Debian)', 'MikroTik RouterOS', 'UniFi', 'Git/GitHub', 'WireGuard VPN', 'KVM/QEMU', 'Graylog'],
+  },
+  {
+    name: 'Security',
+    items: ['Wireshark', 'hashcat', 'Ghidra', 'Nmap', 'Burp Suite', 'OSINT', 'DMP Panels', 'Volatility'],
+  },
+  {
+    name: 'AI / ML',
+    items: ['faster-whisper', 'CTranslate2', 'Prompt Engineering', 'Local LLM Inference', 'RAG Pipelines', 'CUDA / RTX 3090'],
+  },
+  {
+    name: 'Monitoring',
+    items: ['PRTG', 'Grafana', 'Uptime Kuma', 'PagerDuty', 'Graylog', 'Pi-hole'],
+  },
+];
+---
+
+<section class="section skills" id="skills">
+  <div class="container">
+    <div class="reveal">
+      <span class="section-label">Skills & Tools</span>
+      <h2 class="section-title">What I work with</h2>
+    </div>
+    <div class="skills-grid reveal-stagger">
+      {categories.map(cat => (
+        <div class="skill-category card">
+          <div class="skill-header">
+            <svg
+              class="skill-cat-icon"
+              width="18" height="18"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              aria-hidden="true"
+            >
+              <Fragment set:html={categoryIcons[cat.name]} />
+            </svg>
+            <h3 class="skill-name">{cat.name}</h3>
+          </div>
+          <div class="skill-pills">
+            {cat.items.map(item => (
+              <span class="pill pill--neutral">
+                {iconMap[item] && (
+                  <svg
+                    width="12" height="12"
+                    viewBox="0 0 24 24"
+                    fill={`#${iconMap[item].hex}`}
+                    aria-hidden="true"
+                    class="pill-icon"
+                  >
+                    <path d={iconMap[item].path} />
+                  </svg>
+                )}
+                {item}
+              </span>
+            ))}
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: var(--space-lg);
+  }
+
+  .skill-category {
+    padding: var(--space-xl);
+    position: relative;
+    overflow: hidden;
+  }
+
+  /* Gradient top accent bar — subdued at rest, glows on hover */
+  .skill-category::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, var(--cyan), var(--amber));
+    opacity: 0.25;
+    transition: opacity 0.3s var(--ease-out);
+    border-radius: var(--radius-lg) var(--radius-lg) 0 0;
+  }
+
+  .skill-category:hover::before {
+    opacity: 0.75;
+  }
+
+  .skill-header {
+    display: flex;
+    align-items: center;
+    gap: 0.625rem;
+    margin-bottom: var(--space-md);
+    padding-bottom: var(--space-md);
+    border-bottom: 1px solid var(--border);
+  }
+
+  .skill-cat-icon {
+    color: var(--cyan);
+    flex-shrink: 0;
+    opacity: 0.85;
+  }
+
+  .skill-name {
+    font-family: var(--font-display);
+    font-size: var(--text-base);
+    font-weight: 600;
+    color: var(--text-primary);
+    letter-spacing: 0.01em;
+  }
+
+  .skill-pills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-sm);
+  }
+
+  .pill-icon {
+    display: inline-block;
+    vertical-align: middle;
+    margin-right: 3px;
+    flex-shrink: 0;
+    opacity: 0.75;
+  }
+
+  .pill {
+    display: inline-flex;
+    align-items: center;
+  }
+
+  @media (max-width: 768px) {
+    .skills-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

@@ -1,0 +1,330 @@
+---
+interface Props {
+  title: string;
+  description?: string;
+}
+
+const { title, description = "Andrew Brown — I think faster than I type. Software engineer, security professional, and builder." } = Astro.props;
+---
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="darkreader-lock" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content={description} />
+  <meta name="author" content="Andrew Brown" />
+
+  <!-- Open Graph -->
+  <meta property="og:title" content={title} />
+  <meta property="og:description" content={description} />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://wanderingastronomer.github.io" />
+
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <title>{title}</title>
+</head>
+<body>
+  <nav class="nav" id="nav">
+    <div class="nav-inner container">
+      <a href="/" class="nav-brand">
+        <span class="nav-name">Andrew Brown</span>
+        <span class="nav-handle gradient-text">wandering astronomer</span>
+      </a>
+      <button class="nav-toggle" id="nav-toggle" aria-label="Toggle menu" aria-expanded="false">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+      <ul class="nav-links" id="nav-links">
+        <li><a href="/skills">Skills</a></li>
+        <li><a href="/projects">Projects</a></li>
+        <li><a href="/achievements">Achievements</a></li>
+        <li><a href="/experience">Experience</a></li>
+        <li><a href="/leadership">Leadership</a></li>
+        <li class="nav-item--featured"><a href="/presentations" class="nav-link--featured">Presentations</a></li>
+        <li><a href="/blog" class="nav-link--featured">Blog</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <main>
+    <slot />
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-inner">
+        <div class="footer-brand">
+          <span class="gradient-text" style="font-family: var(--font-display); font-weight: 700; font-size: var(--text-xl);">Andrew Brown</span>
+          <p class="footer-tagline">@wanderingastronomer &mdash; software, security &amp; human-first AI</p>
+        </div>
+        <div class="footer-links">
+          <a href="https://github.com/WanderingAstronomer" target="_blank" rel="noopener noreferrer">GitHub</a>
+          <a href="https://www.linkedin.com/in/abrown7521" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+          <a href="https://www.youtube.com/@WanderingAstronomer" target="_blank" rel="noopener noreferrer">YouTube</a>
+          <a href="https://www.boot.dev/u/wanderingastronomer" target="_blank" rel="noopener noreferrer">Boot.dev</a>
+          <a href="https://medium.com/@WanderingAstronomer" target="_blank" rel="noopener noreferrer">Medium</a>
+          <a href="mailto:abrown7521@gmail.com">Email</a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>&copy; {new Date().getFullYear()} Andrew Brown. Built with Astro.</span>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>
+
+<style is:global>
+  @import '../styles/global.css';
+</style>
+
+<style>
+  /* --- Navigation --------------------------------------- */
+  .nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: var(--nav-height);
+    z-index: 1000;
+    background: rgba(6, 12, 26, 0.6);
+    backdrop-filter: blur(16px) saturate(180%);
+    -webkit-backdrop-filter: blur(16px) saturate(180%);
+    border-bottom: 1px solid var(--border);
+    transition: background 0.3s var(--ease-out),
+                border-color 0.3s var(--ease-out);
+  }
+
+  .nav.scrolled {
+    background: rgba(6, 12, 26, 0.92);
+    border-color: var(--border-hover);
+  }
+
+  .nav-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 100%;
+  }
+
+  .nav-brand {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1px;
+    text-decoration: none;
+    color: var(--text-primary);
+  }
+
+  .nav-brand:hover {
+    color: var(--text-primary);
+  }
+
+  .nav-name {
+    font-weight: 600;
+    font-size: var(--text-sm);
+    color: var(--text-secondary);
+    line-height: 1.2;
+  }
+
+  .nav-handle {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: var(--text-xs);
+    line-height: 1.2;
+    letter-spacing: 0.02em;
+  }
+
+  .nav-links {
+    display: flex;
+    align-items: center;
+    gap: var(--space-lg);
+    list-style: none;
+  }
+
+  .nav-links a {
+    font-size: var(--text-sm);
+    font-weight: 500;
+    color: var(--text-secondary);
+    transition: color 0.2s var(--ease-out);
+  }
+
+  .nav-links a:hover {
+    color: var(--text-primary);
+  }
+
+  .nav-links li {
+    display: flex;
+    align-items: center;
+  }
+
+  .nav-item--featured {
+    padding-left: var(--space-lg);
+    border-left: 1px solid var(--border-hover);
+    margin-left: var(--space-sm);
+  }
+
+  .nav-link--featured {
+    color: var(--amber-dim) !important;
+    font-weight: 500;
+  }
+
+  .nav-link--featured:hover {
+    color: var(--amber) !important;
+  }
+
+  /* Mobile hamburger */
+  .nav-toggle {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 4px;
+  }
+
+  .nav-toggle span {
+    display: block;
+    width: 22px;
+    height: 2px;
+    background: var(--text-secondary);
+    border-radius: 2px;
+    transition: all 0.3s var(--ease-out);
+  }
+
+  @media (max-width: 768px) {
+    .nav-toggle {
+      display: flex;
+    }
+
+    .nav-links {
+      position: fixed;
+      top: var(--nav-height);
+      left: 0;
+      right: 0;
+      bottom: 0;
+      flex-direction: column;
+      justify-content: flex-start;
+      padding-top: var(--space-2xl);
+      gap: var(--space-xl);
+      background: rgba(6, 12, 26, 0.97);
+      backdrop-filter: blur(24px);
+      -webkit-backdrop-filter: blur(24px);
+      transform: translateX(100%);
+      transition: transform 0.4s var(--ease-out);
+    }
+
+    .nav-links.open {
+      transform: translateX(0);
+    }
+
+    .nav-links a {
+      font-size: var(--text-lg);
+    }
+
+    .nav-toggle[aria-expanded="true"] span:nth-child(1) {
+      transform: rotate(45deg) translate(5px, 5px);
+    }
+
+    .nav-toggle[aria-expanded="true"] span:nth-child(2) {
+      opacity: 0;
+    }
+
+    .nav-toggle[aria-expanded="true"] span:nth-child(3) {
+      transform: rotate(-45deg) translate(5px, -5px);
+    }
+  }
+
+  /* --- Footer ------------------------------------------- */
+  .footer {
+    border-top: 1px solid var(--border);
+    padding-block: var(--space-3xl) var(--space-xl);
+    background: var(--bg-surface);
+  }
+
+  .footer-inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: var(--space-2xl);
+    flex-wrap: wrap;
+    gap: var(--space-xl);
+  }
+
+  .footer-tagline {
+    color: var(--text-muted);
+    font-size: var(--text-sm);
+    margin-top: var(--space-xs);
+  }
+
+  .footer-links {
+    display: flex;
+    gap: var(--space-lg);
+    flex-wrap: wrap;
+  }
+
+  .footer-links a {
+    font-size: var(--text-sm);
+    font-weight: 500;
+    color: var(--text-secondary);
+  }
+
+  .footer-links a:hover {
+    color: var(--cyan);
+  }
+
+  .footer-bottom {
+    border-top: 1px solid var(--border);
+    padding-top: var(--space-lg);
+    color: var(--text-muted);
+    font-size: var(--text-xs);
+  }
+</style>
+
+<script>
+  // --- Scroll-aware nav ---
+  const nav = document.getElementById('nav');
+  if (nav) {
+    window.addEventListener('scroll', () => {
+      nav.classList.toggle('scrolled', window.scrollY > 40);
+    }, { passive: true });
+  }
+
+  // --- Mobile menu toggle ---
+  const toggle = document.getElementById('nav-toggle');
+  const links = document.getElementById('nav-links');
+  if (toggle && links) {
+    toggle.addEventListener('click', () => {
+      const open = toggle.getAttribute('aria-expanded') === 'true';
+      toggle.setAttribute('aria-expanded', String(!open));
+      links.classList.toggle('open');
+    });
+
+    links.querySelectorAll('a').forEach(a => {
+      a.addEventListener('click', () => {
+        toggle.setAttribute('aria-expanded', 'false');
+        links.classList.remove('open');
+      });
+    });
+  }
+
+  // --- Scroll reveal ---
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    },
+    { threshold: 0.08, rootMargin: '0px 0px -40px 0px' }
+  );
+
+  document.querySelectorAll('.reveal, .reveal-stagger').forEach(el => {
+    observer.observe(el);
+  });
+</script>
