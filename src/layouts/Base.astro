@@ -5,6 +5,14 @@ interface Props {
 }
 
 const { title, description = "Andrew Brown — I think faster than I type. Software engineer, security professional, and builder." } = Astro.props;
+
+const pathname = Astro.url.pathname;
+const currentPath = pathname.endsWith('/') && pathname !== '/' ? pathname.slice(0, -1) : pathname;
+
+const isLinkActive = (href: string) => {
+  if (href === '/') return currentPath === href;
+  return currentPath === href || currentPath.startsWith(href + '/');
+};
 ---
 
 <!DOCTYPE html>
@@ -38,13 +46,13 @@ const { title, description = "Andrew Brown — I think faster than I type. Softw
         <span></span>
       </button>
       <ul class="nav-links" id="nav-links">
-        <li><a href="/skills">Skills</a></li>
-        <li><a href="/projects">Projects</a></li>
-        <li><a href="/achievements">Achievements</a></li>
-        <li><a href="/experience">Experience</a></li>
-        <li><a href="/leadership">Leadership</a></li>
-        <li class="nav-item--featured"><a href="/presentations" class="nav-link--featured">Presentations</a></li>
-        <li><a href="/blog" class="nav-link--featured">Blog</a></li>
+        <li><a href="/skills" class={isLinkActive('/skills') ? 'active' : ''}>Skills</a></li>
+        <li><a href="/projects" class={isLinkActive('/projects') ? 'active' : ''}>Projects</a></li>
+        <li><a href="/achievements" class={isLinkActive('/achievements') ? 'active' : ''}>Achievements</a></li>
+        <li><a href="/experience" class={isLinkActive('/experience') ? 'active' : ''}>Experience</a></li>
+        <li><a href="/leadership" class={isLinkActive('/leadership') ? 'active' : ''}>Leadership</a></li>
+        <li class="nav-item--featured"><a href="/presentations" class={`nav-link--featured ${isLinkActive('/presentations') ? 'active' : ''}`}>Presentations</a></li>
+        <li><a href="/blog" class={`nav-link--featured ${isLinkActive('/blog') ? 'active' : ''}`}>Blog</a></li>
       </ul>
     </div>
   </nav>
@@ -98,9 +106,14 @@ const { title, description = "Andrew Brown — I think faster than I type. Softw
                 border-color 0.3s var(--ease-out);
   }
 
-  .nav.scrolled {
-    background: rgba(6, 12, 26, 0.92);
+  .nav.scrolled,
+  .nav.menu-open {
+    background: rgba(6, 12, 26, 0.98);
     border-color: var(--border-hover);
+  }
+
+  .nav.menu-open {
+    background: var(--bg-deep); /* fully opaque when menu is open */
   }
 
   .nav-inner {
@@ -156,6 +169,11 @@ const { title, description = "Andrew Brown — I think faster than I type. Softw
     color: var(--text-primary);
   }
 
+  .nav-links a.active {
+    color: var(--cyan);
+    font-weight: 500;
+  }
+
   .nav-links li {
     display: flex;
     align-items: center;
@@ -172,7 +190,8 @@ const { title, description = "Andrew Brown — I think faster than I type. Softw
     font-weight: 500;
   }
 
-  .nav-link--featured:hover {
+  .nav-link--featured:hover,
+  .nav-link--featured.active {
     color: var(--amber) !important;
   }
 
@@ -211,9 +230,7 @@ const { title, description = "Andrew Brown — I think faster than I type. Softw
       justify-content: flex-start;
       padding-top: var(--space-2xl);
       gap: var(--space-xl);
-      background: rgba(6, 12, 26, 0.97);
-      backdrop-filter: blur(24px);
-      -webkit-backdrop-filter: blur(24px);
+      background: var(--bg-deep); /* Fully solid color to prevent transparency issues */
       transform: translateX(100%);
       transition: transform 0.4s var(--ease-out);
     }
@@ -302,12 +319,14 @@ const { title, description = "Andrew Brown — I think faster than I type. Softw
       const open = toggle.getAttribute('aria-expanded') === 'true';
       toggle.setAttribute('aria-expanded', String(!open));
       links.classList.toggle('open');
+      if (nav) nav.classList.toggle('menu-open');
     });
 
     links.querySelectorAll('a').forEach(a => {
       a.addEventListener('click', () => {
         toggle.setAttribute('aria-expanded', 'false');
         links.classList.remove('open');
+        if (nav) nav.classList.remove('menu-open');
       });
     });
   }
