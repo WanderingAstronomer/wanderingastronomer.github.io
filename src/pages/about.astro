@@ -1,0 +1,985 @@
+---
+import Layout from '../layouts/Base.astro';
+---
+
+<Layout
+  title="Bio — Andrew Brown"
+  description="Software engineer, security practitioner, and human-first AI developer from upstate New York. Where I started, what I've built, and what I'm after."
+>
+  <article class="about-page">
+
+    <!-- ── Hero ─────────────────────────────────────────── -->
+    <header class="about-hero container">
+      <div class="reveal">
+        <h1 class="about-name">
+          <span class="gradient-text">Andrew Brown</span>
+        </h1>
+        <p class="about-tagline">Software Engineer · Security Practitioner · Human-First AI Developer</p>
+        <div class="about-links">
+          <a href="mailto:abrown7521@gmail.com" class="about-chip">abrown7521@gmail.com</a>
+          <a href="https://github.com/WanderingAstronomer" target="_blank" rel="noopener noreferrer" class="about-chip">GitHub</a>
+          <a href="https://www.linkedin.com/in/abrown7521" target="_blank" rel="noopener noreferrer" class="about-chip">LinkedIn</a>
+          <span class="about-chip about-chip--mono">518-524-7521</span>
+        </div>
+      </div>
+    </header>
+
+    <!-- ── Short version ─────────────────────────────────── -->
+    <div class="container">
+      <div class="bio-lead card reveal">
+        <span class="prose-label">The Short Version</span>
+        <p>
+          I'm a software engineer and security practitioner out of Youngstown, Ohio, wrapping up a
+          B.S. in Cybersecurity with a minor in AI at Franklin University. I grew up in a tiny town
+          in upstate New York&mdash;something like sixth-generation, population around 2,800 and
+          shrinking&mdash;where my family has a long history of bending the world around them with
+          their hands. I didn't grow up anywhere near tech, but I've been chasing it since I was old
+          enough to take apart the things people threw away. By 13, I was building my own computers
+          from salvaged parts fished out of the town dump's electronics drop-off shed. That
+          impulse&mdash;find the thing, learn the thing, build the thing&mdash;hasn't gone anywhere.
+          It ended up finding software, and that's where I'm focused now.
+        </p>
+      </div>
+    </div>
+
+    <!-- ── Prose sections ────────────────────────────────── -->
+    <div class="about-sections">
+      <div class="container--prose">
+
+        <!-- Where I come from -->
+        <section class="bio-section reveal">
+          <h2 class="bio-section-title">Where I come from</h2>
+          <p>
+            I grew up in a corner of upstate New York that most people haven't heard of, and I mean
+            that literally&mdash;you'd have to go looking for it. Sixth-generation of my family, or
+            close to it. My graduating class had about half a dozen people in it. My family has been
+            working with their hands out there for a long time, and that's just the culture: something
+            needed fixing or building, so you fixed it or built it. Few people were calling a contractor.
+          </p>
+          <p>
+            I grew up snowmobiling, four-wheeling, hunting, fishing, logging, and spending most of my
+            time outside. I've thrown around hay bales, shoveled more snow than I'd care to quantify,
+            and mowed lawns and fields that blurred together after a while. I've done carpentry,
+            plumbing, electrical, and construction&mdash;all at the homeowner's scale. I've worked on
+            small engines, tractors, and backhoes. Hard work wasn't something I opted into; it was
+            just the default setting where I grew up.
+          </p>
+          <p>
+            None of that screams "future software engineer," and it wasn't supposed to. I didn't grow
+            up in tech. I grew up about as far from it as you can get in the continental United States
+            while still having internet and electricity. But I sought it out anyway&mdash;starting, as
+            these things tend to, with video games. From there I fell in love with computers and what
+            they could do, and by 13 I was assembling Frankenstein PCs out of whatever components I
+            could salvage from the town dump, where people left behind machines they didn't want
+            anymore. <em>I wanted all of them.</em>
+          </p>
+          <p>
+            For computer education in my high school&mdash;which, to be clear, did not have a computer
+            education program&mdash;a group of friends and I convinced the faculty to let us start a
+            computer solutions class. That turned into programming. Which turned into robotics. All of
+            it driven by a starving desire for knowledge that just didn't have anywhere else to go in
+            a town that size, no matter how much I loved the peace and quiet there.
+          </p>
+          <p>
+            I still play golf, write, garden, hunt, hike, and ski. I'm still a woodsman. The outdoors
+            didn't leave when I picked up technology. The two just share the calendar now, and the
+            homelab has yet to complain about the arrangement.
+          </p>
+        </section>
+
+        <!-- Before software -->
+        <section class="bio-section reveal">
+          <h2 class="bio-section-title">Before software</h2>
+          <p>
+            Before I ever wrote a line of code professionally, I'd already worked across enough
+            industries to fill out a bingo card nobody asked for. Food service, hospitality and
+            tourism, retail, industrial, telecommunications, physical security, network infrastructure.
+            Early on, the goal was to diversify my experience as much as possible so I could figure
+            out what I wanted to do with my life. Work alone has taken me to New York City, Boston,
+            Atlanta, Louisville, Cleveland, Columbus, Cincinnati, Pittsburgh, Washington D.C., San
+            Antonio, and Houston&mdash;and outside of work, Cancun, Hawaii, the Bahamas, Colorado, and
+            Los Angeles. Haven't been across the pond yet. I've travelled a bit more than I'd ever
+            thought I would.
+          </p>
+          <p>
+            At <strong>Starry, Inc.</strong>, I started installing residential broadband, then moved
+            into a remote NOC role&mdash;monitoring ISP infrastructure with PRTG and Grafana, triaging
+            PagerDuty alerts, documenting incidents, coordinating restoration during high-alert periods.
+            That stretch was my first real exposure to what it means to <em>operate</em> a system
+            rather than just use one, and the distinction stuck. I also designed and deployed a
+            point-to-point radio internet link that ended up serving about 74 households, which was a
+            satisfying problem to solve.
+          </p>
+          <p>
+            At <strong>ICS Technology Group</strong>, I deployed 50+ Ubiquiti and MikroTik devices
+            across SMB environments&mdash;routing, switching, wireless, VLANs, firewall rules, DHCP.
+            One project came in two weeks early and improved the client's network performance by
+            roughly 30%. I'd been inside data centers for the first time to swap out and troubleshoot
+            equipment, too.
+          </p>
+          <p>
+            Then came the stretch that shaped me the most: two back-to-back jobs servicing physical
+            and electronic security infrastructure inside <strong>Huntington Bank branches</strong>&mdash;and
+            outside them, including ATMs. At <strong>Cennox</strong> and then <strong>Wittenbach
+            Business Systems</strong>, I maintained DMP alarm panels, vault door hardware, electronic
+            lock mechanisms, KABA access control, IP camera systems, and NVR infrastructure across
+            dozens of bank locations. I programmed central station communication paths, diagnosed
+            faults between alarm panels and monitoring centers within SLA windows, trained 12+ field
+            technicians on integration troubleshooting, and coordinated service windows directly with
+            branch operations managers so they could keep doing business while I did mine. That was
+            three and a half years.
+          </p>
+          <p>
+            You spend enough time inside bank branches and you develop a gut-level understanding of
+            something that reads fine in a textbook but feels different when you're standing in the
+            vault with a multimeter: these systems have real consequences for real people on both sides
+            of the counter. That understanding didn't leave when I left the field&mdash;it followed me
+            into how I think about software and cybersecurity.
+          </p>
+        </section>
+
+        <!-- What I build -->
+        <section class="bio-section reveal">
+          <h2 class="bio-section-title">What I build</h2>
+          <p>
+            The through line across everything I've done&mdash;wood, metal, engines, machines,
+            computers, networks, code&mdash;is that I'm at my best when I'm making something. The
+            specific medium has never mattered as much as the act itself. I become whatever is
+            necessary to get something from "doesn't exist yet" to "exists now." Software is where
+            I'm focused at the moment because it's a domain where the reach is genuinely
+            enormous&mdash;the work is intangible and amorphous, but it can help more people than any
+            physical thing I could build with my hands alone. That's not a reason to stop building
+            physical things. It's a reason to <em>also</em> build software.
+          </p>
+
+          <div class="project-highlight card">
+            <div class="project-highlight-header">
+              <div>
+                <h3 class="project-highlight-name gradient-text">Vociferous</h3>
+                <p class="project-highlight-tagline">Offline Speech-to-Text &mdash; Your Voice, Your Hardware</p>
+              </div>
+              <a
+                href="https://github.com/WanderingAstronomer/Vociferous"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="btn btn-outline btn--sm"
+              >
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
+                GitHub
+              </a>
+            </div>
+            <p>
+              A full-stack offline speech-to-text desktop application: 355+ commits, 130+ versioned
+              releases, around 600 hours of solo development. I didn't start it as a portfolio
+              project, and it wasn't built to impress anyone. I wanted a tool that could transcribe
+              my own voice, on my own hardware, without needing an internet connection or trusting
+              someone else's server. That seemed like something that should exist. It didn't, so I
+              built it. That's more or less how I operate.
+            </p>
+            <p>
+              Under the hood, it captures speech locally using a modified <em>faster-whisper</em>
+              branch, refines it through a five-stage local SLM pipeline, and stores everything in a
+              session-managed SQLite database&mdash;with an intent-driven command bus,
+              crash-resilient recording, and a real-time activity dashboard. Nothing leaves your
+              hardware. No cloud, no telemetry.
+            </p>
+            <p>
+              The architecture choices&mdash;local-first, offline-capable,
+              privacy-preserving&mdash;come from a belief I've settled into over time: human-first AI
+              tooling should be a priority for developers right now. AI is powerful enough to either
+              erode user autonomy or protect it, and I'd rather spend my energy on the side that
+              protects it. That's not some generic slogan, either. It's a design constraint that
+              shows up in every architectural decision Vociferous makes, and that's not changing
+              anytime soon.
+            </p>
+            <div class="project-stack">
+              <span class="pill">Python</span>
+              <span class="pill">Svelte 5</span>
+              <span class="pill">Litestar</span>
+              <span class="pill">SQLite</span>
+              <span class="pill">faster-whisper</span>
+              <span class="pill">Qwen3 SLM</span>
+              <span class="pill">CUDA / RTX 3090</span>
+            </div>
+          </div>
+
+          <h3 class="bio-subheading">Other projects</h3>
+          <div class="other-projects">
+
+            <div class="other-project">
+              <div class="other-project-header">
+                <strong class="other-project-name">Synapse</strong>
+                <a href="https://github.com/ACM-Franklin/Synapse" target="_blank" rel="noopener noreferrer" class="other-project-link" aria-label="View Synapse on GitHub">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+                </a>
+              </div>
+              <p>An event-driven community engagement engine for Discord, written in Java 21 with Quarkus and JDBI 3. Versioned rule engine, achievement system, currency/XP marketplace, public leaderboards. This one is my brainchild&mdash;I came up with it to solve a real engagement problem in our student clubs by gamifying participation within a Discord community. There's a working Python prototype running right now, and we're rewriting it in Java for a more reliable framework and a broader contributor base. It's close to becoming a genuinely deployed system for our clubs, which is exciting in a way that's hard to sit still about.</p>
+              <div class="tech-pills">
+                <span class="pill pill--neutral">Java 21</span>
+                <span class="pill pill--neutral">Quarkus</span>
+                <span class="pill pill--neutral">JDA</span>
+                <span class="pill pill--neutral">JDBI 3</span>
+                <span class="pill pill--neutral">SQLite</span>
+              </div>
+            </div>
+
+            <div class="other-project">
+              <div class="other-project-header">
+                <strong class="other-project-name">Homelab</strong>
+              </div>
+              <p>A six-VLAN segmented network running 15+ self-hosted services: Plex, Pi-hole, Graylog, MinIO, WireGuard VPNs, KVM/QEMU virtual machines, a weekly-reset penetration testing lab, and&mdash;of course&mdash;a modded Minecraft server. MikroTik routing, UniFi switching, Docker containers throughout. Six VLANs because&mdash;and I cannot stress this enough&mdash;I do not trust my own IoT devices. I don't trust any device, to be fair.</p>
+              <div class="tech-pills">
+                <span class="pill pill--neutral">MikroTik</span>
+                <span class="pill pill--neutral">UniFi</span>
+                <span class="pill pill--neutral">Docker</span>
+                <span class="pill pill--neutral">WireGuard</span>
+                <span class="pill pill--neutral">KVM/QEMU</span>
+              </div>
+            </div>
+
+            <div class="other-project">
+              <div class="other-project-header">
+                <strong class="other-project-name">Explore-Hashing</strong>
+                <a href="https://github.com/WanderingAstronomer/Explore-Hashing" target="_blank" rel="noopener noreferrer" class="other-project-link" aria-label="View Explore-Hashing on GitHub">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+                </a>
+              </div>
+              <p>A presenter-driven CLI teaching tool for a live cryptography workshop: five demos covering toy hash functions, collision generation, the avalanche effect, bcrypt password hashing, and rainbow table lookups. Built because I was going to give the talk anyway, and a live demo beats a slide deck every time.</p>
+              <div class="tech-pills">
+                <span class="pill pill--neutral">Python</span>
+              </div>
+            </div>
+
+            <div class="other-project">
+              <div class="other-project-header">
+                <strong class="other-project-name">FUNet</strong>
+              </div>
+              <p>A student-led microblogging REST platform, cloud-first, built at Franklin University in Java 21 with Quarkus and Docker. Not my brainchild, but I'm a regular contributor. We'll likely fold an instance of Synapse into it.</p>
+              <div class="tech-pills">
+                <span class="pill pill--neutral">Java 21</span>
+                <span class="pill pill--neutral">Quarkus</span>
+                <span class="pill pill--neutral">Docker</span>
+              </div>
+            </div>
+
+          </div>
+        </section>
+
+        <!-- Cybersecurity -->
+        <section class="bio-section reveal">
+          <h2 class="bio-section-title">Cybersecurity</h2>
+          <p>This part needs some context, because the timeline is genuinely absurd.</p>
+          <p>
+            A little over a year ago, I switched my major from computer science to cybersecurity. The
+            reasoning was almost comically simple: I thought there was more in cybersecurity that I
+            <em>didn't</em> understand than there was in CS, and that seemed like a perfectly good
+            reason to go learn it. Both fields turned out to be far more deeply intertwined than I
+            expected at the time, and there's more to know in each of them than I'll have lifetime
+            for. I find relief in that rather than discouragement, which probably says something
+            (concerning) about my brain.
+          </p>
+          <p>
+            When I switched, I knew essentially nothing about cybersecurity as a formal discipline.
+            I had years of physical security experience from the field&mdash;vault doors, alarm panels,
+            the tangible stuff&mdash;but logical security, CTFs, offensive tooling? I didn't even know
+            what a CTF was. I couldn't have told you what the letters stood for.
+          </p>
+          <p>
+            That spring, first semester in the new major, I entered the National Cyber League for the
+            first time. No prior CTF experience. I even offered to lead the team I was on. I didn't
+            use the training gymnasium NCL offers before the competition: no playbooks, no dedicated
+            coaching, no prep. I didn't even know how to navigate the competition dashboard on the day
+            it started. I just went in completely blind and came out the other side with a result that,
+            honestly, didn't make a lot of sense given my situation at the time.
+          </p>
+
+          <div class="ncl-results">
+            <div class="ncl-season card">
+              <div class="ncl-season-header">
+                <span class="ncl-badge">Spring 2025</span>
+                <strong class="ncl-role">Team Leader &mdash; Team Terminalators</strong>
+              </div>
+              <div class="ncl-stats">
+                <div class="ncl-stat">
+                  <span class="ncl-stat-value">70<sup>th</sup></span>
+                  <span class="ncl-stat-label">out of 4,449 teams</span>
+                </div>
+                <div class="ncl-stat">
+                  <span class="ncl-stat-value">238<sup>th</sup></span>
+                  <span class="ncl-stat-label">individually (8,500+ competitors)</span>
+                </div>
+                <div class="ncl-stat">
+                  <span class="ncl-stat-value ncl-top">Top 0.5%</span>
+                  <span class="ncl-stat-label">nationally</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="ncl-season card">
+              <div class="ncl-season-header">
+                <span class="ncl-badge ncl-badge--amber">Fall 2025</span>
+                <strong class="ncl-role">Team Leader &mdash; Team Terminalators</strong>
+              </div>
+              <div class="ncl-stats">
+                <div class="ncl-stat">
+                  <span class="ncl-stat-value">20<sup>th</sup></span>
+                  <span class="ncl-stat-label">out of 4,674 teams</span>
+                </div>
+                <div class="ncl-stat">
+                  <span class="ncl-stat-value">121<sup>st</sup></span>
+                  <span class="ncl-stat-label">individually (~8,000 competitors)</span>
+                </div>
+                <div class="ncl-stat">
+                  <span class="ncl-stat-value ncl-top">Top 0.5%</span>
+                  <span class="ncl-stat-label">nationally</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <p>
+            NCL covers OSINT, network traffic analysis, cryptography, log analysis, password cracking,
+            web application exploitation, and forensics. You either solve the challenge or you
+            don't&mdash;there's no partial credit for understanding something in theory. Going from
+            zero formal background to that result in about a year&mdash;with, admittedly, a seasoning
+            of unemployment that gave me an unreasonable amount of free time to pour into
+            it&mdash;is probably the most concentrated example of how I tend to approach things when
+            something catches my attention.
+          </p>
+
+          <div class="cert-row">
+            <div class="cert-chip">
+              <span class="cert-chip-name">CompTIA Security+</span>
+              <span class="cert-chip-date">July 2025</span>
+            </div>
+            <div class="cert-chip">
+              <span class="cert-chip-name">CompTIA IT Fundamentals+</span>
+              <span class="cert-chip-date">April 2024</span>
+            </div>
+            <div class="cert-chip">
+              <span class="cert-chip-name">DMP Master Technician</span>
+              <span class="cert-chip-date">November 2023</span>
+            </div>
+            <div class="cert-chip cert-chip--in-progress">
+              <span class="cert-chip-name">CompTIA Network+</span>
+              <span class="cert-chip-date">Target: Summer 2026</span>
+            </div>
+          </div>
+        </section>
+
+        <!-- Leadership -->
+        <section class="bio-section reveal">
+          <h2 class="bio-section-title">Leadership</h2>
+          <p>This one needs context too, because it didn't start with ambition. It started with disappointment.</p>
+          <p>
+            About two years into my degree, a professor mentioned&mdash;almost
+            offhand&mdash;that the university had student technology clubs. I'd had no idea they
+            existed. Two years of nothing, and it turned out they'd been right there the whole time.
+            I was genuinely annoyed at myself for missing it, but I digress. I joined the
+            Cybersecurity SIG immediately.
+          </p>
+          <p>
+            I loved it. My engagement stood out, and I was made an officer, then a senior officer.
+            Meanwhile, I was nurturing my long-time fascination with artificial intelligence&mdash;its
+            architecture, its implications, where it's heading. I wanted somewhere to bring that
+            interest, and the existing clubs didn't quite have the space for it. So I went looking
+            for somewhere to create it.
+          </p>
+          <p>
+            What I found was a dying club called <em>The Python Team</em>. Just Python programming,
+            barely functioning, almost no members. I took it over, rebranded it as the
+            <strong>Programming Special Interest Group</strong>, and folded it under Franklin's
+            <strong>Association of Computing Machinery</strong> chapter. I had built the organizational
+            structure from scratch&mdash;roles, decision-making, communication, the works. It went
+            from essentially nothing to weekly meetings with nearly a dozen regular attendees.
+          </p>
+          <p>
+            From there, a lot of other things followed&mdash;more than I expected, if I'm honest. I designed and now maintain the
+            <strong>technology community of practice pages</strong> on Franklin's Canvas
+            LMS&mdash;the pages every student in the technology program sees. I found the
+            <strong>Franklin GitHub Enterprise organization</strong> completely unused, overhauled it,
+            taught myself everything about how it worked, then turned around and taught everyone else.
+            There are more than 30 people using it now. I created the <strong>Franklin student clubs
+            Discord server</strong> from scratch, nudged the community into migrating there, and now
+            manage it with the help of the other leadership. Almost 40 members and growing fast now. I've
+            written newsletters, authored onboarding materials and announcements, and delivered over
+            30 original presentations and workshops across both clubs&mdash;spanning Python, Git
+            workflows, AI architecture, neural networks, RAG pipelines, AI ethics, physical security,
+            cryptographic fundamentals, NCL competition prep, and more.
+          </p>
+          <p>
+            I've had a real impact on Franklin's student clubs&mdash;ridiculously, across three
+            leadership roles at once: President of PSIG, Senior Officer in CySec, and Treasurer of
+            the broader ACM chapter. I'm not shy about saying that because I worked hard for it and I
+            watched it happen in real time. Synapse came directly out of that experience&mdash;watching
+            the engagement problem play out week after week and deciding to solve it with software,
+            because that's apparently what I do when something bothers me enough. The end goal? I just
+            want to create a space for a ton of people to mix, mingle, chill, grow knowledgeable, and
+            build cool stuff together.
+          </p>
+          <p>That's it. That's all I want. To watch a bunch of people create things in a space I helped make.</p>
+        </section>
+
+        <!-- What I'm after -->
+        <section class="bio-section reveal">
+          <h2 class="bio-section-title">What I'm after</h2>
+          <p>
+            I'm looking for my first professional software engineering or security role, and what I
+            need at this point is a runway. I've accumulated a lot of experience across a lot of
+            domains, and I'm ready to apply it somewhere focused where I can keep learning and keep
+            building.
+          </p>
+          <p>
+            I've spent years in environments where the consequences of getting it wrong were immediate
+            and very physical. A misconfigured alarm panel meant a bank branch couldn't verify its
+            security status. A missed SLA meant someone's system wasn't being monitored. A bad
+            diagnosis in the field meant a second truck roll and a customer who trusted you a little
+            less the next time. In software, the equivalent is a data loss bug that quietly corrupts
+            the thing someone trusted you to protect&mdash;and I've built far enough into Vociferous to
+            know exactly what that kind of failure feels like from the engineering side. Both
+            perspectives have shaped how I think about reliability, and neither lets me take shortcuts
+            comfortably.
+          </p>
+          <p>
+            My background is unusual for someone at this career stage&mdash;field infrastructure,
+            financial security systems, network operations, software development, cybersecurity
+            competition, community leadership&mdash;and that breadth is deliberate, even if it wasn't
+            always planned. I learn fast when something is new to me. My NCL trajectory is probably
+            the clearest evidence of that, but it's the same pattern that shows up everywhere: find
+            the gap, fill the gap, move on to the next one.
+          </p>
+          <p>
+            I believe engineers have a responsibility to the people who use what they build&mdash;not
+            to institutions in the abstract, but to actual individuals whose days get better or worse
+            depending on whether we did our jobs well. The goal is to improve lives without causing
+            harm. That's the constraint I design around, and it's the one thing that isn't
+            negotiable. The act of creation is a trial of responsibility; the cost of improving the
+            world around you must always be thoroughly understood&mdash;prior to construction.
+          </p>
+        </section>
+
+      </div>
+    </div>
+
+    <!-- ── Snapshot ──────────────────────────────────────── -->
+    <div class="container">
+      <div class="snapshot-section card reveal">
+        <h2 class="snapshot-title">Snapshot</h2>
+        <div class="snapshot-table-wrap">
+          <table class="snapshot-table">
+            <tbody>
+              <tr>
+                <th>Location</th>
+                <td>Youngstown, Ohio</td>
+              </tr>
+              <tr>
+                <th>Spawn Point</th>
+                <td>Upstate New York</td>
+              </tr>
+              <tr>
+                <th>Education</th>
+                <td>
+                  B.S. Cybersecurity &middot; Franklin University (in progress, completing 2027)<br>
+                  <span class="dim">Minor: Artificial Intelligence</span><br>
+                  A.S. Business Administration &amp; Management &middot; SUNY Adirondack
+                </td>
+              </tr>
+              <tr>
+                <th>Certifications</th>
+                <td>CompTIA Security+ (Jul 2025) &middot; CompTIA IT Fundamentals+ (Apr 2024) &middot; DMP Master Technician (Nov 2023)</td>
+              </tr>
+              <tr>
+                <th>In Progress</th>
+                <td>CompTIA Network+ &mdash; Target: Summer 2026</td>
+              </tr>
+              <tr>
+                <th>Languages</th>
+                <td>Python &middot; Java 21 &middot; SQL &middot; JavaScript &middot; HTML/CSS &middot; Svelte 5</td>
+              </tr>
+              <tr>
+                <th>Frameworks</th>
+                <td>Litestar &middot; Quarkus &middot; Svelte 5 + Vite &middot; Tailwind CSS &middot; SQLAlchemy &middot; Pydantic &middot; JDA &middot; PyQt6</td>
+              </tr>
+              <tr>
+                <th>Infrastructure</th>
+                <td>Docker &middot; Linux (Debian) &middot; MikroTik RouterOS &middot; UniFi &middot; Git/GitHub &middot; WireGuard &middot; KVM/QEMU &middot; Graylog</td>
+              </tr>
+              <tr>
+                <th>Security</th>
+                <td>Wireshark &middot; hashcat &middot; Ghidra &middot; Nmap &middot; Burp Suite &middot; OSINT &middot; DMP Panels &middot; Volatility</td>
+              </tr>
+              <tr>
+                <th>AI / ML</th>
+                <td>faster-whisper &middot; CTranslate2 &middot; Local LLM Inference &middot; RAG Pipelines &middot; Prompt Engineering &middot; CUDA / RTX 3090</td>
+              </tr>
+              <tr>
+                <th>Monitoring</th>
+                <td>PRTG &middot; Grafana &middot; Uptime Kuma &middot; PagerDuty &middot; Graylog &middot; Pi-hole</td>
+              </tr>
+              <tr>
+                <th>Outside work</th>
+                <td>Golf &middot; writing &middot; gardening &middot; cooking &middot; soccer &middot; hunting &middot; hiking &middot; skiing &middot; woodworking</td>
+              </tr>
+              <tr>
+                <th>GitHub</th>
+                <td><a href="https://github.com/WanderingAstronomer" target="_blank" rel="noopener noreferrer">WanderingAstronomer</a></td>
+              </tr>
+              <tr>
+                <th>LinkedIn</th>
+                <td><a href="https://www.linkedin.com/in/abrown7521" target="_blank" rel="noopener noreferrer">abrown7521</a></td>
+              </tr>
+              <tr>
+                <th>Email</th>
+                <td><a href="mailto:abrown7521@gmail.com">abrown7521@gmail.com</a></td>
+              </tr>
+              <tr>
+                <th>Phone</th>
+                <td>518-524-7521</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+  </article>
+</Layout>
+
+<style>
+  /* ── Page shell ── */
+  .about-page {
+    padding-top: calc(var(--nav-height) + var(--space-2xl));
+    padding-bottom: var(--space-4xl);
+  }
+
+  /* ── Hero ── */
+  .about-hero {
+    margin-bottom: var(--space-2xl);
+  }
+
+  .about-name {
+    font-family: var(--font-display);
+    font-size: clamp(2.5rem, 7vw, var(--text-7xl));
+    font-weight: 700;
+    letter-spacing: -0.025em;
+    line-height: 1.05;
+    margin-bottom: var(--space-md);
+    text-align: center;
+  }
+
+  .about-tagline {
+    font-family: var(--font-mono);
+    font-size: var(--text-sm);
+    letter-spacing: 0.08em;
+    color: var(--text-muted);
+    margin-bottom: var(--space-xl);
+    text-align: center;
+  }
+
+  .about-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-sm);
+    justify-content: center;
+  }
+
+  .about-chip {
+    font-family: var(--font-mono);
+    font-size: var(--text-xs);
+    color: var(--text-secondary);
+    padding: 0.3em 0.9em;
+    border: 1px solid var(--border);
+    border-radius: var(--radius-full);
+    transition: color 0.2s var(--ease-out), border-color 0.2s var(--ease-out), background 0.2s var(--ease-out);
+    text-decoration: none;
+  }
+
+  .about-chip:hover {
+    color: var(--cyan);
+    border-color: rgba(0, 217, 255, 0.3);
+    background: var(--cyan-glow);
+  }
+
+  .about-chip--mono {
+    pointer-events: none;
+    color: var(--text-muted);
+  }
+
+  /* ── Lead / short version ── */
+  .bio-lead {
+    max-width: 56rem;
+    margin-inline: auto;
+    margin-bottom: var(--space-3xl);
+  }
+
+  .prose-label {
+    font-family: var(--font-mono);
+    font-size: var(--text-xs);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--cyan);
+    display: block;
+    margin-bottom: var(--space-md);
+  }
+
+  .bio-lead p {
+    font-size: var(--text-lg);
+    line-height: 1.8;
+    color: var(--text-secondary);
+  }
+
+  /* ── Prose sections ── */
+  .about-sections {
+    margin-bottom: var(--space-3xl);
+  }
+
+  .container--prose {
+    max-width: 52rem;
+    margin-inline: auto;
+    padding-inline: var(--space-lg);
+  }
+
+  .bio-section {
+    margin-bottom: var(--space-3xl);
+    padding-bottom: var(--space-3xl);
+    border-bottom: 1px solid var(--border);
+  }
+
+  .bio-section:last-child {
+    border-bottom: none;
+  }
+
+  .bio-section-title {
+    font-family: var(--font-display);
+    font-size: var(--text-2xl);
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: var(--space-xl);
+    padding-bottom: var(--space-sm);
+    border-bottom: 1px solid rgba(0, 217, 255, 0.12);
+    position: relative;
+  }
+
+  .bio-section-title::after {
+    content: '';
+    position: absolute;
+    bottom: -1px;
+    left: 0;
+    width: 3rem;
+    height: 1px;
+    background: var(--cyan);
+  }
+
+  .bio-section p {
+    font-size: var(--text-base);
+    line-height: 1.85;
+    color: var(--text-secondary);
+    margin-bottom: var(--space-lg);
+  }
+
+  .bio-section p:last-child { margin-bottom: 0; }
+
+  .bio-section strong { color: var(--text-primary); font-weight: 600; }
+  .bio-section em { color: var(--amber); font-style: italic; }
+
+  .bio-subheading {
+    font-family: var(--font-display);
+    font-size: var(--text-lg);
+    font-weight: 600;
+    color: var(--text-primary);
+    margin: var(--space-2xl) 0 var(--space-lg);
+  }
+
+  /* ── Vociferous highlight card ── */
+  .project-highlight {
+    margin: var(--space-xl) 0;
+    border-color: rgba(0, 217, 255, 0.12);
+    background: linear-gradient(135deg, var(--bg-card), rgba(0, 217, 255, 0.025));
+  }
+
+  .project-highlight-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: var(--space-md);
+    margin-bottom: var(--space-sm);
+    flex-wrap: wrap;
+  }
+
+  .project-highlight-name {
+    font-family: var(--font-display);
+    font-size: var(--text-2xl);
+    font-weight: 700;
+    margin-bottom: 0.15rem;
+  }
+
+  .project-highlight-tagline {
+    font-family: var(--font-mono);
+    font-size: var(--text-xs);
+    letter-spacing: 0.06em;
+    color: var(--text-muted);
+    margin-bottom: var(--space-lg);
+  }
+
+  .project-highlight p {
+    font-size: var(--text-base);
+    line-height: 1.8;
+    color: var(--text-secondary);
+    margin-bottom: var(--space-md);
+  }
+
+  .project-highlight p:last-of-type { margin-bottom: 0; }
+
+  .project-stack {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-xs);
+    margin-top: var(--space-lg);
+  }
+
+  .btn--sm {
+    padding: 0.4rem 1rem !important;
+    font-size: var(--text-xs) !important;
+  }
+
+  /* ── Other projects list ── */
+  .other-projects {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-md);
+  }
+
+  .other-project {
+    padding: var(--space-lg);
+    background: var(--bg-surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-md);
+    transition: border-color 0.2s var(--ease-out);
+  }
+
+  .other-project:hover {
+    border-color: var(--border-hover);
+  }
+
+  .other-project-header {
+    display: flex;
+    align-items: center;
+    gap: var(--space-sm);
+    margin-bottom: var(--space-sm);
+  }
+
+  .other-project-name {
+    font-family: var(--font-display);
+    font-size: var(--text-base);
+    font-weight: 600;
+    color: var(--text-primary);
+  }
+
+  .other-project-link {
+    color: var(--text-muted);
+    display: flex;
+    align-items: center;
+    transition: color 0.2s;
+  }
+
+  .other-project-link:hover { color: var(--cyan); }
+
+  .other-project p {
+    font-size: var(--text-sm);
+    line-height: 1.75;
+    color: var(--text-secondary);
+    margin-bottom: var(--space-md);
+  }
+
+  .tech-pills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-xs);
+  }
+
+  /* ── NCL results ── */
+  .ncl-results {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-lg);
+    margin: var(--space-xl) 0;
+  }
+
+  @media (max-width: 560px) {
+    .ncl-results { grid-template-columns: 1fr; }
+  }
+
+  .ncl-season {
+    padding: var(--space-lg);
+  }
+
+  .ncl-season-header {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-xs);
+    margin-bottom: var(--space-lg);
+  }
+
+  .ncl-badge {
+    font-family: var(--font-mono);
+    font-size: var(--text-xs);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 0.2em 0.75em;
+    border-radius: var(--radius-full);
+    background: var(--cyan-glow);
+    color: var(--cyan);
+    border: 1px solid rgba(0, 217, 255, 0.2);
+    align-self: flex-start;
+  }
+
+  .ncl-badge--amber {
+    background: var(--amber-glow);
+    color: var(--amber);
+    border-color: rgba(255, 157, 61, 0.2);
+  }
+
+  .ncl-role {
+    font-size: var(--text-sm);
+    color: var(--text-secondary);
+    font-weight: 500;
+  }
+
+  .ncl-stats {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-md);
+  }
+
+  .ncl-stat {
+    display: flex;
+    flex-direction: column;
+    gap: 0.15rem;
+  }
+
+  .ncl-stat-value {
+    font-family: var(--font-display);
+    font-size: var(--text-2xl);
+    font-weight: 700;
+    color: var(--text-primary);
+    line-height: 1;
+  }
+
+  .ncl-stat-value sup {
+    font-size: 0.55em;
+    vertical-align: super;
+  }
+
+  .ncl-top {
+    color: var(--cyan);
+  }
+
+  .ncl-stat-label {
+    font-family: var(--font-mono);
+    font-size: var(--text-xs);
+    color: var(--text-muted);
+    letter-spacing: 0.04em;
+  }
+
+  /* ── Certs ── */
+  .cert-row {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-md);
+    margin-top: var(--space-xl);
+  }
+
+  .cert-chip {
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
+    padding: var(--space-md) var(--space-lg);
+    background: var(--bg-surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-md);
+  }
+
+  .cert-chip--in-progress {
+    border-color: rgba(255, 157, 61, 0.25);
+    background: rgba(255, 157, 61, 0.04);
+  }
+
+  .cert-chip-name {
+    font-size: var(--text-sm);
+    font-weight: 600;
+    color: var(--text-primary);
+  }
+
+  .cert-chip-date {
+    font-family: var(--font-mono);
+    font-size: var(--text-xs);
+    color: var(--text-muted);
+  }
+
+  /* ── Snapshot table ── */
+  .snapshot-section {
+    max-width: 56rem;
+    margin-inline: auto;
+    margin-bottom: 0;
+  }
+
+  .snapshot-title {
+    font-family: var(--font-display);
+    font-size: var(--text-xl);
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: var(--space-xl);
+    padding-bottom: var(--space-sm);
+    border-bottom: 1px solid var(--border);
+  }
+
+  .snapshot-table-wrap {
+    overflow-x: auto;
+  }
+
+  .snapshot-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: var(--text-sm);
+  }
+
+  .snapshot-table tr {
+    border-bottom: 1px solid var(--border);
+  }
+
+  .snapshot-table tr:last-child { border-bottom: none; }
+
+  .snapshot-table th {
+    font-family: var(--font-mono);
+    font-size: var(--text-xs);
+    font-weight: 500;
+    color: var(--text-muted);
+    text-align: left;
+    padding: var(--space-md) var(--space-xl) var(--space-md) 0;
+    width: 9.5rem;
+    min-width: 9.5rem;
+    vertical-align: top;
+    white-space: nowrap;
+    letter-spacing: 0.04em;
+  }
+
+  .snapshot-table td {
+    color: var(--text-secondary);
+    padding: var(--space-md) 0;
+    line-height: 1.75;
+    vertical-align: top;
+  }
+
+  .snapshot-table td a {
+    color: var(--cyan);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+
+  .snapshot-table td a:hover { color: var(--amber); }
+
+  .dim {
+    color: var(--text-muted);
+    font-size: 0.9em;
+  }
+</style>

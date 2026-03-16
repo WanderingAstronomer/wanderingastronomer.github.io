@@ -136,6 +136,7 @@ a:hover {
   color: var(--cyan);
   margin-bottom: var(--space-sm);
   display: block;
+  text-align: center;
 }
 
 .section-title {
@@ -145,6 +146,7 @@ a:hover {
   color: var(--text-primary);
   margin-bottom: var(--space-xl);
   line-height: 1.15;
+  text-align: center;
 }
 
 .section-subtitle {

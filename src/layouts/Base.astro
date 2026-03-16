@@ -53,6 +53,7 @@ const isLinkActive = (href: string) => {
         <li><a href="/projects" class={isLinkActive('/projects') ? 'active' : ''}>Projects</a></li>
         <li class="nav-item--featured"><a href="/presentations" class={`nav-link--featured ${isLinkActive('/presentations') ? 'active' : ''}`}>Presentations</a></li>
         <li><a href="/blog" class={`nav-link--featured ${isLinkActive('/blog') ? 'active' : ''}`}>Blog</a></li>
+        <li class="nav-item--featured"><a href="/about" class={`nav-link--bio ${isLinkActive('/about') ? 'active' : ''}`}>Bio</a></li>
       </ul>
     </div>
   </nav>
@@ -212,6 +213,20 @@ const isLinkActive = (href: string) => {
     background: var(--amber);
   }
 
+  .nav-link--bio {
+    color: var(--cyan-dim) !important;
+    font-weight: 500;
+  }
+
+  .nav-link--bio:hover,
+  .nav-link--bio.active {
+    color: var(--cyan) !important;
+  }
+
+  .nav-link--bio.active::after {
+    background: var(--cyan);
+  }
+
   /* Mobile hamburger */
   .nav-toggle {
     display: none;
@@ -245,9 +260,9 @@ const isLinkActive = (href: string) => {
       bottom: 0;
       flex-direction: column;
       justify-content: flex-start;
+      align-items: center;
       padding-top: var(--space-2xl);
       gap: var(--space-xl);
-      background: #060c1a;
       background: var(--bg-deep);
       z-index: 999;
       transform: translateX(100%);
