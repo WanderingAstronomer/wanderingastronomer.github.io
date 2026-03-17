@@ -99,21 +99,34 @@ const isLinkActive = (href: string) => {
     right: 0;
     height: var(--nav-height);
     z-index: 1000;
+    /* No backdrop-filter here — it would make this a containing block for
+       position:fixed children (nav-links), breaking the mobile menu layout. */
+    border-bottom: 1px solid var(--border);
+    transition: border-color 0.3s var(--ease-out);
+  }
+
+  /* Blur/tint lives on a pseudo-element so it never traps fixed descendants */
+  .nav::before {
+    content: '';
+    position: absolute;
+    inset: 0;
     background: rgba(6, 12, 26, 0.6);
     backdrop-filter: blur(16px) saturate(180%);
     -webkit-backdrop-filter: blur(16px) saturate(180%);
-    border-bottom: 1px solid var(--border);
-    transition: background 0.3s var(--ease-out),
-                border-color 0.3s var(--ease-out);
+    transition: background 0.3s var(--ease-out);
+    z-index: -1;
   }
 
   .nav.scrolled,
   .nav.menu-open {
-    background: rgba(6, 12, 26, 0.98);
     border-color: var(--border-hover);
   }
 
-  .nav.menu-open {
+  .nav.scrolled::before {
+    background: rgba(6, 12, 26, 0.98);
+  }
+
+  .nav.menu-open::before {
     background: var(--bg-deep); /* fully opaque when menu is open */
   }
 
