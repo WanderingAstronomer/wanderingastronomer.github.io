@@ -34,16 +34,18 @@ const isLinkActive = (href: string) => {
   <title>{title}</title>
 </head>
 <body>
-  <nav class="nav" id="nav">
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
+  <nav class="nav" id="nav" aria-label="Main navigation">
     <div class="nav-inner container">
       <a href="/" class="nav-brand">
         <span class="nav-name">Andrew Brown</span>
         <span class="nav-handle gradient-text">wandering astronomer</span>
       </a>
-      <button class="nav-toggle" id="nav-toggle" aria-label="Toggle menu" aria-expanded="false">
-        <span></span>
-        <span></span>
-        <span></span>
+      <button class="nav-toggle" id="nav-toggle" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="nav-links">
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
       </button>
       <ul class="nav-links" id="nav-links">
         <li><a href="/#skills">Skills</a></li>
@@ -58,7 +60,7 @@ const isLinkActive = (href: string) => {
     </div>
   </nav>
 
-  <main>
+  <main id="main-content">
     <slot />
   </main>
 
@@ -88,9 +90,34 @@ const isLinkActive = (href: string) => {
 
 <style is:global>
   @import '../styles/global.css';
+
+  /* Scroll lock when mobile menu is open */
+  body.menu-open {
+    overflow: hidden;
+  }
 </style>
 
 <style>
+  /* --- Skip link ---------------------------------------- */
+  .skip-link {
+    position: absolute;
+    top: -100%;
+    left: var(--space-md);
+    z-index: 9999;
+    padding: 0.5rem 1rem;
+    background: var(--cyan);
+    color: var(--bg-deep);
+    font-weight: 600;
+    font-size: var(--text-sm);
+    border-radius: 0 0 var(--radius-sm) var(--radius-sm);
+    transition: top 0.2s var(--ease-out);
+    text-decoration: none;
+  }
+
+  .skip-link:focus {
+    top: 0;
+  }
+
   /* --- Navigation --------------------------------------- */
   .nav {
     position: fixed;
@@ -120,6 +147,11 @@ const isLinkActive = (href: string) => {
   .nav.scrolled,
   .nav.menu-open {
     border-color: var(--border-hover);
+  }
+
+  /* Remove the visible gap between nav bar and slide-out menu panel */
+  .nav.menu-open {
+    border-bottom-color: transparent;
   }
 
   .nav.scrolled::before {
@@ -248,7 +280,10 @@ const isLinkActive = (href: string) => {
     background: none;
     border: none;
     cursor: pointer;
-    padding: 4px;
+    /* Minimum 44×44 touch target for accessibility */
+    padding: 11px;
+    margin: -11px;
+    touch-action: manipulation;
   }
 
   .nav-toggle span {
@@ -385,20 +420,45 @@ const isLinkActive = (href: string) => {
   // --- Mobile menu toggle ---
   const toggle = document.getElementById('nav-toggle');
   const links = document.getElementById('nav-links');
+
   if (toggle && links) {
+    function openMenu() {
+      toggle.setAttribute('aria-expanded', 'true');
+      links.classList.add('open');
+      if (nav) nav.classList.add('menu-open');
+      document.body.classList.add('menu-open');
+    }
+
+    function closeMenu() {
+      toggle.setAttribute('aria-expanded', 'false');
+      links.classList.remove('open');
+      if (nav) nav.classList.remove('menu-open');
+      document.body.classList.remove('menu-open');
+    }
+
     toggle.addEventListener('click', () => {
       const open = toggle.getAttribute('aria-expanded') === 'true';
-      toggle.setAttribute('aria-expanded', String(!open));
-      links.classList.toggle('open');
-      if (nav) nav.classList.toggle('menu-open');
+      if (open) {
+        closeMenu();
+      } else {
+        openMenu();
+      }
     });
 
+    // Close menu when a nav link is clicked
     links.querySelectorAll('a').forEach(a => {
       a.addEventListener('click', () => {
-        toggle.setAttribute('aria-expanded', 'false');
-        links.classList.remove('open');
-        if (nav) nav.classList.remove('menu-open');
+        closeMenu();
+        toggle.focus();
       });
+    });
+
+    // Close menu on Escape key
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && toggle.getAttribute('aria-expanded') === 'true') {
+        closeMenu();
+        toggle.focus();
+      }
     });
   }
 
