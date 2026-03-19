@@ -1,0 +1,882 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Andrew (Drew) Brown — CV</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-deep: #060c1a;
+            --bg-card: #111b2e;
+            --text-primary: #e8ecf4;
+            --text-secondary: #8892a8;
+            --text-muted: #515d76;
+            --cyan: #00d9ff;
+            --cyan-glow: rgba(0, 217, 255, 0.15);
+            --amber: #ff9d3d;
+            --border: rgba(255, 255, 255, 0.06);
+            --border-hover: rgba(255, 255, 255, 0.12);
+            --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            --font-display: 'Space Grotesk', 'Inter', sans-serif;
+            --font-mono: 'JetBrains Mono', 'Fira Code', monospace;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        html {
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: var(--font-sans);
+            color: var(--text-primary);
+            background: var(--bg-deep);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            padding: 3rem 1.5rem 5rem;
+            line-height: 1.6;
+            margin: 0;
+            position: relative;
+        }
+
+        body::before {
+            content: "";
+            position: fixed;
+            inset: 0;
+            pointer-events: none;
+            background-image:
+                radial-gradient(1px 1px at 12% 18%, rgba(0, 217, 255, 0.45) 0%, transparent 100%),
+                radial-gradient(1px 1px at 79% 9%, rgba(255, 255, 255, 0.3) 0%, transparent 100%),
+                radial-gradient(1px 1px at 43% 66%, rgba(255, 255, 255, 0.2) 0%, transparent 100%),
+                radial-gradient(1px 1px at 91% 41%, rgba(0, 217, 255, 0.2) 0%, transparent 100%),
+                radial-gradient(1px 1px at 6% 84%, rgba(255, 157, 61, 0.3) 0%, transparent 100%),
+                radial-gradient(1px 1px at 56% 91%, rgba(255, 255, 255, 0.2) 0%, transparent 100%),
+                radial-gradient(1px 1px at 31% 46%, rgba(0, 217, 255, 0.15) 0%, transparent 100%),
+                radial-gradient(1.5px 1.5px at 69% 56%, rgba(255, 157, 61, 0.2) 0%, transparent 100%);
+            z-index: 0;
+        }
+
+        a {
+            color: var(--cyan);
+            text-decoration: none;
+        }
+
+        a:hover {
+            color: var(--amber);
+        }
+
+        .page {
+            position: relative;
+            z-index: 1;
+            width: 100%;
+            max-width: 980px;
+        }
+
+        .cv {
+            width: 100%;
+            background: linear-gradient(180deg, rgba(17, 27, 46, 0.96) 0%, rgba(17, 27, 46, 0.92) 100%);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 3rem;
+            box-shadow: 0 24px 64px rgba(0, 0, 0, 0.55), 0 0 0 1px rgba(0, 217, 255, 0.04), 0 0 80px rgba(0, 217, 255, 0.025);
+            backdrop-filter: blur(14px);
+        }
+
+        .hero {
+            border-bottom: 1px solid var(--border);
+            padding-bottom: 2rem;
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        .hero-name {
+            font-family: var(--font-display);
+            font-size: clamp(2.6rem, 5vw, 4rem);
+            line-height: 1;
+            margin: 0 0 0.6rem;
+            background: linear-gradient(135deg, var(--cyan) 0%, var(--amber) 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero-role,
+        .meta,
+        .chips,
+        .eyebrow,
+        .stats,
+        .contact-line,
+        .mini-list {
+            font-family: var(--font-mono);
+        }
+
+        .hero-role {
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.14em;
+            font-size: 0.78rem;
+            margin-bottom: 1rem;
+        }
+
+        .contact-grid,
+        .quick-grid,
+        .skill-grid,
+        .course-grid,
+        .talk-grid,
+        .personal-grid {
+            display: grid;
+            gap: 1rem;
+        }
+
+        .contact-grid {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 0.5rem 1.5rem;
+            margin-bottom: 1.25rem;
+        }
+
+        .contact-line {
+            color: var(--text-secondary);
+            font-size: 0.8rem;
+        }
+
+        .lede {
+            color: var(--text-secondary);
+            font-size: 1.04rem;
+            max-width: 76ch;
+            margin: 0 auto 1.4rem;
+            text-align: left;
+        }
+
+        .chips {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.6rem;
+            justify-content: center;
+        }
+
+        .chip {
+            border: 1px solid var(--border-hover);
+            background: rgba(255, 255, 255, 0.03);
+            color: var(--text-secondary);
+            border-radius: 999px;
+            padding: 0.45rem 0.75rem;
+            font-size: 0.74rem;
+        }
+
+        .chip strong,
+        .accent,
+        .metric {
+            color: var(--cyan);
+        }
+
+        section {
+            border-bottom: 1px solid var(--border);
+            padding: 1.9rem 0;
+        }
+
+        section:last-child {
+            border-bottom: 0;
+            padding-bottom: 0;
+        }
+
+        h2,
+        h3,
+        h4 {
+            font-family: var(--font-display);
+            margin: 0;
+        }
+
+        h2 {
+            font-size: 1.45rem;
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+
+        h3 {
+            font-size: 1.1rem;
+            margin-bottom: 0.2rem;
+        }
+
+        h4 {
+            font-size: 0.98rem;
+            margin-bottom: 0.35rem;
+        }
+
+        p {
+            margin: 0 0 0.9rem;
+            color: var(--text-secondary);
+        }
+
+        ul {
+            margin: 0.75rem 0 0;
+            padding-left: 1.15rem;
+            color: var(--text-secondary);
+        }
+
+        li + li {
+            margin-top: 0.45rem;
+        }
+
+        .quick-grid {
+            grid-template-columns: repeat(3, 1fr);
+        }
+
+        .panel,
+        .entry,
+        .talk,
+        .course-card,
+        .personal-card {
+            background: rgba(255, 255, 255, 0.025);
+            border: 1px solid var(--border);
+            border-radius: 14px;
+            padding: 1rem 1.1rem;
+        }
+
+        .panel-title,
+        .eyebrow {
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+            font-size: 0.72rem;
+        }
+
+        .panel strong {
+            color: var(--text-primary);
+            display: block;
+            margin-top: 0.3rem;
+            font-size: 1.05rem;
+        }
+
+        .skill-grid {
+            grid-template-columns: repeat(2, 1fr);
+        }
+
+        .entry + .entry,
+        .talk + .talk {
+            margin-top: 1rem;
+        }
+
+        .entry-head {
+            display: flex;
+            justify-content: space-between;
+            gap: 1rem;
+            align-items: baseline;
+            margin-bottom: 0.35rem;
+        }
+
+        .meta {
+            font-size: 0.74rem;
+            color: var(--text-muted);
+            white-space: nowrap;
+        }
+
+        .submeta {
+            font-family: var(--font-mono);
+            font-size: 0.76rem;
+            color: var(--text-muted);
+            margin-bottom: 0.6rem;
+        }
+
+        .callout {
+            border-left: 2px solid rgba(0, 217, 255, 0.35);
+            padding-left: 1rem;
+            margin: 0.9rem auto 0;
+            max-width: 72ch;
+        }
+
+        .course-grid,
+        .personal-grid {
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+        }
+
+        .talk-grid {
+            grid-template-columns: repeat(2, 1fr);
+        }
+
+        .mini-list {
+            color: var(--text-secondary);
+            font-size: 0.76rem;
+            line-height: 1.8;
+        }
+
+        .stats {
+            color: var(--text-muted);
+            font-size: 0.76rem;
+            margin-bottom: 0.35rem;
+        }
+
+        .quote {
+            border-left: 2px solid rgba(255, 157, 61, 0.35);
+            padding-left: 1rem;
+            color: var(--text-secondary);
+            font-style: italic;
+            max-width: 72ch;
+            margin: 1rem auto;
+        }
+
+        @media (max-width: 720px) {
+            .cv {
+                padding: 2rem 1.25rem;
+            }
+
+            .entry-head {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .talk-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .quick-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .skill-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media print {
+            :root {
+                --bg-deep: #ffffff;
+                --bg-card: #ffffff;
+                --text-primary: #0f172a;
+                --text-secondary: #334155;
+                --text-muted: #64748b;
+                --cyan: #0369a1;
+                --amber: #b45309;
+                --border: rgba(15, 23, 42, 0.1);
+                --border-hover: rgba(15, 23, 42, 0.16);
+                --cyan-glow: rgba(3, 105, 161, 0.1);
+            }
+
+            body {
+                background: #ffffff;
+                padding: 0;
+            }
+
+            body::before {
+                display: none;
+            }
+
+            .cv {
+                box-shadow: none;
+                border: 0;
+                padding: 0;
+                max-width: none;
+            }
+
+            .panel,
+            .entry,
+            .talk,
+            .course-card,
+            .personal-card {
+                background: transparent;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="page">
+        <main class="cv">
+            <header class="hero">
+                <div class="hero-role">Software Engineer • Systems Builder • Security-Minded Technical Generalist</div>
+                <h1 class="hero-name">Andrew (Drew) Brown</h1>
+                <div class="contact-grid">
+                    <div class="contact-line">Youngstown, Ohio</div>
+                    <div class="contact-line">518-524-7521</div>
+                    <div class="contact-line">abrown7521@gmail.com</div>
+                    <div class="contact-line"><a href="https://github.com/WanderingAstronomer">github.com/WanderingAstronomer</a></div>
+                    <div class="contact-line"><a href="https://wanderingastronomer.github.io">wanderingastronomer.github.io</a></div>
+                    <div class="contact-line"><a href="https://www.linkedin.com/in/abrown7521/">linkedin.com/in/abrown7521</a></div>
+                    <div class="contact-line"><a href="https://medium.com/@WanderingAstronomer">medium.com/@WanderingAstronomer</a></div>
+                    <div class="contact-line"><a href="https://www.youtube.com/@WanderingAstronomer">youtube.com/@WanderingAstronomer</a></div>
+                    <div class="contact-line"><a href="https://www.boot.dev/u/wanderingastronomer">boot.dev/u/wanderingastronomer</a></div>
+                </div>
+                <p class="lede">Andrew Brown is a reliability-first software engineer and systems builder whose technical identity was forged in the field before it was expressed in code: network deployments, NOC operations, ISP infrastructure, physical security systems, Linux administration, local AI tooling, and full-stack product work. He thinks in <span class="accent">fault domains</span>, <span class="accent">lifecycle management</span>, <span class="accent">recoverability</span>, and <span class="accent">clear boundaries</span> before he thinks in syntax.</p>
+                <div class="chips">
+                    <div class="chip"><strong>600+ hours</strong> in Vociferous</div>
+                    <div class="chip"><strong>355+ commits</strong> on flagship project</div>
+                    <div class="chip"><strong>130+ releases</strong> shipped</div>
+                    <div class="chip"><strong>20th / 4,674</strong> NCL Fall 2025 team rank</div>
+                    <div class="chip"><strong>36+</strong> presentations and workshops</div>
+                    <div class="chip"><strong>50+</strong> network devices deployed</div>
+                    <div class="chip"><strong>74 households</strong> in radio internet deployment</div>
+                </div>
+            </header>
+
+            <section>
+                <h2>Profile</h2>
+                <p>He is currently pursuing a B.S. in Cybersecurity with a minor in Artificial Intelligence at Franklin University, where he serves as both <span class="accent">President of Programming</span> for ACM and a <span class="accent">Senior Officer</span> in the Cybersecurity SIG. His work spans local-first software, backend systems, networking, databases, security analysis, Linux infrastructure, technical writing, and applied AI.</p>
+                <p>Andrew is unusually strong at connecting domains that are often siloed: software engineering with operations, physical security with cyber defense, and deep technical thinking with public teaching. The throughline across his work is simple: <span class="metric">build useful systems carefully</span>, <span class="metric">understand them end to end</span>, and <span class="metric">be able to explain every major design choice</span>.</p>
+                <div class="quick-grid">
+                    <div class="panel">
+                        <div class="panel-title">Target Roles</div>
+                        <strong>Software Engineer I • Junior DevOps • Systems Engineer • Associate Security Engineer</strong>
+                    </div>
+                    <div class="panel">
+                        <div class="panel-title">Location</div>
+                        <strong>Columbus preferred; open to Cleveland, Cincinnati, Pittsburgh, hybrid, local, or remote</strong>
+                    </div>
+                    <div class="panel">
+                        <div class="panel-title">Current Focus</div>
+                        <strong>Portfolio development, student leadership, coursework, technical writing, and rapid ramp into engineering work</strong>
+                    </div>
+                </div>
+            </section>
+
+            <section>
+                <h2>Technical Profile</h2>
+                <div class="skill-grid">
+                    <div class="panel">
+                        <div class="eyebrow">Languages & App Development</div>
+                        <ul>
+                            <li><span class="accent">Python</span>: PyQt6, Litestar, SQLAlchemy, Pydantic, async patterns, IPC, desktop architecture</li>
+                            <li><span class="accent">Java 21</span>: JDA, Quarkus, REST, schema-backed systems, event-driven logic</li>
+                            <li><span class="accent">SQL</span>: normalization, indexes, WAL mode, FTS5, migrations, partial indexes, expression-based constraints</li>
+                            <li><span class="accent">Frontend</span>: Svelte 5, Tailwind CSS v4, Vite, HTML, CSS, JavaScript reading/debugging</li>
+                            <li><span class="accent">Go</span>: studied via Boot.dev; no shipped project yet</li>
+                        </ul>
+                    </div>
+                    <div class="panel">
+                        <div class="eyebrow">Infrastructure & DevOps</div>
+                        <ul>
+                            <li>Linux daily driver on Debian 13 Trixie; deep terminal fluency and practical server administration</li>
+                            <li>Dockerfiles, Compose stacks, multi-container deployments, KVM/QEMU virtualization</li>
+                            <li>MikroTik RouterOS, UniFi, VLAN routing, firewall rules, DHCP/DNS, WireGuard VPN</li>
+                            <li>Monitoring and diagnostics with <span class="accent">PRTG</span>, <span class="accent">Grafana</span>, <span class="accent">Graylog</span>, <span class="accent">Uptime Kuma</span>, and Wireshark</li>
+                            <li>Backup strategy using Restic to MinIO with snapshots, git-managed configs, and daily DB dumps</li>
+                        </ul>
+                    </div>
+                    <div class="panel">
+                        <div class="eyebrow">AI / ML</div>
+                        <ul>
+                            <li>Local inference with faster-whisper, CTranslate2 Generator, and Qwen3 up to 14B parameters</li>
+                            <li>Prompt engineering for five-level refinement pipeline with safety invariants and dynamic token budgets</li>
+                            <li>RTX 3090 local inference workstation with custom water loop</li>
+                            <li>Can teach transformers, backpropagation, quantization, LoRA, RAG, CUDA, Tensor Cores, TPUs, and AI ethics from first principles</li>
+                            <li>AI-augmented development with GitHub Copilot and custom multi-agent coordination workflows</li>
+                        </ul>
+                    </div>
+                    <div class="panel">
+                        <div class="eyebrow">Security</div>
+                        <ul>
+                            <li>CompTIA Security+ certified; NCL team leader with top-20 national placement</li>
+                            <li>Competition-tested OSINT, cryptography, hash cracking, packet analysis, forensics, scanning, web application testing, reverse engineering</li>
+                            <li>Physical and cyber convergence: DMP XR500 panels, vault systems, KABA locks, IP cameras, NVR/VMS, segmentation, SIEM-aware hardening</li>
+                            <li>Teaching-level grasp of GRC: RTO/RPO, MTBF/MTTR/MTTF, vendor risk, BIA, ALE, policy/standard/procedure/guideline distinctions</li>
+                            <li>Framework literacy: NIST, ISO, EU AI Act, security governance concepts</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <section>
+                <h2>Selected Projects</h2>
+
+                <article class="entry">
+                    <div class="entry-head">
+                        <h3><span class="accent">Vociferous</span> — Cross-Platform Offline Dictation and Local AI Refinement</h3>
+                        <div class="meta">Sep 2025 – Mar 2026 • v6.1.4</div>
+                    </div>
+                    <div class="submeta">Python 3.12+ • Svelte 5 • Tailwind CSS v4 • Litestar • faster-whisper • CTranslate2 • Qwen3 • SQLite WAL + FTS5 • pywebview • AGPL-3.0</div>
+                    <p>Andrew’s flagship solo project and the strongest expression of his engineering style: local-first, reliability-focused, architecturally deliberate, and built for daily real use rather than demo value.</p>
+                    <ul>
+                        <li>Architected a layered system across <span class="accent">Core</span>, <span class="accent">Services</span>, <span class="accent">Database</span>, and <span class="accent">UI</span> with an explicit composition root for lifecycle management.</li>
+                        <li>Designed an intent-driven command bus where frontend intents route to backend handlers and emit events back over WebSockets.</li>
+                        <li>Built crash-resilient AudioSpool real-time WAV streaming that survives process interruption.</li>
+                        <li>Implemented five refinement levels using Qwen3 4B, 8B, and 14B with safety invariants and token-budgeting.</li>
+                        <li>Used SQLite WAL mode, FTS5, and 10+ forward-only migrations for durable local persistence.</li>
+                        <li>Delivered cross-platform support for Linux, macOS, and Windows, plus installers, analytics, tags, export, bulk actions, auto-refine, and auto-title.</li>
+                        <li>Maintains a 23-chapter dev diary, “Speaking into Existence,” chronicling architecture, rewrites, migration choices, AI pairing, and lessons learned.</li>
+                    </ul>
+                </article>
+
+                <article class="entry">
+                    <div class="entry-head">
+                        <h3><span class="accent">Synapse</span> — Discord Community Management Bot</h3>
+                        <div class="meta">Active Development</div>
+                    </div>
+                    <div class="submeta">Java 21 • JDA • SQLite • Repository: github.com/ACM-Franklin/Synapse</div>
+                    <ul>
+                        <li>Designed a 30+ table normalized relational schema for a single-guild Discord bot.</li>
+                        <li>Modeled events with a lean parent table and type-specific child tables for messages, voice sessions, and role changes.</li>
+                        <li>Designed a rule engine with named rules, event scoping, parameterized predicates, multiple outcome types, cooldowns, and deduplication.</li>
+                        <li>Included seasonal competitive periods, dual-currency gamification, full Discord entity modeling, migration tracking, expression-based uniqueness, and partial indexes.</li>
+                        <li>Kept all important data queryable in SQL rather than hidden inside JSON columns.</li>
+                    </ul>
+                </article>
+
+                <article class="entry">
+                    <div class="entry-head">
+                        <h3><span class="accent">Franklin University Network (FUNet)</span> — Student-Led Cloud Service Backend</h3>
+                        <div class="meta">Active</div>
+                    </div>
+                    <div class="submeta">Java 21 • Quarkus • REST • Docker • Twelve-Factor Patterns</div>
+                    <ul>
+                        <li>Built the first REST interface for Spark entities in a student-led microblogging platform.</li>
+                        <li>Works inside an architecture that anticipates REST, gRPC, AMQP, JDBC, and R2DBC based service integration.</li>
+                        <li>Uses a question-and-answer design methodology: define what the system must answer, then let that drive storage and organization.</li>
+                        <li>Current trajectory includes authorization, richer entities, basic UI, infrastructure as code, and cloud deployment.</li>
+                    </ul>
+                </article>
+
+                <article class="entry">
+                    <div class="entry-head">
+                        <h3><span class="accent">Homelab and Network Architecture</span></h3>
+                        <div class="meta">Ongoing</div>
+                    </div>
+                    <div class="submeta">MikroTik RB4011 • UniFi • KVM/QEMU • Docker • Graylog • MinIO • WireGuard</div>
+                    <ul>
+                        <li>Maintains a 6-VLAN segmented homelab with dedicated management, services, lab, internal, clients, and IoT networks.</li>
+                        <li>Runs two-server infrastructure: Ryzen 7 5800X with 64 GB RAM and Intel NUC with 32 GB RAM.</li>
+                        <li>Hosts Plex, Minecraft via AMP, Pi-hole, Unbound, UniFi, Graylog, Uptime Kuma, MinIO, Immich, Arr stack through Gluetun, apt-cacher-ng, and a honeypot lab.</li>
+                        <li>Maintains resettable vulnerable VMs and containers for cybersecurity club exercises with retained Graylog data across weekly resets.</li>
+                    </ul>
+                </article>
+
+                <article class="entry">
+                    <div class="entry-head">
+                        <h3><span class="accent">Portfolio Website</span> — wanderingastronomer.github.io</h3>
+                        <div class="meta">Astro 6 • Svelte 5 • TypeScript</div>
+                    </div>
+                    <ul>
+                        <li>Built a personal portfolio and blog from scratch with GitHub Pages deployment via Actions.</li>
+                        <li>Created an interactive presentation viewer with keyboard navigation and fullscreen support.</li>
+                        <li>Built an NCL report viewer, GitHub contribution heatmap, animated starfield, and Medium cross-post integration.</li>
+                        <li>Designed the site’s visual identity directly with strong opinions on motion, presentation, and non-generic interface feel.</li>
+                    </ul>
+                </article>
+
+                <article class="entry">
+                    <div class="entry-head">
+                        <h3><span class="accent">Additional Projects and Contributions</span></h3>
+                        <div class="meta">Across software, teaching, and physical prototyping</div>
+                    </div>
+                    <ul>
+                        <li><span class="accent">TCOP Pages</span>: reconstructed and refactored Franklin University Technology Community of Practice web pages.</li>
+                        <li><span class="accent">Introduction to Artificial Intelligence</span>: produced a five-episode YouTube series covering AI fundamentals and architecture.</li>
+                        <li><span class="accent">RimWorld AI Storytelling Mod</span>: C# concept integrating procedural AI-generated narrative recaps into gameplay.</li>
+                        <li><span class="accent">EMT Conduit Cable Management System</span>: 3D-printed physical product prototype for cleaner post-drywall cable runs.</li>
+                        <li><span class="accent">BookBot</span>: completed Boot.dev project work in Python.</li>
+                        <li><span class="accent">Custom Water-Cooled PC Build</span>: built and daily-drives a custom-loop RTX 3090 Debian workstation.</li>
+                    </ul>
+                </article>
+            </section>
+
+            <section>
+                <h2>Professional Experience</h2>
+
+                <article class="entry">
+                    <div class="entry-head">
+                        <h3><span class="accent">Financial Security Systems Specialist</span> — Wittenbach Business Systems</h3>
+                        <div class="meta">May 2024 – Mar 2025</div>
+                    </div>
+                    <p>Maintained electronic security infrastructure across Huntington Bank branch locations through a contractor responsible for branch security systems.</p>
+                    <ul>
+                        <li>Performed upgrades, preventative maintenance, and troubleshooting across networked security systems.</li>
+                        <li>Worked with bank-grade DMP panels, IP cameras, NVR/VMS systems, vault systems, and related operational infrastructure.</li>
+                        <li>Reduced repeat failure modes through structured restoration workflows and systems-level diagnostics.</li>
+                    </ul>
+                </article>
+
+                <article class="entry">
+                    <div class="entry-head">
+                        <h3><span class="accent">Security Systems Specialist</span> — Cennox, Inc.</h3>
+                        <div class="meta">Jun 2023 – May 2024</div>
+                    </div>
+                    <ul>
+                        <li>Installed and serviced networked electronic security systems.</li>
+                        <li>Completed <span class="metric">30+</span> DMP burglary system takeovers and CCTV deployments.</li>
+                        <li>Used DMP Remote Link, Wireshark, and Wisenet Device Manager for integration troubleshooting.</li>
+                        <li>Produced technical guides and supported training for <span class="metric">12+</span> technicians.</li>
+                    </ul>
+                </article>
+
+                <article class="entry">
+                    <div class="entry-head">
+                        <h3><span class="accent">Field Services Engineer</span> — ICS Technology Group</h3>
+                        <div class="meta">Nov 2022 – Apr 2023</div>
+                    </div>
+                    <ul>
+                        <li>Planned and executed network installations and rehabilitations for SMBs supporting <span class="metric">50+</span> end users.</li>
+                        <li>Deployed and configured <span class="metric">50+</span> Ubiquiti and MikroTik devices across routing, switching, and wireless.</li>
+                        <li>Managed a deployment delivered <span class="metric">two weeks early</span> and improved client network performance by roughly <span class="metric">30%</span>.</li>
+                        <li>Planned and deployed scalable point-to-point radio internet supporting approximately <span class="metric">74 households</span>.</li>
+                    </ul>
+                </article>
+
+                <article class="entry">
+                    <div class="entry-head">
+                        <h3><span class="accent">Reliability Engineer (Remote NOC)</span> — Starry, Inc.</h3>
+                        <div class="meta">Nov 2021 – Oct 2022</div>
+                    </div>
+                    <ul>
+                        <li>Monitored and triaged network performance issues using PRTG and Grafana.</li>
+                        <li>Coordinated escalation and restoration during high-alert periods.</li>
+                        <li>Resolved <span class="metric">100+</span> PagerDuty equipment alerts and produced remediation-ready site reports.</li>
+                    </ul>
+                </article>
+
+                <article class="entry">
+                    <div class="entry-head">
+                        <h3><span class="accent">Subscriber / Installer</span> — Starry, Inc.</h3>
+                        <div class="meta">Jun 2021 – Nov 2021</div>
+                    </div>
+                    <ul>
+                        <li>Installed and maintained residential wireless internet systems.</li>
+                        <li>Performed on-site diagnostics for connectivity and performance issues.</li>
+                    </ul>
+                </article>
+
+                <article class="entry">
+                    <div class="entry-head">
+                        <h3><span class="accent">Earlier Work History</span></h3>
+                        <div class="meta">2015 – 2021</div>
+                    </div>
+                    <ul>
+                        <li><span class="accent">The Original Mattress Factory</span>, Sales Associate: built spreadsheet automation linking Google Forms, Microsoft Access reports, and graphical presentation outputs for annual business reporting.</li>
+                        <li><span class="accent">Barton Mines Corp</span>, Entry Level Operator: managed shipping and receiving, forklift operation, material staging, and logistics under COVID-era operational pressure.</li>
+                        <li><span class="accent">Under Armour</span>, Sales Associate: supported retail floor operations through Black Friday conditions.</li>
+                        <li><span class="accent">The Sagamore Resort</span>, Room Service: trained new hires, coordinated VIP deliveries, and worked under intense timing pressure.</li>
+                        <li><span class="accent">The Adirondack Experience</span>, Cafe Assistant: first long-term professional role; developed foundational customer service, teamwork, and execution discipline.</li>
+                    </ul>
+                </article>
+            </section>
+
+            <section>
+                <h2>Leadership, Teaching, and Public Technical Work</h2>
+
+                <article class="entry">
+                    <div class="entry-head">
+                        <h3><span class="accent">President of Programming</span> — Franklin University ACM</h3>
+                        <div class="meta">2024 – Present</div>
+                    </div>
+                    <ul>
+                        <li>Designs and delivers programming workshops centered on problem solving, systems thinking, and collaborative development.</li>
+                        <li>Has helped overhaul student club direction and make architectural decisions for shared club infrastructure, including Synapse.</li>
+                        <li>Has delivered approximately <span class="metric">36</span> workshops and presentations across Programming SIG and Cybersecurity SIG combined.</li>
+                    </ul>
+                </article>
+
+                <article class="entry">
+                    <div class="entry-head">
+                        <h3><span class="accent">Senior Officer</span> — Cybersecurity Special Interest Group</h3>
+                        <div class="meta">2024 – Present</div>
+                    </div>
+                    <ul>
+                        <li>Designs and delivers defensive-security presentations and supports hands-on learning initiatives.</li>
+                        <li>Architected a student lab environment with honeypot VMs, VLAN isolation, WireGuard access, and retained Graylog logging.</li>
+                    </ul>
+                </article>
+
+                <p class="callout">Andrew’s presentation work is a meaningful part of his technical profile, not a side note. He teaches advanced ideas by grounding them in first principles and operational reality rather than jargon.</p>
+
+                <div class="talk-grid">
+                    <div class="talk">
+                        <h4>An Introduction to Artificial Intelligence — Acts 1 & 2</h4>
+                        <div class="stats">Programming SIG • 66 slides total • 9 episodes of material</div>
+                        <p>Covers narrow vs. general AI, ML paradigms, neural networks, backpropagation, MoE, quantization, LoRA, generative AI, RAG, hardware, cloud AI, ethics, and frontier models through mid-2025.</p>
+                    </div>
+                    <div class="talk">
+                        <h4>The Fundamentals of GitHub — Parts 1, 2, 3</h4>
+                        <div class="stats">Programming SIG • ~30 slides across 3 decks</div>
+                        <p>Practical end-to-end GitHub workflow covering account setup, README writing, issues, discussions, teams, VS Code integration, and common collaboration pitfalls.</p>
+                    </div>
+                    <div class="talk">
+                        <h4>You Were Never “Bad” at Programming</h4>
+                        <div class="stats">Programming SIG • 9 slides</div>
+                        <p>Original pedagogical talk arguing that programming is downstream of problem decomposition, scientific thinking, and question quality.</p>
+                    </div>
+                    <div class="talk">
+                        <h4>Programming SIG Fall Kickoff</h4>
+                        <div class="stats">Programming SIG • 10 slides</div>
+                        <p>Defined club mission, cadence, language tracks, project structure, decision flow, and communication patterns.</p>
+                    </div>
+                    <div class="talk">
+                        <h4>Hashing Made Simple</h4>
+                        <div class="stats">Cybersecurity SIG • 23 slides</div>
+                        <p>Explains cryptographic and lookup hashing from first principles for non-technical audiences, with practical uses and algorithm evolution.</p>
+                    </div>
+                    <div class="talk">
+                        <h4>OSINT Review</h4>
+                        <div class="stats">Cybersecurity SIG • 8 slides</div>
+                        <p>Walks through real NCL OSINT challenges using EXIF extraction, reverse image search, social media pivoting, and signal identification.</p>
+                    </div>
+                    <div class="talk">
+                        <h4>Physical Security for SOC Analysts</h4>
+                        <div class="stats">Cybersecurity SIG • 14 slides</div>
+                        <p>Bridges physical security systems, SOC workflows, compliance overlap, NVR/VMS risk, and cyber hardening in bank-grade environments.</p>
+                    </div>
+                    <div class="talk">
+                        <h4>Risk, Rules, and Recovery — Sec+ Module 5</h4>
+                        <div class="stats">Cybersecurity SIG • 37 slides</div>
+                        <p>Scenario-based GRC training covering BIA, quantitative risk, vendor management, governance documents, RTO/RPO, and compliance reasoning.</p>
+                    </div>
+                    <div class="talk">
+                        <h4>The Rise of AI-Generated Misinformation</h4>
+                        <div class="stats">Cybersecurity SIG • 6 slides • 2023</div>
+                        <p>Early academic presentation on deepfakes, regulation gaps, public agency, and the pace of AI advancement.</p>
+                    </div>
+                    <div class="talk">
+                        <h4>What to Expect in the National Cyber League</h4>
+                        <div class="stats">Cybersecurity SIG • 19 slides</div>
+                        <p>Research-grade student briefing built from Fall 2025 team experience with category walkthroughs across OSINT, crypto, logs, traffic, forensics, scanning, web, and reverse engineering.</p>
+                    </div>
+                </div>
+
+                <article class="entry">
+                    <div class="entry-head">
+                        <h3><span class="accent">Technical Writing and Publishing</span></h3>
+                        <div class="meta">Medium • Portfolio Blog • Dev Diary</div>
+                    </div>
+                    <ul>
+                        <li>Publishes technical reflections on systems design, local-first tooling, and applied AI.</li>
+                        <li>All <span class="metric">7</span> published Medium articles are cross-posted to the site blog.</li>
+                        <li>Maintains a 23-chapter “Speaking into Existence” dev diary; 2 chapters are currently published and the full set is ready for revision and release.</li>
+                    </ul>
+                </article>
+            </section>
+
+            <section>
+                <h2>Competitive Cybersecurity</h2>
+                <article class="entry">
+                    <div class="entry-head">
+                        <h3><span class="accent">National Cyber League</span></h3>
+                        <div class="meta">Spring 2025 and Fall 2025</div>
+                    </div>
+                    <ul>
+                        <li><span class="metric">Fall 2025</span>: Team Leader, <span class="metric">20th out of 4,674 teams</span>; Individual rank <span class="metric">121st</span>.</li>
+                        <li><span class="metric">Spring 2025</span>: Team Leader, <span class="metric">71st nationally</span>; Individual rank <span class="metric">238th</span>.</li>
+                        <li>Documented contributions across OSINT, cryptography, password cracking, log analysis, network traffic, forensics, scanning, web application work, and reverse engineering.</li>
+                        <li>Used tools including exiftool, CyberChef, hashcat, John the Ripper, Wireshark, tshark, Burp Suite, sqlmap, Gobuster, Scapy, binwalk, Volatility, Ghidra, ldapsearch, and snmpwalk.</li>
+                        <li>Translated competition work into student-facing methodology, writeups, tooling, and a full NCL prep briefing for the following season.</li>
+                    </ul>
+                </article>
+            </section>
+
+            <section>
+                <h2>Education and Credentials</h2>
+                <div class="course-grid">
+                    <div class="course-card">
+                        <h4>Franklin University</h4>
+                        <div class="stats">B.S. Cybersecurity • Minor in Artificial Intelligence • Expected 2027</div>
+                        <p>Current status: part-time while focusing on portfolio development, systems work, teaching, and club leadership.</p>
+                        <div class="mini-list">Honors: President’s List, Summer 2023 through Spring 2025</div>
+                    </div>
+                    <div class="course-card">
+                        <h4>SUNY Adirondack</h4>
+                        <div class="stats">A.S. Business Administration and Management • Sep 2017 – Jan 2020</div>
+                        <p>Graduated <span class="accent">Cum Laude</span> and competed on the golf team.</p>
+                    </div>
+                    <div class="course-card">
+                        <h4>Certifications</h4>
+                        <div class="mini-list">CompTIA Security+ — Jul 2025<br>CompTIA IT Fundamentals+ — Apr 2024<br>DMP Master Technician — Nov 2023<br>CompTIA Network+ — planned mid-summer 2026<br>CompTIA Linux+ — planned</div>
+                    </div>
+                </div>
+
+                <article class="entry">
+                    <div class="entry-head">
+                        <h3><span class="accent">Relevant Coursework</span></h3>
+                        <div class="meta">CS • Cybersecurity • Cloud • Web • Math • Writing • Ethics • Finance</div>
+                    </div>
+                    <p>Current enrollment includes <span class="accent">MIS 310 — Information Systems Architecture &amp; Technology</span>. Completed Franklin coursework spans COMP 101, COMP 111, COMP 121, COMP 201, COMP 204, COMP 281, ISEC 200, CYSC 325, CLOUD 200, ITEC 136, WEBD 101, WEBD 236, MATH 160, MATH 215, ENG 220, COMM 150, HUMN 211, FINA 301, and PF 321.</p>
+                </article>
+            </section>
+
+            <section>
+                <h2>Continuous Learning and Writing Depth</h2>
+                <div class="course-grid">
+                    <div class="course-card">
+                        <h4>Boot.dev Progress</h4>
+                        <div class="mini-list">Level 44 (106 XP) • Rank: Disciple<br>478 lessons solved • Joined Jan 5, 2026<br>Leaderboard rank: 28,266 • Karma: 155</div>
+                        <p>Completed Learn to Code in Python, Learn Linux, Build a Bookbot in Python, Learn Git, and Learn OOP in Python.</p>
+                    </div>
+                    <div class="course-card">
+                        <h4>Academic Writing Range</h4>
+                        <p>Coursework spans database systems, network security, finance, philosophy, ethics, and web design with strong structure, citations, humor, and original analysis.</p>
+                        <div class="mini-list">Highlighted domains: RAG and vector databases • FIDO2/passkeys • ransomware analysis • NPV/ROE reasoning • cultural relativism • accessibility and UX analysis</div>
+                    </div>
+                    <div class="course-card">
+                        <h4>Published Article Topics</h4>
+                        <div class="mini-list">Speaking into Existence (Parts 1 and 2)<br>Vociferous v3<br>Shadows at the Summit<br>A Bit of a Journey<br>Examining AI and Memory Architecture (Part 1)<br>What Finally Got Me Writing</div>
+                    </div>
+                </div>
+            </section>
+
+            <section>
+                <h2>Working Style, Strengths, and Perspective</h2>
+                <div class="personal-grid">
+                    <div class="personal-card">
+                        <h4>How He Works</h4>
+                        <ul>
+                            <li>Best in collaborative, creative building environments while still thriving in solo deep work.</li>
+                            <li>Systems thinker focused on architecture, boundaries, data flow, and failure modes.</li>
+                            <li>Strong communicator shaped by leadership, teaching, and an earlier sales background.</li>
+                        </ul>
+                    </div>
+                    <div class="personal-card">
+                        <h4>Strengths</h4>
+                        <ul>
+                            <li>Breadth across systems, networking, security, software, AI/ML, and databases.</li>
+                            <li>Teaching and communication at a consistently high level.</li>
+                            <li>Self-directed learning with unusually high investment rate and sustained output.</li>
+                            <li>Human-first design sense and strong opinions on honest UX and documentation quality.</li>
+                        </ul>
+                    </div>
+                    <div class="personal-card">
+                        <h4>Honest Self-Assessment</h4>
+                        <ul>
+                            <li>Describes himself as broad rather than deeply specialized in a single domain.</li>
+                            <li>Admits he undersells himself in conversation.</li>
+                            <li>Has not yet held a formal software engineering title despite substantial project work.</li>
+                        </ul>
+                    </div>
+                </div>
+                <p class="quote">“The 70% AI-assisted part is verbosity and boilerplate. The 30% is the hard part: architecture, design, invariants, constraints, failure mode analysis, and system lifecycle.”</p>
+                <p>Andrew can whiteboard client-server architecture, databases, REST APIs, OAuth, message brokers, telemetry, ERD models, async behavior, IPC patterns, and the rationale behind generated code. He is also comfortable saying “I don’t know” in public, then following up with a better answer after doing the work.</p>
+            </section>
+
+            <section>
+                <h2>Personal Background and Creative Work</h2>
+                <div class="personal-grid">
+                    <div class="personal-card">
+                        <h4>Roots and Identity</h4>
+                        <p>First-generation college student from the Adirondack region of upstate New York. Moved to Columbus in late 2020 and now lives in Youngstown, Ohio.</p>
+                    </div>
+                    <div class="personal-card">
+                        <h4>Creative Work</h4>
+                        <p>Currently writing a science-fiction / fantasy novel centered on grief, forbidden magic, moral collapse, and outsiders observing humanity’s self-destruction. Also plans a future non-fiction book on his personal philosophy.</p>
+                    </div>
+                    <div class="personal-card">
+                        <h4>Interests</h4>
+                        <p>Elk hunting in Colorado, soccer, golf, cooking, gardening, woodworking, pickleball, gaming, anime, and custom PC building.</p>
+                    </div>
+                </div>
+                <p>His personal philosophy has been developing since high school and centers on oppositional symmetry: joy and suffering, action and reaction, and the idea that meaning emerges through contrast rather than isolation. In later academic work he coined the ethical concepts <span class="accent">Spheres of Influence</span> and <span class="accent">Proximity of Observable Distress</span>.</p>
+            </section>
+
+            <section>
+                <h2>References and Availability</h2>
+                <p>Andrew reports strong references from professors, advisors, ACM leadership, peers, and prior coworkers. He is actively looking for the right early-career engineering role and is confident in his ability to ramp quickly given a serious opportunity.</p>
+                <div class="chips">
+                    <div class="chip"><strong>Compensation floor</strong> $75,000</div>
+                    <div class="chip"><strong>Timeline</strong> prefers within 30 days; needs role by end of May 2026</div>
+                    <div class="chip"><strong>Dream industries</strong> space, robotics, high scientific technology</div>
+                </div>
+            </section>
+        </main>
+    </div>
+</body>
+</html>
