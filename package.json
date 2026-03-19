@@ -20,6 +20,8 @@
   },
   "homepage": "https://github.com/WanderingAstronomer/wanderingastronomer.github.io#readme",
   "dependencies": {
+    "@astrojs/rss": "^4.0.17",
+    "@astrojs/sitemap": "^3.7.1",
     "@astrojs/svelte": "^8.0.0",
     "astro": "^6.0.4",
     "simple-icons": "^16.12.0",

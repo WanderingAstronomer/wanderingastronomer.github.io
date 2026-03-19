@@ -1,0 +1,137 @@
+---
+import Base from '../layouts/Base.astro';
+import StarField from '../components/StarField.astro';
+---
+
+<Base title="404: Lost in Space | Wandering Astronomer" description="Looks like you've wandered too far.">
+  <main id="main-content">
+    <section class="not-found" id="not-found">
+      <StarField />
+      <div class="not-found-content container">
+        <div class="not-found-card">
+          <p class="not-found-code">ERROR 404</p>
+          <h1 class="not-found-title">
+            <span class="gradient-text">Lost in Space</span>
+          </h1>
+          <p class="not-found-message">
+            Looks like you've wandered too far into deep space.<br />
+            <span class="not-found-message-sub">The page you're looking for doesn't exist or has been moved.</span>
+          </p>
+          <div class="not-found-actions">
+            <a href="/" class="btn btn-primary">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
+              Return to Base
+            </a>
+            <a href="/blog" class="btn btn-outline">
+              Read the Blog
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+</Base>
+
+<style>
+  .not-found {
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+    margin-top: calc(-1 * var(--nav-height)); /* Expand behind nav */
+  }
+
+  .not-found-content {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    padding-top: var(--nav-height);
+  }
+
+  .not-found-card {
+    background: rgba(6, 12, 26, 0.65);
+    backdrop-filter: blur(24px) saturate(150%);
+    -webkit-backdrop-filter: blur(24px) saturate(150%);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    border-radius: var(--radius-xl);
+    padding: var(--space-3xl) var(--space-3xl);
+    max-width: 52rem;
+    text-align: center;
+  }
+
+  .not-found-code {
+    font-family: var(--font-mono);
+    font-size: var(--text-sm);
+    color: var(--amber); /* Unique color for error */
+    letter-spacing: 0.1em;
+    margin-bottom: var(--space-md);
+    opacity: 0;
+    animation: fadeUp 0.8s var(--ease-out) 0.2s forwards;
+  }
+
+  .not-found-title {
+    font-family: var(--font-display);
+    font-size: var(--text-6xl);
+    font-weight: 800;
+    line-height: 1.05;
+    margin-bottom: var(--space-lg);
+    opacity: 0;
+    animation: fadeUp 0.8s var(--ease-out) 0.4s forwards;
+  }
+
+  .not-found-message {
+    font-size: var(--text-xl);
+    color: var(--text-secondary);
+    line-height: 1.5;
+    margin-bottom: var(--space-2xl);
+    opacity: 0;
+    animation: fadeUp 0.8s var(--ease-out) 0.6s forwards;
+  }
+
+  .not-found-message-sub {
+    color: var(--text-muted);
+    font-size: var(--text-lg);
+  }
+
+  .not-found-actions {
+    display: flex;
+    gap: var(--space-md);
+    flex-wrap: wrap;
+    justify-content: center;
+    opacity: 0;
+    animation: fadeUp 0.8s var(--ease-out) 0.8s forwards;
+  }
+
+  @keyframes fadeUp {
+    from {
+      opacity: 0;
+      transform: translateY(24px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @media (max-width: 768px) {
+    .not-found-card {
+      padding: var(--space-2xl) var(--space-xl);
+    }
+
+    .not-found-title {
+      font-size: var(--text-4xl);
+    }
+
+    .not-found-message {
+      font-size: var(--text-lg);
+    }
+
+    .not-found-message-sub {
+      font-size: var(--text-base);
+    }
+  }
+</style>
