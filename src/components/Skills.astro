@@ -6,6 +6,22 @@ import {
   siUbiquiti, siLinux,
 } from 'simple-icons';
 
+type TierLevel = 'proficient' | 'familiar' | 'light' | 'conceptual';
+type SkillItem = string | { name: string; tier: TierLevel };
+interface SkillCategory { name: string; items: SkillItem[] }
+
+const tiered = (name: string, tier: TierLevel): SkillItem => ({ name, tier });
+const getSkillName = (item: SkillItem) => typeof item === 'string' ? item : item.name;
+const getSkillTier = (item: SkillItem) => typeof item === 'string' ? null : item.tier;
+const getPillClass = (item: SkillItem) => {
+  const tier = getSkillTier(item);
+
+  if (tier === 'proficient') return 'pill';
+  if (tier === 'light') return 'pill pill--neutral pill--tier-light';
+  if (tier === 'conceptual') return 'pill pill--neutral pill--tier-conceptual';
+  return 'pill pill--neutral';
+};
+
 // Brand icon paths + official hex colors for pill labels
 const iconMap: Record<string, { path: string; hex: string }> = {
   'Python':          { path: siPython.path,      hex: siPython.hex },
@@ -27,6 +43,9 @@ const iconMap: Record<string, { path: string; hex: string }> = {
   'Wireshark':       { path: siWireshark.path,   hex: siWireshark.hex },
   'Graylog':         { path: siGraylog.path,     hex: siGraylog.hex },
   'UniFi':           { path: siUbiquiti.path,    hex: siUbiquiti.hex },
+  'Ubiquiti/UniFi':  { path: siUbiquiti.path,    hex: siUbiquiti.hex },
+  'WireGuard':       { path: siWireguard.path,   hex: siWireguard.hex },
+  'Kali Linux':      { path: siLinux.path,       hex: siLinux.hex },
 };
 
 // Feather-style stroke SVG inner markup per category
@@ -43,16 +62,26 @@ const categoryIcons: Record<string, string> = {
     `<rect x="4" y="4" width="16" height="16" rx="2" ry="2"></rect><rect x="9" y="9" width="6" height="6"></rect><line x1="9" y1="1" x2="9" y2="4"></line><line x1="15" y1="1" x2="15" y2="4"></line><line x1="9" y1="20" x2="9" y2="23"></line><line x1="15" y1="20" x2="15" y2="23"></line><line x1="20" y1="9" x2="23" y2="9"></line><line x1="20" y1="14" x2="23" y2="14"></line><line x1="1" y1="9" x2="4" y2="9"></line><line x1="1" y1="14" x2="4" y2="14"></line>`,
   'Monitoring':
     `<polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline>`,
+  'Generative Media':
+    `<rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><circle cx="8.5" cy="8.5" r="1.5"></circle><polyline points="21 15 16 10 5 21"></polyline>`,
+  'Networking':
+    `<circle cx="18" cy="5" r="3"></circle><circle cx="6" cy="12" r="3"></circle><circle cx="18" cy="19" r="3"></circle><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"></line><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"></line>`,
+  'Aerospace & Orbital Mechanics':
+    `<circle cx="12" cy="12" r="3"></circle><path d="M19.07 4.93c3.9 3.9 3.9 10.24 0 14.14s-10.24 3.9-14.14 0"></path><path d="M4.93 19.07c-3.9-3.9-3.9-10.24 0-14.14s10.24-3.9 14.14 0"></path>`,
+  'Spacecraft Systems':
+    `<path d="M12 2l3 7h7l-5.5 4.5L18.5 21 12 16.5 5.5 21l2-7.5L2 9h7l3-7z"></path>`,
+  'Defense, Geospatial & Strategic Systems':
+    `<circle cx="12" cy="12" r="10"></circle><path d="M2 12h20"></path><path d="M12 2a15.3 15.3 0 0 1 0 20"></path><path d="M12 2a15.3 15.3 0 0 0 0 20"></path>`,
 };
 
-const categories = [
+const categories: SkillCategory[] = [
   {
     name: 'Languages',
     items: ['Python', 'Java 21', 'SQL', 'HTML/CSS', 'JavaScript', 'Svelte 5'],
   },
   {
     name: 'Frameworks & Tools',
-    items: ['Litestar', 'Quarkus', 'Svelte 5 + Vite', 'Tailwind CSS', 'SQLAlchemy', 'Pydantic', 'JDA', 'PyQt6'],
+    items: ['Litestar', 'Quarkus', 'Svelte 5 + Vite', 'Tailwind CSS', 'SQLAlchemy', 'Pydantic', 'JDA', 'PyQt6', tiered('VS Code', 'proficient')],
   },
   {
     name: 'Infrastructure',
@@ -60,15 +89,243 @@ const categories = [
   },
   {
     name: 'Security',
-    items: ['Wireshark', 'hashcat', 'Ghidra', 'Nmap', 'Burp Suite', 'OSINT', 'DMP Panels', 'Volatility'],
+    items: [
+      tiered('Ghidra', 'familiar'),
+      tiered('wfuzz', 'familiar'),
+      tiered('Wappalyzer', 'familiar'),
+      tiered('Wireshark', 'familiar'),
+      tiered('Zeek', 'light'),
+      tiered('Nmap', 'familiar'),
+      tiered('Netcat', 'familiar'),
+      tiered('Hashcat', 'proficient'),
+      tiered('John the Ripper', 'familiar'),
+      tiered('RainbowCrack', 'familiar'),
+      tiered('rockyou.txt', 'familiar'),
+      tiered('theHarvester', 'familiar'),
+      tiered('Wayback Machine', 'familiar'),
+      tiered('ExifTool', 'familiar'),
+      tiered('Autopsy', 'proficient'),
+      tiered('Volatility', 'familiar'),
+      tiered('Binwalk', 'familiar'),
+      tiered('Foremost', 'familiar'),
+      tiered('strings', 'familiar'),
+      tiered('steghide', 'familiar'),
+      tiered('zsteg', 'familiar'),
+      tiered('xxd', 'familiar'),
+      tiered('Aircrack-ng', 'familiar'),
+      tiered('Wifite', 'familiar'),
+      tiered('Burp Suite', 'familiar'),
+      tiered('OSINT', 'familiar'),
+      tiered('DMP Panels', 'familiar'),
+      tiered('Kali Linux', 'proficient'),
+      tiered('TryHackMe', 'light'),
+      tiered('NCL', 'proficient'),
+    ],
   },
   {
     name: 'AI / ML',
-    items: ['faster-whisper', 'CTranslate2', 'Prompt Engineering', 'Local LLM Inference', 'RAG Pipelines', 'CUDA / RTX 3090'],
+    items: [
+      tiered('llama.cpp', 'familiar'),
+      tiered('llama-cpp-python', 'familiar'),
+      tiered('Ollama', 'familiar'),
+      tiered('LM Studio', 'proficient'),
+      tiered('vLLM', 'familiar'),
+      tiered('GGUF', 'familiar'),
+      tiered('GPTQ', 'familiar'),
+      tiered('AWQ', 'familiar'),
+      tiered('bitsandbytes', 'light'),
+      tiered('WhisperX', 'proficient'),
+      tiered('faster-whisper', 'proficient'),
+      tiered('CTranslate2', 'proficient'),
+      tiered('LangChain', 'light'),
+      tiered('n8n', 'familiar'),
+      tiered('Groq', 'familiar'),
+      tiered('RunPod', 'light'),
+      tiered('Unsloth', 'familiar'),
+      tiered('LoRA', 'proficient'),
+      tiered('DoRA', 'familiar'),
+      tiered('Weights & Biases', 'familiar'),
+      tiered('MLflow', 'familiar'),
+      tiered('FlashAttention', 'familiar'),
+      tiered('SageAttention', 'proficient'),
+      tiered('speculative decoding', 'familiar'),
+      tiered('continuous batching', 'light'),
+      tiered('Qwen-VL', 'familiar'),
+      tiered('Florence-2', 'light'),
+      tiered('SAM2', 'familiar'),
+      tiered('SAM3', 'familiar'),
+      tiered('LLaVA', 'light'),
+      tiered('Claude', 'proficient'),
+      tiered('Claude Code', 'proficient'),
+      tiered('Gemini', 'familiar'),
+      tiered('Copilot', 'familiar'),
+      tiered('GitHub Copilot', 'familiar'),
+      tiered('DeepSeek', 'familiar'),
+      tiered('Kimi', 'familiar'),
+      tiered('Grok', 'familiar'),
+      tiered('model merging/obliteration', 'familiar'),
+    ],
+  },
+  {
+    name: 'Generative Media',
+    items: [
+      tiered('ComfyUI', 'proficient'),
+      tiered('A1111', 'familiar'),
+      tiered('SwarmUI', 'familiar'),
+      tiered('ControlNet', 'familiar'),
+      tiered('SDXL', 'familiar'),
+      tiered('Illustrious', 'familiar'),
+      tiered('Flux', 'familiar'),
+      tiered('ADetailer', 'familiar'),
+      tiered('WAN 2.1', 'familiar'),
+      tiered('WAN 2.2', 'familiar'),
+      tiered('LTX-Video', 'familiar'),
+      tiered('Sora', 'light'),
+      tiered('RIFE', 'familiar'),
+      tiered('Topaz Video', 'familiar'),
+      tiered('SV3D', 'familiar'),
+      tiered('MMAudio', 'familiar'),
+    ],
   },
   {
     name: 'Monitoring',
     items: ['PRTG', 'Grafana', 'Uptime Kuma', 'PagerDuty', 'Graylog', 'Pi-hole'],
+  },
+  {
+    name: 'Networking',
+    items: [
+      // Protocols
+      { name: 'TCP/IP',          tier: 'proficient' },
+      { name: 'UDP',             tier: 'proficient' },
+      { name: 'DNS',             tier: 'proficient' },
+      { name: 'SSH',             tier: 'proficient' },
+      { name: 'subnetting/CIDR', tier: 'proficient' },
+      { name: 'ARP',             tier: 'familiar'   },
+      { name: 'DHCP',            tier: 'familiar'   },
+      { name: 'FTP',             tier: 'familiar'   },
+      { name: 'SFTP',            tier: 'familiar'   },
+      { name: 'SMTP',            tier: 'familiar'   },
+      { name: 'POP3',            tier: 'familiar'   },
+      { name: 'SNMP',            tier: 'familiar'   },
+      { name: 'OSPF',            tier: 'familiar'   },
+      { name: 'IMAP',            tier: 'light'      },
+      { name: 'BGP',             tier: 'light'      },
+      { name: 'MPLS',            tier: 'light'      },
+      // Switching & VLANs
+      { name: 'VLANs',           tier: 'familiar'   },
+      { name: '802.1Q',          tier: 'light'      },
+      // Hardware & platforms
+      { name: 'MikroTik',              tier: 'proficient' },
+      { name: 'Ubiquiti/UniFi',        tier: 'proficient' },
+      { name: 'access points',         tier: 'proficient' },
+      { name: 'copper cabling',        tier: 'proficient' },
+      { name: 'wireless infrastructure', tier: 'proficient' },
+      { name: 'unmanaged switches',    tier: 'familiar'   },
+      { name: 'patch panels',          tier: 'familiar'   },
+      { name: 'Juniper',               tier: 'light'      },
+      { name: 'pfSense',               tier: 'light'      },
+      { name: 'fiber',                 tier: 'light'      },
+      // Routing
+      { name: 'static routing',   tier: 'familiar' },
+      { name: 'dynamic routing',  tier: 'familiar' },
+      { name: 'route tables',     tier: 'familiar' },
+      // Advanced switching
+      { name: 'port mirroring',     tier: 'familiar' },
+      { name: 'spanning tree',      tier: 'familiar' },
+      { name: 'inter-VLAN routing', tier: 'familiar' },
+      { name: 'layer 3 switches',   tier: 'familiar' },
+      // Firewalls & security architecture
+      { name: 'iptables',          tier: 'familiar' },
+      { name: 'nftables',          tier: 'familiar' },
+      { name: 'UFW',               tier: 'familiar' },
+      { name: 'firewalld',         tier: 'familiar' },
+      { name: 'WAF concepts',      tier: 'familiar' },
+      { name: 'IDS/IPS',           tier: 'familiar' },
+      { name: 'DMZ architecture',  tier: 'familiar' },
+      { name: 'zero trust',        tier: 'familiar' },
+      // VPN
+      { name: 'WireGuard',       tier: 'proficient' },
+      { name: 'site-to-site VPN', tier: 'proficient' },
+      { name: 'client VPN',      tier: 'proficient' },
+      { name: 'OpenVPN',         tier: 'familiar'   },
+      { name: 'IPSec',           tier: 'familiar'   },
+      // Cloud & CDN
+      { name: 'Cloudflare DNS',    tier: 'familiar' },
+      { name: 'Cloudflare Tunnel', tier: 'familiar' },
+      { name: 'Docker',            tier: 'familiar' },
+      { name: 'Docker Compose',    tier: 'familiar' },
+      { name: 'Prometheus',        tier: 'familiar' },
+      { name: 'Grafana',           tier: 'proficient' },
+      { name: 'PRTG',              tier: 'familiar'   },
+      { name: 'Apache',            tier: 'light'      },
+      { name: 'AWS',               tier: 'light'      },
+      { name: 'GCP',               tier: 'light'      },
+      { name: 'Azure',             tier: 'light'      },
+      { name: 'ELK Stack',         tier: 'conceptual' },
+    ],
+  },
+  {
+    name: 'Aerospace & Orbital Mechanics',
+    items: [
+      tiered("Kepler's laws", 'familiar'),
+      tiered('orbital elements', 'familiar'),
+      tiered('Hohmann transfer', 'familiar'),
+      tiered('bi-elliptic transfer', 'familiar'),
+      tiered('gravity assist', 'familiar'),
+      tiered('delta-v budgeting', 'familiar'),
+      tiered('TWR', 'familiar'),
+      tiered('specific impulse/Isp', 'familiar'),
+      tiered('SOI', 'familiar'),
+      tiered('prograde/retrograde', 'familiar'),
+      tiered('normal/antinormal', 'familiar'),
+      tiered('chemical propulsion', 'light'),
+      tiered('monopropellant', 'light'),
+      tiered('bipropellant', 'light'),
+      tiered('ion/electric propulsion', 'light'),
+      tiered('nuclear thermal propulsion', 'light'),
+      tiered('aerospike', 'conceptual'),
+      tiered('gimbal thrust', 'familiar'),
+      tiered('RCS', 'familiar'),
+    ],
+  },
+  {
+    name: 'Spacecraft Systems',
+    items: [
+      tiered('ADCS', 'familiar'),
+      tiered('reaction wheels', 'familiar'),
+      tiered('star trackers', 'familiar'),
+      tiered('sun sensors', 'familiar'),
+      tiered('thermal control', 'familiar'),
+      tiered('power budgets', 'familiar'),
+      tiered('solar arrays', 'familiar'),
+      tiered('RTGs', 'familiar'),
+      tiered('comms link budgets', 'familiar'),
+      tiered('reentry heating', 'familiar'),
+      tiered('ablative shielding', 'familiar'),
+      tiered('skip reentry', 'familiar'),
+      tiered('launch environments', 'light'),
+      tiered('radiation hardening', 'light'),
+      tiered('spectrum analysis', 'light'),
+      tiered('frequency hopping', 'light'),
+    ],
+  },
+  {
+    name: 'Defense, Geospatial & Strategic Systems',
+    items: [
+      tiered('A2/AD', 'familiar'),
+      tiered('C2', 'familiar'),
+      tiered('AWACS', 'familiar'),
+      tiered('space situational awareness', 'familiar'),
+      tiered('Tripoli certification', 'conceptual'),
+      tiered('GIS', 'familiar'),
+      tiered('coordinate systems/WGS84', 'familiar'),
+      tiered('satellite imagery analysis', 'familiar'),
+      tiered('raster/vector', 'familiar'),
+      tiered('fission/fusion', 'familiar'),
+      tiered('critical mass', 'familiar'),
+      tiered('enrichment', 'familiar'),
+      tiered('supply chain/logistics modeling', 'familiar'),
+    ],
   },
 ];
 ---
@@ -78,10 +335,17 @@ const categories = [
     <div class="reveal">
       <span class="section-label">Skills & Tools</span>
       <h2 class="section-title">What I work with</h2>
+      <div class="tier-legend">
+        <span class="tier-legend-label">depth:</span>
+        <span class="pill">proficient</span>
+        <span class="pill pill--neutral">familiar</span>
+        <span class="pill pill--neutral pill--tier-light">light</span>
+        <span class="pill pill--neutral pill--tier-conceptual">conceptual</span>
+      </div>
     </div>
-    <div class="skills-grid reveal-stagger">
+    <div class="skills-panel card reveal-stagger">
       {categories.map(cat => (
-        <div class="skill-category card">
+        <section class="skill-section">
           <div class="skill-header">
             <svg
               class="skill-cat-icon"
@@ -99,44 +363,41 @@ const categories = [
             <h3 class="skill-name">{cat.name}</h3>
           </div>
           <div class="skill-pills">
-            {cat.items.map(item => (
-              <span class="pill pill--neutral">
-                {iconMap[item] && (
-                  <svg
-                    width="12" height="12"
-                    viewBox="0 0 24 24"
-                    fill={`#${iconMap[item].hex}`}
-                    aria-hidden="true"
-                    class="pill-icon"
-                  >
-                    <path d={iconMap[item].path} />
-                  </svg>
-                )}
-                {item}
-              </span>
-            ))}
+            {cat.items.map(item => {
+              const name = getSkillName(item);
+              const pillClass = getPillClass(item);
+              return (
+                <span class={pillClass}>
+                  {iconMap[name] && (
+                    <svg
+                      width="12" height="12"
+                      viewBox="0 0 24 24"
+                      fill={`#${iconMap[name].hex}`}
+                      aria-hidden="true"
+                      class="pill-icon"
+                    >
+                      <path d={iconMap[name].path} />
+                    </svg>
+                  )}
+                  {name}
+                </span>
+              );
+            })}
           </div>
-        </div>
+        </section>
       ))}
     </div>
   </div>
 </section>
 
 <style>
-  .skills-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-    gap: var(--space-lg);
-  }
-
-  .skill-category {
-    padding: var(--space-xl);
+  .skills-panel {
     position: relative;
     overflow: hidden;
+    padding: 0;
   }
 
-  /* Gradient top accent bar — subdued at rest, glows on hover */
-  .skill-category::before {
+  .skills-panel::before {
     content: '';
     position: absolute;
     top: 0;
@@ -144,22 +405,32 @@ const categories = [
     right: 0;
     height: 2px;
     background: linear-gradient(90deg, var(--cyan), var(--amber));
-    opacity: 0.25;
-    transition: opacity 0.3s var(--ease-out);
+    opacity: 0.55;
     border-radius: var(--radius-lg) var(--radius-lg) 0 0;
   }
 
-  .skill-category:hover::before {
-    opacity: 0.75;
+  .skill-section {
+    display: grid;
+    grid-template-columns: minmax(12rem, 16rem) 1fr;
+    gap: var(--space-lg);
+    padding: var(--space-lg) var(--space-xl);
+    border-bottom: 1px solid var(--border);
+    transition: background 0.25s var(--ease-out);
+  }
+
+  .skill-section:hover {
+    background: rgba(255, 255, 255, 0.025);
+  }
+
+  .skill-section:last-child {
+    border-bottom: 0;
   }
 
   .skill-header {
     display: flex;
-    align-items: center;
+    align-items: flex-start;
     gap: 0.625rem;
-    margin-bottom: var(--space-md);
-    padding-bottom: var(--space-md);
-    border-bottom: 1px solid var(--border);
+    padding-top: 0.125rem;
   }
 
   .skill-cat-icon {
@@ -180,6 +451,7 @@ const categories = [
     display: flex;
     flex-wrap: wrap;
     gap: var(--space-sm);
+    min-width: 0;
   }
 
   .pill-icon {
@@ -195,9 +467,39 @@ const categories = [
     align-items: center;
   }
 
+  /* Proficiency tier modifiers */
+  .pill--tier-light {
+    opacity: 0.5;
+  }
+
+  .pill--tier-conceptual {
+    background: transparent !important;
+    border-style: dashed;
+    opacity: 0.35;
+  }
+
+  /* Tier legend strip */
+  .tier-legend {
+    display: flex;
+    align-items: center;
+    gap: var(--space-sm);
+    flex-wrap: wrap;
+    margin-top: var(--space-sm);
+    margin-bottom: var(--space-lg);
+  }
+
+  .tier-legend-label {
+    font-family: var(--font-mono);
+    font-size: var(--text-xs);
+    color: var(--text-muted);
+    margin-right: 0.125rem;
+  }
+
   @media (max-width: 768px) {
-    .skills-grid {
+    .skill-section {
       grid-template-columns: 1fr;
+      gap: var(--space-md);
+      padding: var(--space-lg);
     }
   }
 </style>

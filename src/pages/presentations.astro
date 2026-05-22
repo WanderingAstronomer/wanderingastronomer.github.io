@@ -1,6 +1,45 @@
 ---
 import Layout from '../layouts/Base.astro';
 import PresentationViewer from '../components/PresentationViewer.svelte';
+import { getCollection } from 'astro:content';
+import { readdir } from 'node:fs/promises';
+import path from 'node:path';
+
+const slideSorter = new Intl.Collator(undefined, { numeric: true, sensitivity: 'base' });
+const presentationsRoot = path.join(process.cwd(), 'public', 'presentations');
+
+async function getSlideImages(slug: string) {
+  try {
+    const files = await readdir(path.join(presentationsRoot, slug));
+
+    return files
+      .filter(file => file.toLowerCase().endsWith('.png'))
+      .sort(slideSorter.compare)
+      .map(file => ({
+        src: `/presentations/${slug}/${file}`,
+        filename: file,
+      }));
+  } catch {
+    return [];
+  }
+}
+
+const presentationEntries = (await getCollection('presentations'))
+  .filter(presentation => !presentation.data.draft)
+  .sort((a, b) => a.data.order - b.data.order);
+
+const presentations = (await Promise.all(
+  presentationEntries.map(async presentation => ({
+    slug: presentation.id,
+    title: presentation.data.title,
+    description: presentation.data.description,
+    tags: presentation.data.tags,
+    deckFile: presentation.data.deckFile,
+    slides: await getSlideImages(presentation.id),
+    series: presentation.data.series,
+    seriesOrder: presentation.data.seriesOrder,
+  }))
+)).filter(presentation => presentation.slides.length > 0);
 ---
 
 <Layout title="Presentations — Andrew Brown">
@@ -11,7 +50,7 @@ import PresentationViewer from '../components/PresentationViewer.svelte';
         <h1 class="section-title">Talks &amp; Workshops</h1>
         <p class="pres-intro">A collection of original presentations I've written and delivered across Franklin University's ACM student chapter and its Special Interest Groups. Select a presentation to view the slide deck.</p>
       </div>
-      <PresentationViewer client:load />
+      <PresentationViewer presentations={presentations} client:load />
     </div>
   </section>
 </Layout>

@@ -161,7 +161,7 @@ If you take one thing from this first chapter, let it be this: the hardest engin
 
 I’m not saying v0.1 through v0.8 was wasted time. It wasn’t. The exploration taught me what the problem space actually looked like — what I needed versus what I thought I needed, and exactly how much architecture a single-purpose tool can tolerate before it collapses under its own weight. It taught me how to research the problem space, find the boundaries of a solution, distinguish the core from the scaffolding. Once again: you don’t get that from a tutorial.
 
-The real project — the one that would eventually grow into 130+ releases, 355 commits, a genuinely useful production-grade tool on multiple operating systems — started the day I set fire to everything and wrote eight files.
+The real project — the one that would eventually grow into 420+ commits, 1200+ hours of work, and a genuinely useful local-first tool on multiple operating systems — started the day I set fire to everything and wrote eight files.
 
 *One last thing: the chapter you just read was originally dictated. Into Vociferous. It took 21 minutes to speak 2,500 words at an average of 141 words per minute. I was actively speaking 81% of the time. I used 41 filler words. All of that analytical data comes straight out of the app. I find it hard to imagine a better advertisement. As is tradition; proof:*
 ![Refinement took about 156 seconds with a custom prompt Qwen 14B via my RTX 3090.](https://cdn-images-1.medium.com/max/800/1*hFkDZ70vy4eRjkLlPFSYRg.png)

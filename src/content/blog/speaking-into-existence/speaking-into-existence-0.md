@@ -30,7 +30,7 @@ Then I jumped ship to Linux. And the dictation landscape on Linux is, to put it 
 
 And then, in the way that developers tend to respond to problems when they should probably just go lie down instead, I decided to build something “simple” *(subtle foreshadowing).* What could possibly go wrong?
 
-600 hours later (oops), this is what happened.
+1200+ hours later (oops), this is what happened.
 
 ### A Blunderbuss at a Flock
 
@@ -50,7 +50,7 @@ I *needed* to figure out AI-assisted development. This was 2025. AI was rewritin
 
 I *needed* a portfolio. You go out and do some quick Googling on how to break into software development, and somewhere below “go to this bootcamp” and “watch this YouTube guy” is: *build something on GitHub and put it out publicly.* That struck a spark in my brain. I didn’t want to build a to-do app or a weather dashboard. I wanted to solve a real problem I had, and make something that other people might actually want to use. I wanted to build with passion and purpose, not follow a stupid guide.
 
-So yes — tool, career, AI experience, portfolio. One project. That’s why 600 hours. That’s the math.
+So yes — tool, career, AI experience, portfolio. One project. That’s why 1200+ hours. That’s the math.
 
 ### Flying a Plane While Already in the Air
 ![Me in November — Colorized](https://cdn-images-1.medium.com/max/800/0*OBlSc8Qg49sA2bWX.jpg)

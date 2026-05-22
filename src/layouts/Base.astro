@@ -4,7 +4,7 @@ interface Props {
   description?: string;
 }
 
-const { title, description = "Andrew Brown — Software engineer. Security practitioner. Human-first AI developer." } = Astro.props;
+const { title, description = "Andrew Brown — private AI tools, security-aware systems, and mission-ready software." } = Astro.props;
 
 const pathname = Astro.url.pathname;
 const currentPath = pathname.endsWith('/') && pathname !== '/' ? pathname.slice(0, -1) : pathname;
@@ -51,8 +51,8 @@ const isLinkActive = (href: string) => {
         <li><a href="/#skills">Skills</a></li>
         <li><a href="/#experience">Experience</a></li>
         <li><a href="/#leadership">Leadership</a></li>
+        <li><a href="/#projects">Projects</a></li>
         <li><a href="/#achievements">Achievements</a></li>
-        <li><a href="/projects" class={isLinkActive('/projects') ? 'active' : ''}>Projects</a></li>
         <li class="nav-item--featured"><a href="/presentations" class={`nav-link--featured ${isLinkActive('/presentations') ? 'active' : ''}`}>Presentations</a></li>
         <li><a href="/blog" class={`nav-link--featured ${isLinkActive('/blog') ? 'active' : ''}`}>Blog</a></li>
         <li class="nav-item--featured"><a href="/about" class={`nav-link--bio ${isLinkActive('/about') ? 'active' : ''}`}>Bio</a></li>

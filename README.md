@@ -24,11 +24,11 @@ Personal portfolio site for **Andrew Brown** — software engineer, security pra
 - **Home** — Hero with animated star field, about section, and contact info
 - **Skills & Tools** — Languages, frameworks, infrastructure, security, AI/ML, and monitoring
 - **Projects** — Vociferous (offline speech-to-text), Synapse.sql, TCP Canvas Pages, Bookbot
-- **Presentations** — Interactive slide viewer with 11 decks, keyboard nav, fullscreen, and .pptx download
+- **Presentations** — Interactive slide viewer fed by raw PNG exports and content metadata
 - **Experience** — Work history timeline (Wittenbach, Cennox, ICS, Starry NOC, Starry Installer)
 - **Leadership & Teaching** — President of Programming SIG, Senior Officer of CySec SIG, NCL Team Leader
 - **Achievements** — NCL rankings, certifications, GitHub contribution heatmap, commit stats
-- **Blog** — Technical writing hosted on Medium; posts on AI, security, and software engineering
+- **Blog** — Markdown-authored technical writing with optional Medium canonical links
 - **Bio** — Full biography page
 
 ---
@@ -48,3 +48,7 @@ npm run dev      # start dev server at localhost:4321
 npm run build    # production build to ./dist
 npm run preview  # preview production build locally
 ```
+
+## Content Updates
+
+See [docs/content-authoring.md](docs/content-authoring.md) for the drop-in workflow for blog posts and presentation PNG exports.

@@ -1,6 +1,20 @@
 ---
 const cyberStats = [
   {
+    value: '19th',
+    context: '/ 7,010',
+    label: 'NCL Individual Season — Spring 2026',
+    description: 'Perfect score — 3,000/3,000 points with 93.3% accuracy across all nine categories. 100% completion rate against a field averaging 40.3%. Top 0.3% of 7,010 solo competitors nationally.',
+    url: '/proofs/ncl/ncl-cyber-skyline-report-spring-solo-2026.pdf',
+  },
+  {
+    value: '18th',
+    context: '/ 3,634',
+    label: 'NCL Team Season — Spring 2026',
+    description: 'Perfect score — 3,000/3,000 points with 90.6% accuracy as part of team "Home Sweet 127.0.0.1" representing Franklin University. 100% completion rate. Top 0.5% of 3,634 teams nationally.',
+    url: '/proofs/ncl/ncl-cyber-skyline-report-spring-team-2026.pdf',
+  },
+  {
     value: '20th',
     context: '/ 4,674',
     label: 'NCL Team Season — Fall 2025',
@@ -18,10 +32,10 @@ const cyberStats = [
 
 const progStats = [
   {
-    value: '355+',
+    value: '420+',
     context: '',
     label: 'Commits on Vociferous',
-    description: '600+ hours of solo development from first prototype to production-ready application. 130+ versioned releases spanning offline speech-to-text capture, a five-stage local SLM refinement pipeline, session management, and a real-time activity dashboard.',
+    description: '1200+ hours of solo development from first prototype to local-first desktop application. Offline speech capture, CTranslate2-backed transcription, controlled local refinement, session management, tagging, analytics, and a real-time activity dashboard.',
     url: 'https://github.com/WanderingAstronomer/Vociferous',
   },
   {
@@ -34,6 +48,8 @@ const progStats = [
 ];
 
 const ncl_reports = [
+  { slug: 'ncl-cyber-skyline-report-spring-solo-2026',  label: 'Spring 2026 — Individual', pages: 8, preview: false },
+  { slug: 'ncl-cyber-skyline-report-spring-team-2026',  label: 'Spring 2026 — Team',       pages: 8, preview: false },
   { slug: 'ncl-cyber-skyline-report-fall-team-2025',   label: 'Fall 2025 — Team',         pages: 9 },
   { slug: 'ncl-cyber-skyline-report-fall-solo-2025',   label: 'Fall 2025 — Individual',   pages: 8 },
   { slug: 'ncl-cyber-skyline-report-spring-team-2025', label: 'Spring 2025 — Team',       pages: 9 },
@@ -89,6 +105,7 @@ const certs = [
             class={`ncl-tab${i === 0 ? ' ncl-tab--active' : ''}`}
             data-slug={r.slug}
             data-pages={r.pages}
+            data-preview={r.preview === false ? 'false' : 'true'}
             data-index={i}
           >
             {r.label}
@@ -97,7 +114,12 @@ const certs = [
       </nav>
       <div class="ncl-stage">
         <div class="ncl-page-wrap">
-          <img id="ncl-slide-img" src={`/proofs/ncl/${ncl_reports[0].slug}/page-1.png`} alt="NCL Report page" class="ncl-page-img" loading="lazy" />
+          <div id="ncl-pdf-only" class="ncl-pdf-only">
+            <span class="ncl-pdf-eyebrow">PDF available</span>
+            <strong>Preview pages are pending for this report.</strong>
+            <p>Use the download button below to open the Cyber Skyline report.</p>
+          </div>
+          <img id="ncl-slide-img" src="" alt="NCL Report page" class="ncl-page-img" loading="lazy" />
           <button class="ncl-arrow ncl-arrow--prev" id="ncl-prev" aria-label="Previous page" disabled>
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
           </button>
@@ -184,7 +206,7 @@ const certs = [
       </div>
       <p class="cert-progress">
         <span class="pill pill--amber">In Progress</span>
-        CompTIA Network+ &mdash; Target: Summer 2026
+        CompTIA Network+ &mdash; expected soon
       </p>
       <div class="cert-images">
         {certs.filter(c => c.image).map(cert => (
@@ -206,22 +228,43 @@ const certs = [
   const nextBtn = document.getElementById('ncl-next') as HTMLButtonElement;
   const downloadBtn = document.getElementById('ncl-download') as HTMLAnchorElement;
   const fullscreenBtn = document.getElementById('ncl-fullscreen')!;
+  const pdfOnly = document.getElementById('ncl-pdf-only')!;
   const stage = document.querySelector('.ncl-page-wrap') as HTMLElement;
   const tabs = document.querySelectorAll<HTMLButtonElement>('.ncl-tab');
 
   let currentSlug = tabs[0].dataset.slug!;
   let currentPage = 1;
   let totalPages = parseInt(tabs[0].dataset.pages!);
+  let hasPreview = tabs[0].dataset.preview !== 'false';
 
   function updateView() {
+    downloadBtn.href = `/proofs/ncl/${currentSlug}.pdf`;
+    downloadBtn.download = `${currentSlug}.pdf`;
+
+    if (!hasPreview) {
+      img.removeAttribute('src');
+      img.hidden = true;
+      pdfOnly.hidden = false;
+      counter.textContent = 'PDF only';
+      prevBtn.hidden = true;
+      nextBtn.hidden = true;
+      (fullscreenBtn as HTMLButtonElement).hidden = true;
+      return;
+    }
+
+    img.hidden = false;
+    pdfOnly.hidden = true;
+    prevBtn.hidden = false;
+    nextBtn.hidden = false;
+    (fullscreenBtn as HTMLButtonElement).hidden = false;
     img.src = `/proofs/ncl/${currentSlug}/page-${currentPage}.png`;
     img.alt = `NCL Report page ${currentPage}`;
     counter.textContent = `${currentPage} / ${totalPages}`;
     (prevBtn as HTMLButtonElement).disabled = currentPage === 1;
     (nextBtn as HTMLButtonElement).disabled = currentPage === totalPages;
-    downloadBtn.href = `/proofs/ncl/${currentSlug}.pdf`;
-    downloadBtn.download = `${currentSlug}.pdf`;
   }
+
+  updateView();
 
   tabs.forEach(tab => {
     tab.addEventListener('click', () => {
@@ -229,6 +272,7 @@ const certs = [
       tab.classList.add('ncl-tab--active');
       currentSlug = tab.dataset.slug!;
       totalPages = parseInt(tab.dataset.pages!);
+      hasPreview = tab.dataset.preview !== 'false';
       currentPage = 1;
       updateView();
     });
@@ -244,6 +288,7 @@ const certs = [
 
   document.addEventListener('keydown', e => {
     if (!document.getElementById('ncl-viewer')?.matches(':hover')) return;
+    if (!hasPreview) return;
     if (e.key === 'ArrowUp' || e.key === 'ArrowLeft') { if (currentPage > 1) { currentPage--; updateView(); } }
     if (e.key === 'ArrowDown' || e.key === 'ArrowRight') { if (currentPage < totalPages) { currentPage++; updateView(); } }
   });
@@ -404,6 +449,44 @@ const certs = [
     max-height: 70vh;
     object-fit: contain;
     display: block;
+  }
+
+  .ncl-pdf-only {
+    display: flex;
+    min-height: 24rem;
+    width: 100%;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: var(--space-sm);
+    padding: var(--space-2xl) var(--space-lg);
+    text-align: center;
+    background:
+      radial-gradient(circle at top, rgba(0, 217, 255, 0.08), transparent 36%),
+      var(--bg-deep);
+  }
+
+  .ncl-pdf-only[hidden] {
+    display: none;
+  }
+
+  .ncl-pdf-eyebrow {
+    font-family: var(--font-mono);
+    font-size: var(--text-xs);
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--cyan);
+  }
+
+  .ncl-pdf-only strong {
+    font-family: var(--font-display);
+    font-size: var(--text-2xl);
+    color: var(--text-primary);
+  }
+
+  .ncl-pdf-only p {
+    color: var(--text-secondary);
+    font-size: var(--text-sm);
   }
 
   /* Navigation arrows */

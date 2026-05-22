@@ -4,7 +4,7 @@ import Layout from '../layouts/Base.astro';
 
 <Layout
   title="Bio — Andrew Brown"
-  description="Software engineer, security practitioner, and human-first AI developer from upstate New York. Where I started, what I've built, and what I'm after."
+  description="Software engineer, security practitioner, and AI developer from upstate New York. Where I started, what I've built, and what I'm after."
 >
   <article class="about-page">
 
@@ -14,7 +14,7 @@ import Layout from '../layouts/Base.astro';
         <h1 class="about-name">
           <span class="gradient-text">Andrew Brown</span>
         </h1>
-        <p class="about-tagline">Software Engineer · Security Practitioner · Human-First AI Developer</p>
+        <p class="about-tagline">Software Engineer · Security Practitioner · AI Developer</p>
         <div class="about-links">
           <a href="mailto:abrown7521@gmail.com" class="about-chip">abrown7521@gmail.com</a>
           <a href="https://github.com/WanderingAstronomer" target="_blank" rel="noopener noreferrer" class="about-chip">GitHub</a>
@@ -31,7 +31,7 @@ import Layout from '../layouts/Base.astro';
         <p>
           I'm a software engineer and security practitioner out of Youngstown, Ohio, wrapping up a
           B.S. in Cybersecurity with a minor in AI at Franklin University. I grew up in a tiny town
-          in upstate New York&mdash;something like sixth-generation, population around 2,800 and
+          in upstate New York&mdash;nearly tenth-generation, population around 2,800 and
           shrinking&mdash;where my family has a long history of bending the world around them with
           their hands. I didn't grow up anywhere near tech, but I've been chasing it since I was old
           enough to take apart the things people threw away. By 13, I was building my own computers
@@ -51,8 +51,8 @@ import Layout from '../layouts/Base.astro';
           <h2 class="bio-section-title">Where I come from</h2>
           <p>
             I grew up in a corner of upstate New York that most people haven't heard of, and I mean
-            that literally&mdash;you'd have to go looking for it. Sixth-generation of my family, or
-            close to it. My graduating class had about half a dozen people in it. My family has been
+            that literally&mdash;you'd have to go looking for it. Nearly tenth-generation of my family,
+            as far as we can tell. My graduating class had about half a dozen people in it. My family has been
             working with their hands out there for a long time, and that's just the culture: something
             needed fixing or building, so you fixed it or built it. Few people were calling a contractor.
           </p>
@@ -156,7 +156,7 @@ import Layout from '../layouts/Base.astro';
             <div class="project-highlight-header">
               <div>
                 <h3 class="project-highlight-name gradient-text">Vociferous</h3>
-                <p class="project-highlight-tagline">Offline Speech-to-Text &mdash; Your Voice, Your Hardware</p>
+                <p class="project-highlight-tagline">Local-First Dictation &mdash; Your Voice, Your Hardware</p>
               </div>
               <a
                 href="https://github.com/WanderingAstronomer/Vociferous"
@@ -169,19 +169,19 @@ import Layout from '../layouts/Base.astro';
               </a>
             </div>
             <p>
-              A full-stack offline speech-to-text desktop application: 355+ commits, 130+ versioned
-              releases, around 600 hours of solo development. I didn't start it as a portfolio
-              project, and it wasn't built to impress anyone. I wanted a tool that could transcribe
-              my own voice, on my own hardware, without needing an internet connection or trusting
-              someone else's server. That seemed like something that should exist. It didn't, so I
+              A full-stack local-first dictation and refinement application: 420+ commits, 14
+              GitHub stars, and 1200+ hours of solo development. I didn't start it as a portfolio
+              project, and it wasn't built to impress anyone. I wanted a tool that could capture my
+              voice, transcribe it locally, preserve the raw session history, and refine the result
+              only when I asked it to. That seemed like something that should exist. It didn't, so I
               built it. That's more or less how I operate.
             </p>
             <p>
-              Under the hood, it captures speech locally using a modified <em>faster-whisper</em>
-              branch, refines it through a five-stage local SLM pipeline, and stores everything in a
-              session-managed SQLite database&mdash;with an intent-driven command bus,
-              crash-resilient recording, and a real-time activity dashboard. Nothing leaves your
-              hardware. No cloud, no telemetry.
+              Under the hood, it captures speech locally, transcribes through
+              <em>faster-whisper</em> and CTranslate2, stores sessions in SQLite, and routes frontend
+              actions through an intent-driven backend. The system is built around local recording,
+              refinement, tagging, search, analytics, and a real-time activity dashboard. Nothing
+              leaves your hardware. No cloud, no telemetry.
             </p>
             <p>
               The architecture choices&mdash;local-first, offline-capable,
@@ -296,6 +296,27 @@ import Layout from '../layouts/Base.astro';
           <div class="ncl-results">
             <div class="ncl-season card">
               <div class="ncl-season-header">
+                <span class="ncl-badge ncl-badge--amber">Spring 2026</span>
+                <strong class="ncl-role">Team Leader &mdash; Home Sweet 127.0.0.1</strong>
+              </div>
+              <div class="ncl-stats">
+                <div class="ncl-stat">
+                  <span class="ncl-stat-value">18<sup>th</sup></span>
+                  <span class="ncl-stat-label">out of 3,634 teams</span>
+                </div>
+                <div class="ncl-stat">
+                  <span class="ncl-stat-value">3,000</span>
+                  <span class="ncl-stat-label">perfect team score</span>
+                </div>
+                <div class="ncl-stat">
+                  <span class="ncl-stat-value ncl-top">Top 0.5%</span>
+                  <span class="ncl-stat-label">nationally</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="ncl-season card">
+              <div class="ncl-season-header">
                 <span class="ncl-badge">Spring 2025</span>
                 <strong class="ncl-role">Team Leader &mdash; Team Terminalators</strong>
               </div>
@@ -305,8 +326,8 @@ import Layout from '../layouts/Base.astro';
                   <span class="ncl-stat-label">out of 4,449 teams</span>
                 </div>
                 <div class="ncl-stat">
-                  <span class="ncl-stat-value">238<sup>th</sup></span>
-                  <span class="ncl-stat-label">individually (8,500+ competitors)</span>
+                  <span class="ncl-stat-value">Leader</span>
+                  <span class="ncl-stat-label">team coordination</span>
                 </div>
                 <div class="ncl-stat">
                   <span class="ncl-stat-value ncl-top">Top 0.5%</span>
@@ -326,8 +347,8 @@ import Layout from '../layouts/Base.astro';
                   <span class="ncl-stat-label">out of 4,674 teams</span>
                 </div>
                 <div class="ncl-stat">
-                  <span class="ncl-stat-value">121<sup>st</sup></span>
-                  <span class="ncl-stat-label">individually (~8,000 competitors)</span>
+                  <span class="ncl-stat-value">Leader</span>
+                  <span class="ncl-stat-label">team coordination</span>
                 </div>
                 <div class="ncl-stat">
                   <span class="ncl-stat-value ncl-top">Top 0.5%</span>
@@ -362,7 +383,7 @@ import Layout from '../layouts/Base.astro';
             </div>
             <div class="cert-chip cert-chip--in-progress">
               <span class="cert-chip-name">CompTIA Network+</span>
-              <span class="cert-chip-date">Target: Summer 2026</span>
+              <span class="cert-chip-date">Expected soon</span>
             </div>
           </div>
         </section>
@@ -424,10 +445,10 @@ import Layout from '../layouts/Base.astro';
         <section class="bio-section reveal">
           <h2 class="bio-section-title">What I'm after</h2>
           <p>
-            I'm looking for my first professional software engineering or security role, and what I
-            need at this point is a runway. I've accumulated a lot of experience across a lot of
-            domains, and I'm ready to apply it somewhere focused where I can keep learning and keep
-            building.
+            I'm open to roles across artificial intelligence, cybersecurity, and software
+            engineering. What I need at this point is a runway: a focused place to keep learning,
+            keep building, and apply the strange breadth I've accumulated across infrastructure,
+            security, AI tooling, and software systems.
           </p>
           <p>
             I've spent years in environments where the consequences of getting it wrong were immediate
@@ -439,6 +460,12 @@ import Layout from '../layouts/Base.astro';
             know exactly what that kind of failure feels like from the engineering side. Both
             perspectives have shaped how I think about reliability, and neither lets me take shortcuts
             comfortably.
+          </p>
+          <p>
+            My long-term direction is clear: I want to support autonomous systems for spacefaring
+            missions. That target pulls together the things I keep orbiting anyway&mdash;reliability,
+            autonomy, security, AI, controls, communications, operations, and the discipline required
+            when failure is expensive. I am not there yet, but that is the vector.
           </p>
           <p>
             My background is unusual for someone at this career stage&mdash;field infrastructure,
@@ -490,7 +517,11 @@ import Layout from '../layouts/Base.astro';
               </tr>
               <tr>
                 <th>In Progress</th>
-                <td>CompTIA Network+ &mdash; Target: Summer 2026</td>
+                <td>CompTIA Network+ &mdash; expected soon</td>
+              </tr>
+              <tr>
+                <th>Direction</th>
+                <td>AI, cybersecurity, and software engineering; long-term target: autonomous systems for spacefaring missions</td>
               </tr>
               <tr>
                 <th>Languages</th>
@@ -506,11 +537,15 @@ import Layout from '../layouts/Base.astro';
               </tr>
               <tr>
                 <th>Security</th>
-                <td>Wireshark &middot; hashcat &middot; Ghidra &middot; Nmap &middot; Burp Suite &middot; OSINT &middot; DMP Panels &middot; Volatility</td>
+                <td>Hashcat &middot; Autopsy &middot; Kali Linux &middot; NCL &middot; Ghidra &middot; Wireshark &middot; Nmap &middot; Netcat &middot; John the Ripper &middot; RainbowCrack &middot; Volatility &middot; Binwalk &middot; ExifTool &middot; Aircrack-ng &middot; Wifite &middot; OSINT</td>
               </tr>
               <tr>
                 <th>AI / ML</th>
-                <td>faster-whisper &middot; CTranslate2 &middot; Local LLM Inference &middot; RAG Pipelines &middot; Prompt Engineering &middot; CUDA / RTX 3090</td>
+                <td>LM Studio &middot; Claude Code &middot; faster-whisper &middot; WhisperX &middot; CTranslate2 &middot; ComfyUI &middot; LoRA &middot; SageAttention &middot; llama.cpp &middot; Ollama &middot; vLLM &middot; GGUF &middot; Qwen-VL &middot; SAM2/SAM3 &middot; local inference</td>
+              </tr>
+              <tr>
+                <th>Aerospace / Geospatial</th>
+                <td>Orbital mechanics &middot; delta-v budgeting &middot; spacecraft subsystems &middot; comms link budgets &middot; reentry concepts &middot; space situational awareness &middot; GIS &middot; WGS84 &middot; satellite imagery analysis</td>
               </tr>
               <tr>
                 <th>Monitoring</th>
