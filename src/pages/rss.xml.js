@@ -1,25 +1,16 @@
 import rss from '@astrojs/rss';
-import { getCollection } from 'astro:content';
 
 export async function GET(context) {
-  const blog = await getCollection('blog', ({ data }) => {
-    return data.draft !== true;
-  });
-  
-  // Sort posts by date descending
-  blog.sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
-
   return rss({
     title: 'Wandering Astronomer',
-    description: 'A personal website and blog by Andrew Brown',
+    description: 'Writing now lives on Substack.',
     site: context.site,
-    items: blog.map((post) => ({
-      title: post.data.title,
-      pubDate: post.data.date,
-      description: post.data.description,
-      // Map the frontmatter to RSS fields
-      link: `/blog/${post.id}/`,
-    })),
+    items: [{
+      title: 'Writing moved to Substack',
+      pubDate: new Date('2026-05-27T00:00:00Z'),
+      description: 'New writing is published on Substack instead of this site.',
+      link: 'https://wanderingastronomer.substack.com/',
+    }],
     customData: `<language>en-us</language>`,
   });
 }
